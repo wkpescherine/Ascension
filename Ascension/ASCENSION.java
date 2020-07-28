@@ -1,8 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+//import javafx.application.Application;
+//import java.io.*;
+import java.lang.String;
 
 public class ASCENSION implements ActionListener{
+    String [] attributes = {"None", "None", "None"};
+    int [][] stats = new int[3][10];
+
     JFrame window = new JFrame("Ascension v1");
     JPanel main = new JPanel();
     JPanel savedGames = new JPanel();
@@ -20,6 +26,15 @@ public class ASCENSION implements ActionListener{
     JButton backToMain2 = new JButton("Back to Main");
     JButton backToNewGame = new JButton("Back to New Game");
     JButton start = new JButton("Start Game");
+    JButton human = new JButton("Human");
+    JButton dwarf = new JButton("Dwarf");
+    JButton elven = new JButton("Elven");
+    JButton divine = new JButton("Divine");
+    JButton diabolic = new JButton("Diabolic");
+    JButton wise = new JButton("Wise");
+    JButton warrior = new JButton("Warrior");
+    JButton rogue = new JButton("Rogue");
+    JButton mage = new JButton("Mage");
 
     ASCENSION(){
         main.setLayout(null);
@@ -43,8 +58,80 @@ public class ASCENSION implements ActionListener{
         newGame.setLayout(new FlowLayout());
         newGame.setPreferredSize(new Dimension(780,580));
         selectRace.setPreferredSize(new Dimension(760,170));
+        selectRace.add(human);
+        human.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Human",0,2,2,2,2,2,2);
+				}
+			}
+        );
+        selectRace.add(dwarf);
+        dwarf.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Dwarf",0,1,3,2,2,2,2);
+				}
+			}
+        );
+        selectRace.add(elven);
+        elven.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Elven",0,1,3,2,2,2,2);
+				}
+			}
+        );
         selectStyle.setPreferredSize(new Dimension(760,170));
+        selectStyle.add(divine);
+        divine.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Divine",1,2,2,2,2,2,2);
+				}
+			}
+        );
+        selectStyle.add(diabolic);
+        diabolic.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Diabolic",1,1,3,2,2,2,2);
+				}
+			}
+        );
+        selectStyle.add(wise);
+        wise.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Wise",1,1,3,2,2,2,2);
+				}
+			}
+        );
         selectClass.setPreferredSize(new Dimension(760,170));
+        selectClass.add(warrior);
+        warrior.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Warrior",2,2,2,2,2,2,2);
+				}
+			}
+        );
+        selectClass.add(rogue);
+        rogue.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Rogue",2,2,2,2,2,2,2);
+				}
+			}
+        );
+        selectClass.add(mage);
+        mage.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Mage",2,2,2,2,2,2,2);
+				}
+			}
+        );
         backToMain.setBounds(200,100,100,20);
         backToMain.addActionListener(
 			new ActionListener(){
@@ -125,5 +212,17 @@ public class ASCENSION implements ActionListener{
     public void actionPerformed(ActionEvent e){
 		main.setVisible(false);
 		newGame.setVisible(true);
-	}
+    }
+    
+    public void setStats(String choice, int a, int b, int c, int d, int e, int f , int g){
+        attributes [a] = choice;
+        stats [a][0] = b;
+        stats [a][1] = c;
+        stats [a][2] = d;
+        stats [a][3] = e;
+        stats [a][4] = f;
+        stats [a][5] = g;
+
+        System.out.println(attributes[0]+" "+attributes[1]+" "+attributes[2]);
+    }
 }
