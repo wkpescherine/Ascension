@@ -1,23 +1,25 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-//import javafx.application.Application;
-import java.lang.String;
-//import java.io.*;
 
 public class ASCENSION implements ActionListener{
-    int [] race = {0,0,0,0,0,0};
-    int [] style = {0.0,0,0,0,0};
-    int [] profession = {0,0,0,0,0,0};
-
     JFrame window = new JFrame("Ascension v1");
     JPanel main = new JPanel();
     JPanel savedGames = new JPanel();
     JPanel newGame = new JPanel();
+    JPanel selectRace = new JPanel();
+    JPanel selectStyle = new JPanel();
+    JPanel selectClass = new JPanel();
+    JPanel selectBonusAndSkills = new JPanel();
+    JPanel bonusSection = new JPanel();
+    JPanel skillsSection = new JPanel();
     JButton startSavedGame = new JButton("Saved Game");
     JButton startNewGame = new JButton("New Game");
+    JButton bonusAndSkills = new JButton("Bonus and Skills");
     JButton backToMain = new JButton("Back to Main");
     JButton backToMain2 = new JButton("Back to Main");
+    JButton backToNewGame = new JButton("Back to New Game");
+    JButton start = new JButton("Start Game");
 
     ASCENSION(){
         main.setLayout(null);
@@ -38,20 +40,57 @@ public class ASCENSION implements ActionListener{
         main.add(startSavedGame);
         main.setVisible(true);
 
-        newGame.setLayout(null);
+        newGame.setLayout(new FlowLayout());
         newGame.setPreferredSize(new Dimension(780,580));
-        backToMain.setBounds(200,200,100,20);
+        selectRace.setPreferredSize(new Dimension(760,170));
+        selectStyle.setPreferredSize(new Dimension(760,170));
+        selectClass.setPreferredSize(new Dimension(760,170));
+        backToMain.setBounds(200,100,100,20);
         backToMain.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    newGame.setVisible(true);
+                    newGame.setVisible(false);
                     main.setVisible(true);
 				}
 			}
-		);
+        );
+        bonusAndSkills.setBounds(200,300,100,20);
+        bonusAndSkills.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    newGame.setVisible(false);
+                    selectBonusAndSkills.setVisible(true);
+				}
+			}
+        );        
         newGame.setBackground(Color.BLACK);
+        newGame.add(selectRace);
+        newGame.add(selectStyle);
+        newGame.add(selectClass);
         newGame.add(backToMain);
+        newGame.add(bonusAndSkills);
         newGame.setVisible(false);
+
+        selectBonusAndSkills.setLayout(new FlowLayout());
+        selectBonusAndSkills.setPreferredSize(new Dimension(780,580));
+        bonusSection.setPreferredSize(new Dimension(250,510));
+        skillsSection.setPreferredSize(new Dimension(500,510));
+        backToNewGame.setBounds(200,100,100,20);
+        backToNewGame.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    newGame.setVisible(true);
+                    selectBonusAndSkills.setVisible(false);
+				}
+			}
+        );  
+        start.setBounds(200,300,100,20);
+        selectBonusAndSkills.setBackground(Color.BLACK);
+        selectBonusAndSkills.add(bonusSection);
+        selectBonusAndSkills.add(skillsSection);
+        selectBonusAndSkills.add(backToNewGame);
+        selectBonusAndSkills.add(start);
+        selectBonusAndSkills.setVisible(false);
 
         savedGames.setLayout(null);
         savedGames.setPreferredSize(new Dimension(780,580));
@@ -71,6 +110,7 @@ public class ASCENSION implements ActionListener{
         window.add(main);
         window.add(newGame);
         window.add(savedGames);
+        window.add(selectBonusAndSkills);
         window.setLayout(new FlowLayout());
 		window.setSize(800, 600);
 		window.getContentPane().setBackground(Color.BLACK);
