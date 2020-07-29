@@ -7,8 +7,14 @@ import java.lang.String;
 
 public class ASCENSION implements ActionListener{
     String [] attributes = {"Race", "Style", "Class", "Name"};
-    int [][] statsYemp = new int[3][10];
-    int stats = new int[10];
+    int [][] statsTemp = new int[3][10];
+    int [] stats = new int[10];
+    String strength = "Strength      : ";
+    String stamina = "Stamina        : ";
+    String dexterity = "Dexterity     : ";
+    String quickness = "Quickmess      : ";
+    String intelligence = "Intelligence   : ";
+    String spirit = "Spirit         : ";
 
     JFrame window = new JFrame("Ascension v1");
     JPanel main = new JPanel();
@@ -17,16 +23,13 @@ public class ASCENSION implements ActionListener{
     JPanel selectRace = new JPanel();
     JPanel selectStyle = new JPanel();
     JPanel selectClass = new JPanel();
-    JPanel selectBonusAndSkills = new JPanel();
     JPanel bonusSection = new JPanel();
     JPanel skillsSection = new JPanel();
     JPanel gamePlay = new JPanel();
     JButton startSavedGame = new JButton("Saved Game");
     JButton startNewGame = new JButton("New Game");
-    JButton bonusAndSkills = new JButton("Bonus and Skills");
     JButton backToMain = new JButton("Back to Main");
     JButton backToMain2 = new JButton("Back to Main");
-    JButton backToNewGame = new JButton("Back to New Game");
     JButton start = new JButton("Start Game");
     JButton human = new JButton("Human");
     JButton dwarf = new JButton("Dwarf");
@@ -37,6 +40,13 @@ public class ASCENSION implements ActionListener{
     JButton warrior = new JButton("Warrior");
     JButton rogue = new JButton("Rogue");
     JButton mage = new JButton("Mage");
+    JLabel raceStyleClass = new JLabel(attributes[0]+attributes[1]+attributes[2]);
+    JLabel str = new JLabel(strength);
+    JLabel dex = new JLabel(dexterity);
+    JLabel qui = new JLabel(quickness);
+    JLabel iq = new JLabel(intelligence);
+    JLabel sta = new JLabel(stamina);
+    JLabel spr = new JLabel(spirit);
 
     int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 
@@ -63,7 +73,7 @@ public class ASCENSION implements ActionListener{
 
         newGame.setLayout(new FlowLayout());
         newGame.setPreferredSize(new Dimension(780,580));
-        selectRace.setPreferredSize(new Dimension(760,170));
+        selectRace.setPreferredSize(new Dimension(250,170));
         selectRace.add(human);
         human.addActionListener(
 			new ActionListener(){
@@ -88,7 +98,7 @@ public class ASCENSION implements ActionListener{
 				}
 			}
         );
-        selectStyle.setPreferredSize(new Dimension(760,170));
+        selectStyle.setPreferredSize(new Dimension(250,170));
         selectStyle.add(divine);
         divine.addActionListener(
 			new ActionListener(){
@@ -113,7 +123,7 @@ public class ASCENSION implements ActionListener{
 				}
 			}
         );
-        selectClass.setPreferredSize(new Dimension(760,170));
+        selectClass.setPreferredSize(new Dimension(250,170));
         selectClass.add(warrior);
         warrior.addActionListener(
 			new ActionListener(){
@@ -147,51 +157,34 @@ public class ASCENSION implements ActionListener{
 				}
 			}
         );
-        bonusAndSkills.setBounds(200,300,100,20);
-        bonusAndSkills.addActionListener(
-			new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-                    newGame.setVisible(false);
-                    selectBonusAndSkills.setVisible(true);
-				}
-			}
-        );        
-        newGame.setBackground(Color.BLACK);
-        newGame.add(selectRace);
-        newGame.add(selectStyle);
-        newGame.add(selectClass);
-        newGame.add(backToMain);
-        newGame.add(bonusAndSkills);
-        newGame.setVisible(false);
-
-        selectBonusAndSkills.setLayout(new FlowLayout());
-        selectBonusAndSkills.setPreferredSize(new Dimension(780,580));
-        bonusSection.setPreferredSize(new Dimension(250,510));
-        skillsSection.setPreferredSize(new Dimension(500,510));
-        backToNewGame.setBounds(200,100,100,20);
-        backToNewGame.addActionListener(
-			new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-                    newGame.setVisible(true);
-                    selectBonusAndSkills.setVisible(false);
-				}
-			}
-        );  
         start.setBounds(200,300,100,20);
         start.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     gamePlay.setVisible(true);
-                    selectBonusAndSkills.setVisible(false);
+                    newGame.setVisible(false);
 				}
 			}
         ); 
-        selectBonusAndSkills.setBackground(Color.BLACK);
-        selectBonusAndSkills.add(bonusSection);
-        selectBonusAndSkills.add(skillsSection);
-        selectBonusAndSkills.add(backToNewGame);
-        selectBonusAndSkills.add(start);
-        selectBonusAndSkills.setVisible(false);
+        bonusSection.setPreferredSize(new Dimension(250,350));
+        bonusSection.setLayout(new FlowLayout());
+        bonusSection.add(raceStyleClass);
+        bonusSection.add(str);
+        bonusSection.add(sta);
+        bonusSection.add(dex);
+        bonusSection.add(qui);
+        bonusSection.add(iq);
+        bonusSection.add(spr);
+        skillsSection.setPreferredSize(new Dimension(500,350));        
+        newGame.setBackground(Color.BLACK);
+        newGame.add(selectRace);
+        newGame.add(selectStyle);
+        newGame.add(selectClass);
+        newGame.add(bonusSection);
+        newGame.add(skillsSection);
+        newGame.add(backToMain);
+        newGame.add(start);
+        newGame.setVisible(false);
 
         savedGames.setLayout(null);
         savedGames.setPreferredSize(new Dimension(780,580));
@@ -215,7 +208,6 @@ public class ASCENSION implements ActionListener{
         window.add(main);
         window.add(newGame);
         window.add(savedGames);
-        window.add(selectBonusAndSkills);
         window.add(gamePlay);
         window.setLayout(new FlowLayout());
 		window.setSize(800, 600);
@@ -241,8 +233,16 @@ public class ASCENSION implements ActionListener{
         statsTemp [a][3] = e;
         statsTemp [a][4] = f;
         statsTemp [a][5] = g;
+        stats [0] = statsTemp [0][0] + statsTemp [1][0]+statsTemp [1][0];
+        stats [1] = statsTemp [0][1] + statsTemp [1][1]+statsTemp [1][1];
+        stats [2] = statsTemp [0][2] + statsTemp [1][2]+statsTemp [1][2];
+        stats [3] = statsTemp [0][3] + statsTemp [1][3]+statsTemp [1][3];
+        stats [4] = statsTemp [0][4] + statsTemp [1][4]+statsTemp [1][4];
+        stats [5] = statsTemp [0][5] + statsTemp [1][5]+statsTemp [1][5];
+        raceStyleClass.setText(attributes[0]+" "+attributes[1]+" "+attributes[2]);
+        str.setText(strength+ stats[0]);
 
-        System.out.println(attributes[0]+" "+attributes[1]+" "+attributes[2]);
+        System.out.println(attributes[0]+" "+attributes[1]+" "+attributes[2] + " "+ statsTemp[0][0]);
     }
 
     public void movement(){

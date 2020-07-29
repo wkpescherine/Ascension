@@ -1,0 +1,18 @@
+NOTES
+1) Need to change the order of the race style class to style race class
+2) Need to add more choices to the 3 categories
+3) Need to start to work on the bonus stats section
+4) Need to start building out the skills section
+5) need to a naming section ot the creation panel some where
+6) Need to add the validation to start playing, by making sure all data is entered
+7) Need to create some sample art images to add to the game area
+8) Start to build out some of the basic game UI elements
+9) Create a way to start saving the game as you play
+    a) For now will be added to a local doc that will hold the info
+10) work on how to display previosuly saved games
+    a) For now will be pulled from the doc and have a clcik ability added to it.
+11) Start to build out the logic for loading the saved games
+12) Build out some of the logic for things like how the char stats are created
+    a)have to work on the bonus system logic
+13) Start building out the char exp and level curves
+14) Start to build out some of the itemization of how the gaem works
