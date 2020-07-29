@@ -6,8 +6,9 @@ import javax.swing.*;
 import java.lang.String;
 
 public class ASCENSION implements ActionListener{
-    String [] attributes = {"None", "None", "None"};
-    int [][] stats = new int[3][10];
+    String [] attributes = {"Race", "Style", "Class", "Name"};
+    int [][] statsYemp = new int[3][10];
+    int stats = new int[10];
 
     JFrame window = new JFrame("Ascension v1");
     JPanel main = new JPanel();
@@ -19,6 +20,7 @@ public class ASCENSION implements ActionListener{
     JPanel selectBonusAndSkills = new JPanel();
     JPanel bonusSection = new JPanel();
     JPanel skillsSection = new JPanel();
+    JPanel gamePlay = new JPanel();
     JButton startSavedGame = new JButton("Saved Game");
     JButton startNewGame = new JButton("New Game");
     JButton bonusAndSkills = new JButton("Bonus and Skills");
@@ -36,7 +38,11 @@ public class ASCENSION implements ActionListener{
     JButton rogue = new JButton("Rogue");
     JButton mage = new JButton("Mage");
 
+    int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+
     ASCENSION(){
+        movement();
+
         main.setLayout(null);
         main.setPreferredSize(new Dimension(780,580));
         main.setBackground(Color.BLACK);
@@ -172,6 +178,14 @@ public class ASCENSION implements ActionListener{
 			}
         );  
         start.setBounds(200,300,100,20);
+        start.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gamePlay.setVisible(true);
+                    selectBonusAndSkills.setVisible(false);
+				}
+			}
+        ); 
         selectBonusAndSkills.setBackground(Color.BLACK);
         selectBonusAndSkills.add(bonusSection);
         selectBonusAndSkills.add(skillsSection);
@@ -194,10 +208,15 @@ public class ASCENSION implements ActionListener{
         savedGames.add(backToMain2);
         savedGames.setVisible(false);
 
+        gamePlay.setLayout(new FlowLayout());
+        gamePlay.setPreferredSize(new Dimension(780,580));
+        gamePlay.setVisible(false);
+
         window.add(main);
         window.add(newGame);
         window.add(savedGames);
         window.add(selectBonusAndSkills);
+        window.add(gamePlay);
         window.setLayout(new FlowLayout());
 		window.setSize(800, 600);
 		window.getContentPane().setBackground(Color.BLACK);
@@ -216,13 +235,46 @@ public class ASCENSION implements ActionListener{
     
     public void setStats(String choice, int a, int b, int c, int d, int e, int f , int g){
         attributes [a] = choice;
-        stats [a][0] = b;
-        stats [a][1] = c;
-        stats [a][2] = d;
-        stats [a][3] = e;
-        stats [a][4] = f;
-        stats [a][5] = g;
+        statsTemp [a][0] = b;
+        statsTemp [a][1] = c;
+        statsTemp [a][2] = d;
+        statsTemp [a][3] = e;
+        statsTemp [a][4] = f;
+        statsTemp [a][5] = g;
 
         System.out.println(attributes[0]+" "+attributes[1]+" "+attributes[2]);
     }
+
+    public void movement(){
+		InputMap im = gamePlay.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "Move North");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, false), "Move South");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "Move West");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "Move East");
+		ActionMap ap = gamePlay.getActionMap();
+		ap.put("Move East", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+                System.out.print("East");
+				movement();
+			}
+		});
+		ap.put("Move West", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("West");
+				movement();
+			}
+		});	
+		ap.put("Move North", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("North");
+				movement();
+			}
+		});	
+		ap.put("Move South", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("South");
+				movement();
+			}
+		});	
+	}
 }
