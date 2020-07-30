@@ -38,12 +38,15 @@ public class ASCENSION implements ActionListener{
     JButton human = new JButton("Human");
     JButton dwarf = new JButton("Dwarven");
     JButton elven = new JButton("Elven");
+    JButton kobold = new JButton("Kobold");
     JButton divine = new JButton("Divine");
+    JButton elusive = new JButton("Elusive");
     JButton diabolic = new JButton("Diabolical");
     JButton wise = new JButton("Wise");
     JButton warrior = new JButton("Warrior");
     JButton rogue = new JButton("Rogue");
     JButton mage = new JButton("Mage");
+    JButton priest = new JButton("Priest");
     JLabel styleRaceClass = new JLabel(attributes[0]+attributes[1]+attributes[2]);
     JLabel str = new JLabel(strength);
     JLabel dex = new JLabel(dexterity);
@@ -96,6 +99,14 @@ public class ASCENSION implements ActionListener{
 				}
 			}
         );
+        selectStyle.add(elusive);
+        elusive.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Elusive",0,1,2,5,4,0,0);
+				}
+			}
+        );
         selectStyle.add(wise);
         wise.addActionListener(
 			new ActionListener(){
@@ -110,6 +121,14 @@ public class ASCENSION implements ActionListener{
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     setStats("Human",1,2,2,2,2,2,2);
+				}
+			}
+        );
+        selectRace.add(kobold);
+        kobold.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Kobold",1,1,1,4,4,1,1);
 				}
 			}
         );
@@ -135,6 +154,14 @@ public class ASCENSION implements ActionListener{
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     setStats("Warrior",2,4,4,3,1,0,0);
+				}
+			}
+        );
+        selectClass.add(priest);
+        priest.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Priest",2,1,2,1,3,1,4);
 				}
 			}
         );
@@ -250,6 +277,7 @@ public class ASCENSION implements ActionListener{
         stats [4] = statsTemp [0][4] + statsTemp [1][4]+statsTemp [2][4];
         stats [5] = statsTemp [0][5] + statsTemp [1][5]+statsTemp [2][5];
         calculateBonuses();
+        setHpPower();
         styleRaceClass.setText(attributes[0]+"     "+attributes[1]+"      "+attributes[2]);
         str.setText(strength+ stats[0]+"     +"+statsBonus[0] +"   ");
         sta.setText(stamina+ stats[1]+"     +"+statsBonus[1] +"   ");
@@ -257,6 +285,8 @@ public class ASCENSION implements ActionListener{
         qui.setText(quickness+ stats[3]+"     +"+statsBonus[3] +"   ");
         iq.setText(intelligence+ stats[4]+"     +"+statsBonus[4] +"   ");
         spr.setText(spirit+ stats[5]+"     +"+statsBonus[5] +"              ");
+        hp.setText(life+stats[6]+"                       ");
+        pow.setText(power+stats[7]+"                       ");
     }
 
     public void movement(){
@@ -303,6 +333,23 @@ public class ASCENSION implements ActionListener{
                 }
             }
             statsBonus[i] = modBonus;
+        }
+    }
+
+    public void setHpPower(){
+        if(attributes[2]== "Warrior"){
+            stats[6] = 12+statsBonus[2];
+        }
+        if(attributes[2]== "Rogue"){
+            stats[6] = 8+statsBonus[2];
+        }
+        if(attributes[2]== "Mage"){
+            stats[6] = 4+statsBonus[2];
+            stats[7] = 12+statsBonus[4]; 
+        }
+        if(attributes[2]== "Priest"){
+            stats[6] = 8+statsBonus[2];
+            stats[7] = 8+statsBonus[5]; 
         }
     }
 }
