@@ -30,6 +30,10 @@ public class ASCENSION implements ActionListener{
     JPanel bonusSection = new JPanel();
     JPanel skillsSection = new JPanel();
     JPanel gamePlay = new JPanel();
+    JPanel dungeonMap = new JPanel();
+    JPanel lifeArea = new JPanel();
+    JPanel skillsMenu = new JPanel();
+    JPanel powerArea = new JPanel();
     JButton startSavedGame = new JButton("Saved Game");
     JButton startNewGame = new JButton("New Game");
     JButton backToMain = new JButton("Back to Main");
@@ -39,6 +43,8 @@ public class ASCENSION implements ActionListener{
     JButton dwarf = new JButton("Dwarven");
     JButton elven = new JButton("Elven");
     JButton kobold = new JButton("Kobold");
+    JButton undead = new JButton("Undead");
+    JButton insane = new JButton("Insane");
     JButton divine = new JButton("Divine");
     JButton elusive = new JButton("Elusive");
     JButton diabolic = new JButton("Diabolical");
@@ -47,6 +53,13 @@ public class ASCENSION implements ActionListener{
     JButton rogue = new JButton("Rogue");
     JButton mage = new JButton("Mage");
     JButton priest = new JButton("Priest");
+    JButton necro = new JButton("Necro");
+    JButton melee = new JButton("melee");
+    JButton magic = new JButton("magic");
+    JButton spark = new JButton("spark");
+    JButton smite = new JButton("smite");
+    JButton sweep = new JButton("sweep");
+    JButton lifetap = new JButton("lifetap");
     JLabel styleRaceClass = new JLabel(attributes[0]+attributes[1]+attributes[2]);
     JLabel str = new JLabel(strength);
     JLabel dex = new JLabel(dexterity);
@@ -88,6 +101,14 @@ public class ASCENSION implements ActionListener{
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     setStats("Divine",0,1,1,1,2,3,4);
+				}
+			}
+        );
+        selectStyle.add(insane);
+        insane.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Insane",0,2,1,2,4,3,0);
 				}
 			}
         );
@@ -136,7 +157,15 @@ public class ASCENSION implements ActionListener{
         dwarf.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    setStats("Dwarf",1,2,4,1,1,1,1);
+                    setStats("Dwarven",1,2,4,1,1,1,1);
+				}
+			}
+        );
+        selectRace.add(undead);
+        undead.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Undead",1,2,5,1,1,0,3);
 				}
 			}
         );
@@ -170,6 +199,14 @@ public class ASCENSION implements ActionListener{
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     setStats("Rogue",2,2,1,4,5,0,0);
+				}
+			}
+        );
+        selectClass.add(necro);
+        necro.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Necro",2,3,3,1,1,0,4);
 				}
 			}
         );
@@ -210,7 +247,20 @@ public class ASCENSION implements ActionListener{
         bonusSection.add(spr);
         bonusSection.add(hp);
         bonusSection.add(pow);
-        skillsSection.setPreferredSize(new Dimension(500,350));        
+        skillsSection.setPreferredSize(new Dimension(500,350));
+        skillsSection.setLayout(new FlowLayout());
+        melee.setVisible(false);
+        magic.setVisible(false);
+        spark.setVisible(false);
+        smite.setVisible(false);
+        sweep.setVisible(false);
+        lifetap.setVisible(false);
+        skillsSection.add(melee);
+        skillsSection.add(magic);
+        skillsSection.add(spark);
+        skillsSection.add(smite);
+        skillsSection.add(sweep);
+        skillsSection.add(lifetap);        
         newGame.setBackground(Color.BLACK);
         newGame.add(selectStyle);
         newGame.add(selectRace);
@@ -238,6 +288,15 @@ public class ASCENSION implements ActionListener{
 
         gamePlay.setLayout(new FlowLayout());
         gamePlay.setPreferredSize(new Dimension(780,580));
+        gamePlay.setBackground(Color.BLACK);
+        dungeonMap.setPreferredSize(new Dimension(770,460));
+        lifeArea.setPreferredSize(new Dimension(100,100));
+        skillsMenu.setPreferredSize(new Dimension(560,100));
+        powerArea.setPreferredSize(new Dimension(100,100));
+        gamePlay.add(dungeonMap);
+        gamePlay.add(lifeArea);
+        gamePlay.add(skillsMenu);
+        gamePlay.add(powerArea);
         gamePlay.setVisible(false);
 
         window.add(main);
@@ -276,6 +335,7 @@ public class ASCENSION implements ActionListener{
         stats [3] = statsTemp [0][3] + statsTemp [1][3]+statsTemp [2][3];
         stats [4] = statsTemp [0][4] + statsTemp [1][4]+statsTemp [2][4];
         stats [5] = statsTemp [0][5] + statsTemp [1][5]+statsTemp [2][5];
+        displaySkills();
         calculateBonuses();
         setHpPower();
         styleRaceClass.setText(attributes[0]+"     "+attributes[1]+"      "+attributes[2]);
@@ -294,7 +354,11 @@ public class ASCENSION implements ActionListener{
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "Move North");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, false), "Move South");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "Move West");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "Move East");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "Move East");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_1, 0, false), "Slot 1");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_2, 0, false), "Slot 2");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_3, 0, false), "Slot 3");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_4, 0, false), "Slot 4");
 		ActionMap ap = gamePlay.getActionMap();
 		ap.put("Move East", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
@@ -317,6 +381,30 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move South", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
 				System.out.print("South");
+				movement();
+			}
+        });	
+        ap.put("Slot 1", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("1");
+				movement();
+			}
+        });	
+        ap.put("Slot 2", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("2");
+				movement();
+			}
+        });	
+        ap.put("Slot 3", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("3");
+				movement();
+			}
+        });	
+        ap.put("Slot 4", new AbstractAction(){
+			public void actionPerformed(ActionEvent e){
+				System.out.print("4");
 				movement();
 			}
 		});	
@@ -350,6 +438,37 @@ public class ASCENSION implements ActionListener{
         if(attributes[2]== "Priest"){
             stats[6] = 8+statsBonus[2];
             stats[7] = 8+statsBonus[5]; 
+        }
+        if(attributes[2]== "Necro"){
+            stats[6] = 10+statsBonus[2];
+            stats[7] = 10+statsBonus[5]; 
+        }
+    }
+
+    public void displaySkills(){
+        melee.setVisible(false);
+        magic.setVisible(false);
+        spark.setVisible(false);
+        smite.setVisible(false);
+        sweep.setVisible(false);
+        lifetap.setVisible(false);
+        if(stats[0]>=0){
+            melee.setVisible(true);
+        }
+        if(stats[4]>=0){
+            magic.setVisible(true);
+        }
+        if(stats[4]>=5){
+            spark.setVisible(true);
+        }
+        if(stats[5]>=5){
+            smite.setVisible(true);
+        }
+        if(stats[0]>=5 && stats[3]>=5){
+            sweep.setVisible(true);
+        }
+        if(stats[0]>=5 && attributes[2]=="Necro"){
+            lifetap.setVisible(true);
         }
     }
 }
