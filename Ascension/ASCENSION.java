@@ -34,6 +34,7 @@ public class ASCENSION implements ActionListener{
     JPanel lifeArea = new JPanel();
     JPanel skillsMenu = new JPanel();
     JPanel powerArea = new JPanel();
+    JPanel gameMenuOptions = new JPanel();
     JButton startSavedGame = new JButton("Saved Game");
     JButton startNewGame = new JButton("New Game");
     JButton backToMain = new JButton("Back to Main");
@@ -60,6 +61,22 @@ public class ASCENSION implements ActionListener{
     JButton smite = new JButton("smite");
     JButton sweep = new JButton("sweep");
     JButton lifetap = new JButton("lifetap");
+    JButton slot1 = new JButton("S1");
+    JButton slot2 = new JButton("S2");
+    JButton slot3 = new JButton("S3");
+    JButton slot4 = new JButton("S4");
+    JButton slot5 = new JButton("S5");
+    JButton slot6 = new JButton("S6");
+    JButton slot7 = new JButton("S7");
+    JButton slot8 = new JButton("S8");
+    JButton slot9 = new JButton("S9");
+    JButton slot0 = new JButton("S0");
+    JButton gameMenu = new JButton("Menu");
+    JButton charSheet = new JButton("CS");
+    JButton inventory = new JButton("INV");
+    JButton gameMenuOptionSave = new JButton("Save");
+    JButton gameMenuOptionReturn = new JButton("Return");
+    JButton gameMenuOptionQuit = new JButton("Quit");
     JLabel styleRaceClass = new JLabel(attributes[0]+attributes[1]+attributes[2]);
     JLabel str = new JLabel(strength);
     JLabel dex = new JLabel(dexterity);
@@ -290,9 +307,55 @@ public class ASCENSION implements ActionListener{
         gamePlay.setPreferredSize(new Dimension(780,580));
         gamePlay.setBackground(Color.BLACK);
         dungeonMap.setPreferredSize(new Dimension(770,460));
+        dungeonMap.add(gameMenuOptions);
         lifeArea.setPreferredSize(new Dimension(100,100));
         skillsMenu.setPreferredSize(new Dimension(560,100));
+        slot1.setPreferredSize(new Dimension(50,50));
+        slot2.setPreferredSize(new Dimension(50,50));
+        slot3.setPreferredSize(new Dimension(50,50));
+        slot4.setPreferredSize(new Dimension(50,50));
+        slot5.setPreferredSize(new Dimension(50,50));
+        slot6.setPreferredSize(new Dimension(50,50));
+        slot7.setPreferredSize(new Dimension(50,50));
+        slot8.setPreferredSize(new Dimension(50,50));
+        slot9.setPreferredSize(new Dimension(50,50));
+        slot0.setPreferredSize(new Dimension(50,50));
+        gameMenu.setPreferredSize(new Dimension(50,50));
+        gameMenu.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gameMenuOptions.setVisible(true);
+				}
+			}
+		);
+        charSheet.setPreferredSize(new Dimension(50,50));
+        inventory.setPreferredSize(new Dimension(50,50));
+        skillsMenu.add(slot1);
+        skillsMenu.add(slot2);
+        skillsMenu.add(slot3);
+        skillsMenu.add(slot4);
+        skillsMenu.add(slot5);
+        skillsMenu.add(slot6);
+        skillsMenu.add(slot7);
+        skillsMenu.add(slot8);
+        skillsMenu.add(slot9);
+        skillsMenu.add(slot0);
+        skillsMenu.add(gameMenu);
+        skillsMenu.add(charSheet);
+        skillsMenu.add(inventory);
         powerArea.setPreferredSize(new Dimension(100,100));
+        gameMenuOptions.setPreferredSize(new Dimension(120,200));
+        gameMenuOptions.add(gameMenuOptionSave);
+        gameMenuOptions.add(gameMenuOptionReturn);
+        gameMenuOptions.add(gameMenuOptionQuit);
+        gameMenuOptionReturn.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gameMenuOptions.setVisible(false);
+				}
+			}
+		);
+        gameMenuOptions.setVisible(false);
         gamePlay.add(dungeonMap);
         gamePlay.add(lifeArea);
         gamePlay.add(skillsMenu);
