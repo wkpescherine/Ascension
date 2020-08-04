@@ -35,6 +35,8 @@ public class ASCENSION implements ActionListener{
     JPanel skillsMenu = new JPanel();
     JPanel powerArea = new JPanel();
     JPanel gameMenuOptions = new JPanel();
+    JPanel charView = new JPanel();
+    JPanel inventoryView = new JPanel();
     JButton startSavedGame = new JButton("Saved Game");
     JButton startNewGame = new JButton("New Game");
     JButton backToMain = new JButton("Back to Main");
@@ -77,6 +79,8 @@ public class ASCENSION implements ActionListener{
     JButton gameMenuOptionSave = new JButton("Save");
     JButton gameMenuOptionReturn = new JButton("Return");
     JButton gameMenuOptionQuit = new JButton("Quit");
+    JButton closeCharView = new JButton("Close");
+    JButton closeInventoryView = new JButton("Close");
     JLabel styleRaceClass = new JLabel(attributes[0]+attributes[1]+attributes[2]);
     JLabel str = new JLabel(strength);
     JLabel dex = new JLabel(dexterity);
@@ -248,8 +252,10 @@ public class ASCENSION implements ActionListener{
         start.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    gamePlay.setVisible(true);
-                    newGame.setVisible(false);
+                    if(attributes[0]!="Style" && attributes[1]!="Race" && attributes[2]!="Class"){
+                        gamePlay.setVisible(true);
+                        newGame.setVisible(false); 
+                    }
 				}
 			}
         ); 
@@ -308,6 +314,30 @@ public class ASCENSION implements ActionListener{
         gamePlay.setBackground(Color.BLACK);
         dungeonMap.setPreferredSize(new Dimension(770,460));
         dungeonMap.add(gameMenuOptions);
+        dungeonMap.add(charView);
+        dungeonMap.add(inventoryView);
+        charView.setVisible(false);
+        charView.setPreferredSize(new Dimension(200,400));
+        //charView.setBounds(200,440,0,0);
+        charView.add(closeCharView);
+        closeCharView.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gameMenuOptions.setVisible(false);
+                    charView.setVisible(false);
+				}
+			}
+        );
+        inventoryView.setVisible(false);
+        inventoryView.setPreferredSize(new Dimension(500,400));
+        inventoryView.add(closeInventoryView);
+        closeInventoryView.addActionListener(
+            new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    inventoryView.setVisible(false);
+                }
+            }
+        );
         lifeArea.setPreferredSize(new Dimension(100,100));
         skillsMenu.setPreferredSize(new Dimension(560,100));
         slot1.setPreferredSize(new Dimension(50,50));
@@ -325,11 +355,29 @@ public class ASCENSION implements ActionListener{
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     gameMenuOptions.setVisible(true);
+                    charView.setVisible(false);
+                    inventoryView.setVisible(false);
 				}
 			}
 		);
         charSheet.setPreferredSize(new Dimension(50,50));
+        charSheet.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    charView.setVisible(true);
+                    gameMenuOptions.setVisible(false);
+				}
+			}
+		);
         inventory.setPreferredSize(new Dimension(50,50));
+        inventory.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gameMenuOptions.setVisible(false);
+                    inventoryView.setVisible(true);
+				}
+			}
+		);
         skillsMenu.add(slot1);
         skillsMenu.add(slot2);
         skillsMenu.add(slot3);
@@ -348,13 +396,29 @@ public class ASCENSION implements ActionListener{
         gameMenuOptions.add(gameMenuOptionSave);
         gameMenuOptions.add(gameMenuOptionReturn);
         gameMenuOptions.add(gameMenuOptionQuit);
+        gameMenuOptionSave.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gameMenuOptions.setVisible(false);
+                    saveCurrentGame();
+				}
+			}
+        );
         gameMenuOptionReturn.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     gameMenuOptions.setVisible(false);
 				}
 			}
-		);
+        );
+        gameMenuOptionQuit.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    gameMenuOptions.setVisible(false);
+                    main.setVisible(true);
+				}
+			}
+        );
         gameMenuOptions.setVisible(false);
         gamePlay.add(dungeonMap);
         gamePlay.add(lifeArea);
@@ -533,5 +597,9 @@ public class ASCENSION implements ActionListener{
         if(stats[0]>=5 && attributes[2]=="Necro"){
             lifetap.setVisible(true);
         }
+    }
+
+    public void saveCurrentGame(){
+        System.out.print("Current Game Saved");   
     }
 }
