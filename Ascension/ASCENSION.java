@@ -1,15 +1,22 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-//import javafx.application.Application;
 //import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.String;
+import java.util.Scanner;
+//import javafx.application.Application;
 
 public class ASCENSION implements ActionListener{
     String [] attributes = {"Style", "Race", "Class", "Name"};
     int [][] statsTemp = new int[3][6];
     int [] stats = new int[8];
     int [] statsBonus = new int[8];
+    int coordx = 300;
+    int coordy = 250;
 
     String strength = "Strength      : ";
     String stamina = "Stamina        : ";
@@ -90,6 +97,11 @@ public class ASCENSION implements ActionListener{
     JLabel spr = new JLabel(spirit);
     JLabel hp = new JLabel(life);
     JLabel pow = new JLabel(power);
+    ImageIcon imageTile1 = new ImageIcon(getClass().getResource("sampleTile.png"));
+    JLabel imageMap1 = new JLabel(imageTile1);
+    JLabel imageMap2 = new JLabel(imageTile1);
+    JLabel imageMap3 = new JLabel(imageTile1);
+    JLabel imageMap4 = new JLabel(imageTile1);
 
     int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 
@@ -107,6 +119,7 @@ public class ASCENSION implements ActionListener{
 				public void actionPerformed(ActionEvent e){
                     main.setVisible(false);
                     savedGames.setVisible(true);
+                    getSavedGames();
 				}
 			}   
         );
@@ -255,6 +268,7 @@ public class ASCENSION implements ActionListener{
                     if(attributes[0]!="Style" && attributes[1]!="Race" && attributes[2]!="Class"){
                         gamePlay.setVisible(true);
                         newGame.setVisible(false); 
+                        drawMap();
                     }
 				}
 			}
@@ -313,12 +327,15 @@ public class ASCENSION implements ActionListener{
         gamePlay.setPreferredSize(new Dimension(780,580));
         gamePlay.setBackground(Color.BLACK);
         dungeonMap.setPreferredSize(new Dimension(770,460));
+        dungeonMap.add(imageMap1);
+        dungeonMap.add(imageMap2);
+        dungeonMap.add(imageMap3);
+        dungeonMap.add(imageMap4);
         dungeonMap.add(gameMenuOptions);
         dungeonMap.add(charView);
         dungeonMap.add(inventoryView);
         charView.setVisible(false);
         charView.setPreferredSize(new Dimension(200,400));
-        //charView.setBounds(200,440,0,0);
         charView.add(closeCharView);
         closeCharView.addActionListener(
 			new ActionListener(){
@@ -600,6 +617,37 @@ public class ASCENSION implements ActionListener{
     }
 
     public void saveCurrentGame(){
-        System.out.print("Current Game Saved");   
+        try{
+            FileWriter myWriter = new FileWriter("ascensionSavedGames.txt");
+            myWriter.write(attributes[0]+","+attributes[1]+","+attributes[2]+","+stats[0]+","+stats[1]+","+stats[2]+","+stats[3]+","+stats[4]+","+stats[5]+","+stats[6]+","+stats[7]);
+            myWriter.close();
+            System.out.print("Current Game Saved");
+        }catch(IOException e){
+            e.printStackTrace();
+        }   
+    }
+
+    public void drawMap(){
+        imageMap1.setBounds(coordx-25,coordy-25,50,50);
+        imageMap2.setBounds(coordx-25,coordy+25,50,50);
+        imageMap3.setBounds(coordx+25,coordy-25,50,50);
+        imageMap4.setBounds(coordx+25,coordy+25,50,50);
+    }
+
+    public void getSavedGames(){
+        try{
+            File myFile = new File("ascensionSavedGames.txt");
+            Scanner myReader = new Scanner(myFile);
+            while(myReader.hasNextLine()){
+                String data = myReader.nextLine();
+                //String [] dataArray = data.split(",",8);
+                //String savedGame1 = dataArray[0]+" "+dataArray[1]+" "+dataArray[2]; 
+                JLabel savedGameLabel = new JLabel(data);
+                savedGameLabel.setForeground(Color.WHITE);
+                savedGames.add(savedGameLabel);
+            }
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }
