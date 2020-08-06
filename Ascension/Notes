@@ -1,18 +1,61 @@
 NOTES
-1) Need to change the order of the race style class to style race class
-2) Need to add more choices to the 3 categories
-3) Need to start to work on the bonus stats section
-4) Need to start building out the skills section
-5) need to a naming section ot the creation panel some where
-6) Need to add the validation to start playing, by making sure all data is entered
-7) Need to create some sample art images to add to the game area
-8) Start to build out some of the basic game UI elements
-9) Create a way to start saving the game as you play
+1) [DONE] Need to change the order of the race style class to style race class
+2) [WIP] Need to add more choices to the 3 categories
+    a) Have Style be at 10 [At 5 now]
+        I.Divine, Elusive, Diabolical, Wise, Psionic, Stout, Insane, Pure,
+    b) Have Races be at 10 [At 5 now]
+        I.[DONE]Human,Dwarf,Kobold, Elf, Troll, Ogre, Draconic, Undead
+    c) Have Classes be at 10 [At 5 now]
+        I.Warrior, Mage, Priest, Rogue, Ravager, Necro, Paladin, Dervish,Juggernaut, Pyro
+3) [WIP] Need to start to work on the bonus stats section
+    a) Have bonus calcultor setup for all combos
+    b) Have HP and Power setup for all combos
+4) [WIP] Need to start building out the skills section
+5) need to add naming section ot the creation panel some where
+6) [WIP] Need to add the validation to start playing, by making sure all data is entered
+7) [WIP] Need to create some sample art images to add to the game area
+8) [WIP] Start to build out some of the basic game UI elements
+9) [WIP] Create a way to start saving the game as you play
     a) For now will be added to a local doc that will hold the info
-10) work on how to display previosuly saved games
+10) [WIP] work on how to display previosuly saved games
     a) For now will be pulled from the doc and have a clcik ability added to it.
 11) Start to build out the logic for loading the saved games
 12) Build out some of the logic for things like how the char stats are created
-    a)have to work on the bonus system logic
+    a) [WIP] have to work on the bonus system logic
 13) Start building out the char exp and level curves
 14) Start to build out some of the itemization of how the gaem works
+15) Need to create a dungeon system 
+    a) Need to build a system to render the map
+    b) Need to build a system that creates random maps
+    c) Need to build a system that creates the map from pre-existing library
+    d) Not sure yet if I will build both systems for the maps or 1 of them
+16) Need to create a monster system
+    a) The monster system will be a random system that pulls from the existing char build system
+    b) Will need to create a special system also for like higher complexity
+    c) Special monster only tags
+        I. Elite, Lord, Ancient, Mythical
+17) Need to create an AI for the monsters to act with
+18) Will need to create an animation system for moving
+    a) Animation system for the player
+    b) Animation system for the monsters
+19) Balancing out the Stats system
+    a) At present it is 12pts per choice, think to up it 18
+    b) Would have to create stats for the Special tags too
+        I. These are addition stats on top of the regular
+        II. The bonus stats need to be teired to increase at the Special tag increases
+20) Need to look at button sizes and standardize them to be more UX friendly
+21) Need to run an optimization of code, and make it more readable
+    a) Pull out the main section into seprate file
+    b) Pull out the newGame section into seprate file
+    c) Pull out the savedGame section into seprate file
+    d) Pull out the gamePlay section into seprate file
+    e) Pull out the char data into seprate file
+    f) Pull out various functions into seprate file
+
+
+BUGS
+1) The character data sticks thru the panel changes and shouldnt at times
+    a) Need to reset stats and strings when exiting new Game section
+    b) Need to reset stats and strings when Quitting the game
+2) drawMap() is built but the images are not properly displaying
+    a) Need to look at how to properly lay them out display offset
