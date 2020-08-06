@@ -1,11 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.BufferedWriter;
 //import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.String;
 import java.util.Scanner;
 //import javafx.application.Application;
@@ -54,6 +56,9 @@ public class ASCENSION implements ActionListener{
     JButton elven = new JButton("Elven");
     JButton kobold = new JButton("Kobold");
     JButton undead = new JButton("Undead");
+    JButton troll = new JButton("Troll");
+    JButton ogre = new JButton("Ogre");
+    JButton draconic = new JButton("Draconis");
     JButton insane = new JButton("Insane");
     JButton divine = new JButton("Divine");
     JButton elusive = new JButton("Elusive");
@@ -97,6 +102,10 @@ public class ASCENSION implements ActionListener{
     JLabel spr = new JLabel(spirit);
     JLabel hp = new JLabel(life);
     JLabel pow = new JLabel(power);
+    JLabel savedGameLabel1 = new JLabel("Game slot 1");
+    JLabel savedGameLabel2 = new JLabel("Game slot 2");
+    JLabel savedGameLabel3 = new JLabel("Game slot 3");
+    JLabel savedGameLabel4 = new JLabel("Game slot 4");
     ImageIcon imageTile1 = new ImageIcon(getClass().getResource("sampleTile.png"));
     JLabel imageMap1 = new JLabel(imageTile1);
     JLabel imageMap2 = new JLabel(imageTile1);
@@ -211,6 +220,30 @@ public class ASCENSION implements ActionListener{
 				}
 			}
         );
+        selectRace.add(troll);
+        troll.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Troll",1,2,6,2,2,0,0);
+				}
+			}
+        );
+        selectRace.add(ogre);
+        ogre.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Ogre",1,6,2,2,2,0,0);
+				}
+			}
+        );
+        selectRace.add(draconic);
+        draconic.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                    setStats("Draconic",1,3,3,2,2,2,0);
+				}
+			}
+        );
         selectClass.setPreferredSize(new Dimension(250,170));
         selectClass.add(warrior);
         warrior.addActionListener(
@@ -310,7 +343,7 @@ public class ASCENSION implements ActionListener{
 
         savedGames.setLayout(null);
         savedGames.setPreferredSize(new Dimension(780,580));
-        backToMain2.setBounds(200,200,100,20);
+        backToMain2.setBounds(200,500,100,20);
         backToMain2.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -318,15 +351,28 @@ public class ASCENSION implements ActionListener{
                     main.setVisible(true);
 				}
 			}
-		);
+        );
+        savedGameLabel1.setForeground(Color.WHITE);
+        savedGameLabel1.setBounds(20,100,300,20);
+        savedGameLabel2.setForeground(Color.WHITE);
+        savedGameLabel2.setBounds(20,200,300,20);
+        savedGameLabel3.setForeground(Color.WHITE);
+        savedGameLabel3.setBounds(20,300,300,20);
+        savedGameLabel4.setForeground(Color.WHITE);
+        savedGameLabel4.setBounds(20,400,300,20);
         savedGames.setBackground(Color.BLACK);
         savedGames.add(backToMain2);
+        savedGames.add(savedGameLabel1);
+        savedGames.add(savedGameLabel2);
+        savedGames.add(savedGameLabel3);
+        savedGames.add(savedGameLabel4);
         savedGames.setVisible(false);
 
         gamePlay.setLayout(new FlowLayout());
         gamePlay.setPreferredSize(new Dimension(780,580));
         gamePlay.setBackground(Color.BLACK);
         dungeonMap.setPreferredSize(new Dimension(770,460));
+        dungeonMap.setLayout(null);
         dungeonMap.add(imageMap1);
         dungeonMap.add(imageMap2);
         dungeonMap.add(imageMap3);
@@ -335,6 +381,7 @@ public class ASCENSION implements ActionListener{
         dungeonMap.add(charView);
         dungeonMap.add(inventoryView);
         charView.setVisible(false);
+        charView.setBounds(200,50,100,500);
         charView.setPreferredSize(new Dimension(200,400));
         charView.add(closeCharView);
         closeCharView.addActionListener(
@@ -346,6 +393,7 @@ public class ASCENSION implements ActionListener{
 			}
         );
         inventoryView.setVisible(false);
+        inventoryView.setBounds(200,50,100,500);
         inventoryView.setPreferredSize(new Dimension(500,400));
         inventoryView.add(closeInventoryView);
         closeInventoryView.addActionListener(
@@ -410,6 +458,8 @@ public class ASCENSION implements ActionListener{
         skillsMenu.add(inventory);
         powerArea.setPreferredSize(new Dimension(100,100));
         gameMenuOptions.setPreferredSize(new Dimension(120,200));
+        gameMenuOptions.setBounds(200,50,100,500);
+        gameMenuOptions.setPreferredSize(new Dimension(200,400));
         gameMenuOptions.add(gameMenuOptionSave);
         gameMenuOptions.add(gameMenuOptionReturn);
         gameMenuOptions.add(gameMenuOptionQuit);
@@ -618,9 +668,11 @@ public class ASCENSION implements ActionListener{
 
     public void saveCurrentGame(){
         try{
-            FileWriter myWriter = new FileWriter("ascensionSavedGames.txt");
-            myWriter.write(attributes[0]+","+attributes[1]+","+attributes[2]+","+stats[0]+","+stats[1]+","+stats[2]+","+stats[3]+","+stats[4]+","+stats[5]+","+stats[6]+","+stats[7]);
-            myWriter.close();
+            FileWriter myWriter = new FileWriter("ascensionSavedGames.txt", true);
+            BufferedWriter bWriter = new BufferedWriter(myWriter);
+            PrintWriter pWriter = new PrintWriter(bWriter);
+            pWriter.write(attributes[0]+","+attributes[1]+","+attributes[2]+","+stats[0]+","+stats[1]+","+stats[2]+","+stats[3]+","+stats[4]+","+stats[5]+","+stats[6]+","+stats[7]+"\r");
+            pWriter.close();
             System.out.print("Current Game Saved");
         }catch(IOException e){
             e.printStackTrace();
@@ -628,24 +680,37 @@ public class ASCENSION implements ActionListener{
     }
 
     public void drawMap(){
-        imageMap1.setBounds(coordx-25,coordy-25,50,50);
-        imageMap2.setBounds(coordx-25,coordy+25,50,50);
-        imageMap3.setBounds(coordx+25,coordy-25,50,50);
-        imageMap4.setBounds(coordx+25,coordy+25,50,50);
+        imageMap1.setBounds(100,100,50,50);
+        imageMap2.setBounds(100,200,50,50);
+        imageMap3.setBounds(200,100,50,50);
+        imageMap4.setBounds(200,200,50,50);
     }
 
     public void getSavedGames(){
         try{
             File myFile = new File("ascensionSavedGames.txt");
             Scanner myReader = new Scanner(myFile);
+            int slotNumber = 1;
             while(myReader.hasNextLine()){
                 String data = myReader.nextLine();
-                //String [] dataArray = data.split(",",8);
-                //String savedGame1 = dataArray[0]+" "+dataArray[1]+" "+dataArray[2]; 
-                JLabel savedGameLabel = new JLabel(data);
-                savedGameLabel.setForeground(Color.WHITE);
-                savedGames.add(savedGameLabel);
+                String [] dataArray = data.split(",",8);
+                String savedGame1 = dataArray[0]+" "+dataArray[1]+" "+dataArray[2];
+                System.out.print(slotNumber + savedGame1);
+                if(slotNumber == 1 ){
+                    savedGameLabel1.setText(savedGame1);
+                }
+                if(slotNumber == 2 ){
+                    savedGameLabel2.setText(savedGame1);
+                }
+                if(slotNumber == 3 ){
+                    savedGameLabel3.setText(savedGame1);
+                }
+                if(slotNumber == 4 ){
+                    savedGameLabel4.setText(savedGame1);
+                }
+                slotNumber+=1;
             }
+            myReader.close();
         } catch (FileNotFoundException e){
             e.printStackTrace();
         }
