@@ -1,9 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectLord">
+    tools:context=".SelectLord"
+    android:orientation="vertical"
+    android:background="#000">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="match_parent"
+                android:background="#000"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thanar, Necro of Death"
+                    android:textColor="#fff"
+                    android:textSize="32dp"
+                    android:textAlignment="center"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT"
+                    android:onClick="selectNecro"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="match_parent"
+                android:background="#f00"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dragos, The Volcanos Breath"
+                    android:textColor="#fff"
+                    android:textSize="32dp"
+                    android:textAlignment="center"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT"
+                    android:onClick="selectNecro"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="360dp"
+                android:layout_height="match_parent"
+                android:background="#11cc11"
+                android:text="section2"/>
+            <TextView
+                android:layout_width="360dp"
+                android:layout_height="match_parent"
+                android:background="#bb11bb"
+                android:text="section3"/>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:onClick="backToMain"
+        android:text="Back"
+        android:textAlignment="center"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
