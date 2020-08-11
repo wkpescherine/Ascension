@@ -7,7 +7,8 @@ import android.os.Bundle;
 
 public class SelectLord extends AppCompatActivity {
 
-    ConfigData configdata;
+    String lordClass = "None";
+    ConfigData configdata = new ConfigData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,8 @@ public class SelectLord extends AppCompatActivity {
         configdata.quickness = 3;
         configdata.intelligence = 7;
         configdata.health = 10;
-
-        Intent intent = new Intent(this,HomeArea.class);
-        startActivity(intent);
+        Intent intent1 = new Intent(this, HomeArea.class);
+        startActivity(intent1);
     }
 
     public void selectDragoon(View v){
@@ -44,7 +44,7 @@ public class SelectLord extends AppCompatActivity {
         configdata.intelligence = 2;
         configdata.health = 15;
 
-        Intent intent = new Intent(this,HomeArea.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, HomeArea.class);
+        startActivity(intent2);
     }
 }

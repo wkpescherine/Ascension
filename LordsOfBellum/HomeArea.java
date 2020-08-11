@@ -2,12 +2,9 @@ package com.example.lordsofbellum;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import android.content.Intent;
 
 public class HomeArea extends AppCompatActivity {
-
-    ConfigData configdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,12 +12,8 @@ public class HomeArea extends AppCompatActivity {
         setContentView(R.layout.activity_home_area);
     }
 
-    public void moveUp(View v){
-        TextView getView = findViewById(R.id.moveThis);
-        getView.android:layout_marginTop= 100;
-    }
-
-    public void moveDown(View v){
-
+    public void enterDungeon(){
+        Intent intent = new Intent(this, Dungeon.class);
+        startActivity(intent);
     }
 }

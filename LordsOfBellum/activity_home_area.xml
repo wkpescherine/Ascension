@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeArea">
+    tools:context=".HomeArea"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="#aaccaa"
+        android:layout_weight="0">
 
-    <Button
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32dp"
-        android:text="Up"
-        android:id="@+id/upbutton"
-        android:onClick="moveUp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="32dp"
-        android:text="down"
-        android:id="@+id/downbutton"
-        android:onClick="moveDown"/>
-
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="#000"
-        android:id="@+id/moveThis"
-        android:layout_marginTop= configdata.mapTop;
-        android:layout_marginLeft="150dp"/>
+        android:background="#00dd99"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:onClick="enterDungeon"
+            android:text="Dungeon"/>
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="Store"/>
+    </LinearLayout>
 
 </LinearLayout>
