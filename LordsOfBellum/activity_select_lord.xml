@@ -25,19 +25,25 @@
                 android:layout_height="match_parent"
                 android:background="#000"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:src="@drawable/necro1"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Thanar, Necro of Death"
-                    android:textColor="#fff"
-                    android:textSize="32dp"
                     android:textAlignment="center"
-                    />
+                    android:textColor="#fff"
+                    android:textSize="32dp" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="SELECT"
-                    android:onClick="selectNecro"/>
+                    android:onClick="selectNecro"
+                    android:text="SELECT" />
             </LinearLayout>
 
             <LinearLayout
@@ -45,6 +51,12 @@
                 android:layout_height="match_parent"
                 android:background="#f00"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,16 +72,32 @@
                     android:onClick="selectDragoon"/>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="360dp"
+            <LinearLayout
+                android:layout_width="380dp"
                 android:layout_height="match_parent"
-                android:background="#11cc11"
-                android:text="section2"/>
-            <TextView
-                android:layout_width="360dp"
-                android:layout_height="match_parent"
-                android:background="#bb11bb"
-                android:text="section3"/>
+                android:background="#008000"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Veilus, Thorn of the Woods"
+                    android:textColor="#fff"
+                    android:textSize="32dp"
+                    android:textAlignment="center"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT"
+                    android:onClick="selectDragoon"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </HorizontalScrollView>
