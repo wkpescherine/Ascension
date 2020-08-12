@@ -47,4 +47,18 @@ public class SelectLord extends AppCompatActivity {
         Intent intent2 = new Intent(this, HomeArea.class);
         startActivity(intent2);
     }
+
+    public void selectVeilus(View v){
+        configdata.lordClass = "Veilus";
+        configdata.manaType = "Nature";
+        configdata.manaValue = 1;
+        configdata.attack = 3;
+        configdata.defense = 5;
+        configdata.quickness = 6;
+        configdata.intelligence = 2;
+        configdata.health = 8;
+
+        Intent intent3 = new Intent(this, HomeArea.class);
+        startActivity(intent3);
+    }
 }

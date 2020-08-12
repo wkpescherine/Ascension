@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SELECT"
-                    android:onClick="selectDragoon"/>
+                    android:onClick="selectVeilus"/>
             </LinearLayout>
 
         </LinearLayout>
