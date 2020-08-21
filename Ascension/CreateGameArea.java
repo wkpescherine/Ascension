@@ -29,23 +29,19 @@ public class CreateGameArea{
     JButton closeCharView = new JButton("Close");
     JButton closeInventoryView = new JButton("Close");
 
-    createGameArea(){
+    CreateGameArea(){
         gamePlay.setLayout(new FlowLayout());
         gamePlay.setPreferredSize(new Dimension(780,580));
         gamePlay.setBackground(Color.BLACK);
-        dungeonMap.setPreferredSize(new Dimension(770,460));
         dungeonMap.setLayout(null);
-        dungeonMap.add(imageMap1);
-        dungeonMap.add(imageMap2);
-        dungeonMap.add(imageMap3);
-        dungeonMap.add(imageMap4);
+        dungeonMap.setPreferredSize(new Dimension(770,460));
         dungeonMap.add(gameMenuOptions);
         dungeonMap.add(charView);
         dungeonMap.add(inventoryView);
-        inventoryView.setVisible(false);
         inventoryView.setBounds(200,50,100,500);
         inventoryView.setPreferredSize(new Dimension(500,400));
         inventoryView.add(closeInventoryView);
+        inventoryView.setVisible(false);
         inventory.setPreferredSize(new Dimension(50,50));
         charView.setVisible(false);
         charView.setBounds(200,50,100,500);

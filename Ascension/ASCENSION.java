@@ -18,6 +18,7 @@ public class ASCENSION implements ActionListener{
     CreateSavedGameGUI savegamegui = new CreateSavedGameGUI();
     CreateGameArea gamearea = new CreateGameArea();
     CharStatSheet statsheet = new CharStatSheet();
+    StatBuilder builder = new StatBuilder();
 
     JFrame window = new JFrame("Ascension v3");
 
@@ -50,7 +51,7 @@ public class ASCENSION implements ActionListener{
         newgamegui.divine.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    setStats("Divine",0,1,1,1,2,3,4);
+                    builder.setStats("e","Divine",0,1,1,1,2,3,4);
 				}
 			}
         );
@@ -176,10 +177,9 @@ public class ASCENSION implements ActionListener{
         newgamegui.start.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    if(attributes[0]!="Style" && attributes[1]!="Race" && attributes[2]!="Class"){
+                    if(statsheet.style !="none" && statsheet.race !="none" && statsheet.profession !="none"){
                         gamearea.gamePlay.setVisible(true);
-                        newgamegui.newGame.setVisible(false); 
-                        drawMap();
+                        newgamegui.newGame.setVisible(false);                     
                     }
 				}
 			}
@@ -260,7 +260,7 @@ public class ASCENSION implements ActionListener{
 			}
         );
 
-        //Thi si the complete game window section
+        //This is the complete game window section
         window.add(maingui.main);
         window.add(newgamegui.newGame);
         window.add(savegamegui.savedGames);
@@ -314,7 +314,7 @@ public class ASCENSION implements ActionListener{
         }
     }
 
-    public void movement(){
+   public void movement(){
 		InputMap im = gamearea.gamePlay.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "Move North");
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, false), "Move South");
@@ -400,78 +400,77 @@ public class ASCENSION implements ActionListener{
         displaySkills();
         calculateBonuses();
         setHpPower();
-        styleRaceClass.setText(attributes[0]+"     "+attributes[1]+"      "+attributes[2]);
-        str.setText(strength+ stats[0]+"     +"+statsBonus[0] +"   ");
-        sta.setText(stamina+ stats[1]+"     +"+statsBonus[1] +"   ");
-        dex.setText(dexterity+ stats[2]+"     +"+statsBonus[2] +"   ");
-        qui.setText(quickness+ stats[3]+"     +"+statsBonus[3] +"   ");
-        iq.setText(intelligence+ stats[4]+"     +"+statsBonus[4] +"   ");
-        spr.setText(spirit+ stats[5]+"     +"+statsBonus[5] +"              ");
-        hp.setText(life+stats[6]+"                       ");
-        pow.setText(power+stats[7]+"                       ");
+        newgamegui.styleRaceClass.setText(statsheet.style+"     "+statsheet.race+"      "+statsheet.profession);
+        newgamegui.str.setText(newgamegui.strength+ statsheet.stats[0]+"     +"+statsheet.statsBonus[0] +"   ");
+        newgamegui.sta.setText(newgamegui.stamina+ statsheet.stats[1]+"     +"+statsheet.statsBonus[1] +"   ");
+        newgamegui.dex.setText(newgamegui.dexterity+ statsheet.stats[2]+"     +"+statsheet.statsBonus[2] +"   ");
+        newgamegui.qui.setText(newgamegui.quickness+ statsheet.stats[3]+"     +"+statsheet.statsBonus[3] +"   ");
+        newgamegui.iq.setText(newgamegui.intelligence+ statsheet.stats[4]+"     +"+statsheet.statsBonus[4] +"   ");
+        newgamegui.spr.setText(newgamegui.spirit+ statsheet.stats[5]+"     +"+statsheet.statsBonus[5] +"              ");
+        newgamegui.hp.setText(newgamegui.life+statsheet.hp+"                       ");
+        newgamegui.pow.setText(newgamegui.power+statsheet.power+"                      ");
+        System.out.print(statsheet.race+statsheet.statsBonus[2]+statsheet.hp);
     }
 
-    
-    
     public void calculateBonuses(){
         for(int i = 0; i<6; i++){
             int bonusTemp = 0;
             int modBonus = 0;
-            for(int x = 0; x<stats[i]; x++){
+            for(int x = 0; x<statsheet.stats[i]; x++){
                 bonusTemp += x;
-                if(bonusTemp+x < stats[i]){
+                if(bonusTemp+x < statsheet.stats[i]){
                     modBonus += 1;
                 }
             }
-            statsBonus[i] = modBonus;
+            statsheet.statsBonus[i] = modBonus;
         }
     }
 
     public void setHpPower(){
-        if(attributes[2]== "Warrior"){
-            stats[6] = 12+statsBonus[2];
+        if(statsheet.profession == "Warrior"){
+            statsheet.hp = 12+statsheet.statsBonus[2];
         }
-        if(attributes[2]== "Rogue"){
-            stats[6] = 8+statsBonus[2];
+        if(statsheet.profession == "Rogue"){
+            statsheet.hp = 8+statsheet.statsBonus[2];
         }
-        if(attributes[2]== "Mage"){
-            stats[6] = 4+statsBonus[2];
-            stats[7] = 12+statsBonus[4]; 
+        if(statsheet.profession == "Mage"){
+            statsheet.hp = 4+statsheet.statsBonus[2];
+            statsheet.power = 12+statsheet.statsBonus[4]; 
         }
-        if(attributes[2]== "Priest"){
-            stats[6] = 8+statsBonus[2];
-            stats[7] = 8+statsBonus[5]; 
+        if(statsheet.profession == "Priest"){
+            statsheet.hp = 8+statsheet.statsBonus[2];
+            statsheet.power = 8+statsheet.statsBonus[5]; 
         }
-        if(attributes[2]== "Necro"){
-            stats[6] = 10+statsBonus[2];
-            stats[7] = 10+statsBonus[5]; 
+        if(statsheet.profession == "Necro"){
+            statsheet.hp = 10+statsheet.statsBonus[2];
+            statsheet.power = 10+statsheet.statsBonus[5]; 
         }
     }
 
     public void displaySkills(){
-        melee.setVisible(false);
-        magic.setVisible(false);
-        spark.setVisible(false);
-        smite.setVisible(false);
-        sweep.setVisible(false);
-        lifetap.setVisible(false);
-        if(stats[0]>=0){
-            melee.setVisible(true);
+        newgamegui.melee.setVisible(false);
+        newgamegui.magic.setVisible(false);
+        newgamegui.spark.setVisible(false);
+        newgamegui.smite.setVisible(false);
+        newgamegui.sweep.setVisible(false);
+        newgamegui.lifetap.setVisible(false);
+        if(statsheet.stats[0]>=0){
+            newgamegui.melee.setVisible(true);
         }
-        if(stats[4]>=0){
-            magic.setVisible(true);
+        if(statsheet.stats[4]>=0){
+            newgamegui.magic.setVisible(true);
         }
-        if(stats[4]>=5){
-            spark.setVisible(true);
+        if(statsheet.stats[4]>=5){
+            newgamegui.spark.setVisible(true);
         }
-        if(stats[5]>=5){
-            smite.setVisible(true);
+        if(statsheet.stats[5]>=5){
+            newgamegui.smite.setVisible(true);
         }
-        if(stats[0]>=5 && stats[3]>=5){
-            sweep.setVisible(true);
+        if(statsheet.stats[0]>=5 && statsheet.stats[3]>=5){
+            newgamegui.sweep.setVisible(true);
         }
-        if(stats[0]>=5 && attributes[2]=="Necro"){
-            lifetap.setVisible(true);
+        if(statsheet.stats[0]>=5 && statsheet.profession =="Necro"){
+            newgamegui.lifetap.setVisible(true);
         }
     }
 
@@ -480,7 +479,7 @@ public class ASCENSION implements ActionListener{
             FileWriter myWriter = new FileWriter("ascensionSavedGames.txt", true);
             BufferedWriter bWriter = new BufferedWriter(myWriter);
             PrintWriter pWriter = new PrintWriter(bWriter);
-            pWriter.write(charstat+","+attributes[1]+","+attributes[2]+","+stats[0]+","+stats[1]+","+stats[2]+","+stats[3]+","+stats[4]+","+stats[5]+","+stats[6]+","+stats[7]+"\r");
+            pWriter.write(statsheet.style+","+statsheet.race+","+statsheet.prfession+","+statsheet.stats[0]+","+statsheet.stats[1]+","+statsheet.stats[2]+","+statsheet.stats[3]+","+statsheet.stats[4]+","+statsheet.stats[5]+","+statsheet.stats[6]+","+statsheet.stats[7]+"\r");
             pWriter.close();
             System.out.print("Current Game Saved");
         }catch(IOException e){
