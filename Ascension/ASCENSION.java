@@ -51,7 +51,7 @@ public class ASCENSION implements ActionListener{
         newgamegui.divine.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    builder.setStats("e","Divine",0,1,1,1,2,3,4);
+                    builder.setStats("e,Divine,0,1,1,1,2,3,4");
 				}
 			}
         );
