@@ -2,8 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 
 public class CreateNewGameGUI {
-    CharStatSheet charstat = new CharStatSheet();
-
     String strength = "Strength      : ";
     String stamina = "Stamina        : ";
     String dexterity = "Dexterity     : ";
@@ -53,7 +51,7 @@ public class CreateNewGameGUI {
     JLabel spr = new JLabel(spirit);
     JLabel hp = new JLabel(life);
     JLabel pow = new JLabel(power);
-    JLabel styleRaceClass = new JLabel(charstat.style+" "+charstat.race+" "+charstat.profession);
+    JLabel styleRaceClass = new JLabel(" ");
 
     CreateNewGameGUI(){
         newGame.setLayout(new FlowLayout());

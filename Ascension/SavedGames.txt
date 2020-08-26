@@ -1,0 +1,1 @@
+Elusive,Dwarven,Mage,3,6,7,8,6,4,7,150,1,1000Insane,Troll,Necro,7,10,5,7,3,4,12,120,1,1000

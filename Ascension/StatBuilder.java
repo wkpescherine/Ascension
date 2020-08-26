@@ -1,5 +1,4 @@
 import java.lang.String;
-import java.util.Arrays;
 
 public class StatBuilder{
     int [][] statsTemp = new int[3][6];
@@ -16,9 +15,6 @@ public class StatBuilder{
     int nextXP = 1000;
     int xpWorth = 0;
    
-    //String [] holder = new String[7];
-
-    //String being passed in looks like this "Rogue,p,2,1,4,5,0,0"
     //The following is a reference to how the information is being passed and what each index maps to
     public void setStats(String choice, int SRP, int STR, int CON, int DEX, int QUI, int INT , int SPR){
         if(SRP == 0){style = choice;}

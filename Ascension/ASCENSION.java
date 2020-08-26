@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.BufferedWriter;
-import java.io.*;
+//import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -10,17 +10,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.String;
 import java.util.Scanner;
-import javafx.application.Application;
+//import javafx.application.Application;
 
 public class ASCENSION implements ActionListener{
      CreateMainGUI maingui = new CreateMainGUI();
      CreateNewGameGUI newgamegui = new CreateNewGameGUI();
      CreateSavedGameGUI savegamegui = new CreateSavedGameGUI();
      CreateGameArea gamearea = new CreateGameArea();
-     CharStatSheet statsheet = new CharStatSheet();
      StatBuilder builder = new StatBuilder();
 
-     JFrame window = new JFrame("Ascension v3");
+     JFrame window = new JFrame("Ascension v4");
 
      int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 
@@ -195,7 +194,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.start.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         if(statsheet.style !="none" && statsheet.race !="none" && statsheet.profession !="none"){
+                         if(builder.style !="none" && builder.race !="none" && builder.profession !="none"){
                               gamearea.gamePlay.setVisible(true);
                               newgamegui.newGame.setVisible(false);                     
                          }
@@ -343,25 +342,33 @@ public class ASCENSION implements ActionListener{
 		ActionMap ap = gamearea.gamePlay.getActionMap();
 		ap.put("Move East", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-                System.out.print("East");
+                    System.out.print("East");
+                    gamearea.coordx -= 100;
+                    gamearea.coordy += 100;
 				movement();
 			}
 		});
 		ap.put("Move West", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				System.out.print("West");
+                    System.out.print("West");
+                    gamearea.coordx += 100;
+                    gamearea.coordy -= 100;
 				movement();
 			}
 		});	
 		ap.put("Move North", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				System.out.print("North");
+                    System.out.print("North");
+                    gamearea.coordx += 100;
+                    gamearea.coordy += 100;
 				movement();
 			}
 		});	
 		ap.put("Move South", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
-				System.out.print("South");
+                    System.out.print("South");
+                    gamearea.coordx -= 100;
+                    gamearea.coordy -= 100;
 				movement();
 			}
         });	
@@ -393,10 +400,10 @@ public class ASCENSION implements ActionListener{
 
     public void saveCurrentGame(){
         try{
-            FileWriter myWriter = new FileWriter("ascensionSavedGames.txt", true);
+            FileWriter myWriter = new FileWriter("SavedGames.txt", true);
             BufferedWriter bWriter = new BufferedWriter(myWriter);
             PrintWriter pWriter = new PrintWriter(bWriter);
-            pWriter.write(builder.style+","+builder.race+","+builder.prfession+","+builder.stats[0]+","+builder.stats[1]+","+builder.stats[2]+","+builder.stats[3]+","+builder.stats[4]+","+builder.stats[5]+","+builder.np+","+builder.power+builder.currentXP+","+builder.lvl+","+builder.nextXP+"\r");
+            pWriter.write(builder.style+","+builder.race+","+builder.profession+","+builder.stats[0]+","+builder.stats[1]+","+builder.stats[2]+","+builder.stats[3]+","+builder.stats[4]+","+builder.stats[5]+","+builder.hp+","+builder.power+","+builder.currentXP+","+builder.lvl+","+builder.nextXP+"\r");
             pWriter.close();
             System.out.print("Current Game Saved");
         }catch(IOException e){
@@ -414,5 +421,30 @@ public class ASCENSION implements ActionListener{
           newgamegui.spr.setText(newgamegui.spirit+ builder.stats[5]+"     +"+builder.statsBonus[5] +"              ");
           newgamegui.hp.setText(newgamegui.life+builder.hp+"                       ");
           newgamegui.pow.setText(newgamegui.power+builder.power+"                      ");
-    }
+
+          newgamegui.melee.setVisible(false);
+          newgamegui.magic.setVisible(false);
+          newgamegui.spark.setVisible(false);
+          newgamegui.smite.setVisible(false);
+          newgamegui.sweep.setVisible(false);
+          newgamegui.lifetap.setVisible(false);
+          if(builder.stats[0]>=0){
+               newgamegui.melee.setVisible(true);
+          }
+          if(builder.stats[4]>=0){
+               newgamegui.magic.setVisible(true);
+          }
+          if(builder.stats[4]>=5){
+               newgamegui.spark.setVisible(true);
+          }
+          if(builder.stats[5]>=5){
+               newgamegui.smite.setVisible(true);
+          }
+          if(builder.stats[0]>=5 && builder.stats[3]>=5){
+               newgamegui.sweep.setVisible(true);
+          }
+          if(builder.stats[0]>=5 && builder.profession =="Necro"){
+               newgamegui.lifetap.setVisible(true);
+          }
+     }
 }

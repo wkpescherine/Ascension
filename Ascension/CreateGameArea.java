@@ -28,6 +28,18 @@ public class CreateGameArea{
     JButton gameMenuOptionQuit = new JButton("Quit");
     JButton closeCharView = new JButton("Close");
     JButton closeInventoryView = new JButton("Close");
+    Icon mapTile = new ImageIcon(getClass().getResource("sampletile.png"));
+    JLabel mapSection1 = new JLabel(mapTile);
+    JLabel mapSection2 = new JLabel(mapTile);
+    JLabel mapSection3 = new JLabel(mapTile);
+    JLabel mapSection4 = new JLabel(mapTile);
+    JLabel mapSection5 = new JLabel(mapTile);
+    JLabel mapSection6 = new JLabel(mapTile);
+    JLabel mapSection7 = new JLabel(mapTile);
+    JLabel mapSection8 = new JLabel(mapTile);
+    JLabel mapSection9 = new JLabel(mapTile);
+    int coordx = 200;
+    int coordy = 200;
 
     CreateGameArea(){
         gamePlay.setLayout(new FlowLayout());
@@ -35,6 +47,24 @@ public class CreateGameArea{
         gamePlay.setBackground(Color.BLACK);
         dungeonMap.setLayout(null);
         dungeonMap.setPreferredSize(new Dimension(770,460));
+        mapSection1.setBounds(coordx,coordy,100,100);
+        mapSection2.setBounds(coordx-50,coordy+50,100,100);
+        mapSection3.setBounds(coordx-50,coordy-50,100,100);
+        mapSection4.setBounds(coordx+50,coordy+50,100,100);
+        mapSection5.setBounds(coordx+50,coordy-50,100,100);
+        mapSection6.setBounds(coordx+100,coordy,100,100);
+        mapSection7.setBounds(coordx-100,coordy,100,100);
+        mapSection8.setBounds(coordx,coordy-100,100,100);
+        mapSection9.setBounds(coordx,coordy+100,100,100);
+        dungeonMap.add(mapSection1);
+        dungeonMap.add(mapSection2);
+        dungeonMap.add(mapSection3);
+        dungeonMap.add(mapSection4);
+        dungeonMap.add(mapSection5);
+        dungeonMap.add(mapSection6);
+        dungeonMap.add(mapSection7);
+        dungeonMap.add(mapSection8);
+        dungeonMap.add(mapSection9);
         dungeonMap.add(gameMenuOptions);
         dungeonMap.add(charView);
         dungeonMap.add(inventoryView);
