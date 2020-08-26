@@ -395,7 +395,17 @@ public class ASCENSION implements ActionListener{
 				System.out.print("4");
 				movement();
 			}
-		});	
+          });
+          
+          gamearea.mapSection1.setBounds(gamearea.coordx,gamearea.coordy,100,100);
+          gamearea.mapSection2.setBounds(gamearea.coordx-50,gamearea.coordy+50,100,100);
+          gamearea.mapSection3.setBounds(gamearea.coordx-50,gamearea.coordy-50,100,100);
+          gamearea.mapSection4.setBounds(gamearea.coordx+50,gamearea.coordy+50,100,100);
+          gamearea.mapSection5.setBounds(gamearea.coordx+50,gamearea.coordy-50,100,100);
+          gamearea.mapSection6.setBounds(gamearea.coordx+100,gamearea.coordy,100,100);
+          gamearea.mapSection7.setBounds(gamearea.coordx-100,gamearea.coordy,100,100);
+          gamearea.mapSection8.setBounds(gamearea.coordx,gamearea.coordy-100,100,100);
+          gamearea.mapSection9.setBounds(gamearea.coordx,gamearea.coordy+100,100,100);
     }
 
     public void saveCurrentGame(){
