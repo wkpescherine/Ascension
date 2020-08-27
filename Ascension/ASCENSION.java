@@ -47,119 +47,119 @@ public class ASCENSION implements ActionListener{
 				}
 			}
           );
-        newgamegui.divine.addActionListener(
+          newgamegui.divine.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Divine",0,1,1,1,2,3,4);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.insane.addActionListener(
+          );
+          newgamegui.insane.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Insane",0,2,1,2,4,3,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.diabolic.addActionListener(
+          );
+          newgamegui.diabolic.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Diabolic",0,5,3,1,2,1,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.elusive.addActionListener(
+          );
+          newgamegui.elusive.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Elusive",0,1,2,5,4,0,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.wise.addActionListener(
+          );
+          newgamegui.wise.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Wise",0,1,1,3,2,5,1);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.human.addActionListener(
+          );
+          newgamegui.human.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Human",1,2,2,2,2,2,2);
                          updateNewGameGUI();
                     }
 			}
-        );
-        newgamegui.kobold.addActionListener(
+          );
+          newgamegui.kobold.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Kobold",1,1,1,4,4,1,1);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.dwarf.addActionListener(
+          );
+          newgamegui.dwarf.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Dwarven",1,2,4,1,1,1,1);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.undead.addActionListener(
+          );
+          newgamegui.undead.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Undead",1,2,5,1,1,0,3);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.elven.addActionListener(
+          );
+          newgamegui.elven.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Elven",1,1,1,2,2,4,2);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.troll.addActionListener(
+          );
+          newgamegui.troll.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Troll",1,2,6,2,2,0,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.ogre.addActionListener(
+          );
+          newgamegui.ogre.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Ogre",1,6,2,2,2,0,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.draconic.addActionListener(
+          );
+          newgamegui.draconic.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Draconic",1,3,3,2,2,2,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.warrior.addActionListener(
+          );
+          newgamegui.warrior.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Warrior",2,4,4,3,1,0,0);
                          updateNewGameGUI();
 				}
 			}
-        );
-        newgamegui.priest.addActionListener(
+          );
+          newgamegui.priest.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                          builder.setStats("Priest",2,1,2,1,3,1,4);
@@ -191,6 +191,39 @@ public class ASCENSION implements ActionListener{
 				}
 			}
           );
+          newgamegui.strN.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.statsAddition[0]>0){
+                              builder.statsAddition[0] -= 1;
+                              builder.stats[0] -= 1;
+                              builder.bonusPoints += 1;
+                              newgamegui.extraPts.setText("Something");
+                         }
+				}
+			}
+          );
+          newgamegui.strP.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.bonusPoints>0){
+                              builder.statsAddition[0] += 1;
+                              builder.stats[0] += 1;
+                              builder.bonusPoints -= 1;
+                              newgamegui.extraPts.setText("Extra Pts : 0");
+                         }
+				}
+			}
+          );
+          newgamegui.strN.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.statsAddition[0]>0){
+                              builder.statsAddition[0] -= 1;
+                         }
+				}
+			}
+          );
           newgamegui.start.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -202,33 +235,33 @@ public class ASCENSION implements ActionListener{
 			}
           ); 
         
-        //This is the saved games Section Actions
+          //This is the saved games Section Actions
           savegamegui.backToMain2.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    savegamegui.savedGames.setVisible(false);
-                    maingui.main.setVisible(true);
+                         savegamegui.savedGames.setVisible(false);
+                         maingui.main.setVisible(true);
 				}
 			}
-        );
+          );
 
-        //This is the Game Play Section Actions
-        gamearea.closeCharView.addActionListener(
-			new ActionListener(){
+          //This is the Game Play Section Actions
+          gamearea.closeCharView.addActionListener(
+		 	new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    gamearea.gameMenuOptions.setVisible(false);
-                    gamearea.charView.setVisible(false);
+                         gamearea.gameMenuOptions.setVisible(false);
+                         gamearea.charView.setVisible(false);
 				}
 			}
-        );
-        gamearea.closeInventoryView.addActionListener(
-            new ActionListener(){
-                public void actionPerformed(ActionEvent e){
-                    gamearea.inventoryView.setVisible(false);
-                }
-            }
-        );
-        gamearea.gameMenu.addActionListener(
+          );
+          gamearea.closeInventoryView.addActionListener(
+               new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                         gamearea.inventoryView.setVisible(false);
+                    }
+               }
+          );
+          gamearea.gameMenu.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     gamearea.gameMenuOptions.setVisible(true);
@@ -277,12 +310,12 @@ public class ASCENSION implements ActionListener{
 			}
         );
 
-        //This is the complete game window section
-        window.add(maingui.main);
-        window.add(newgamegui.newGame);
-        window.add(savegamegui.savedGames);
-        window.add(gamearea.gamePlay);
-        window.setLayout(new FlowLayout());
+          //This is the complete game window section
+          window.add(maingui.main);
+          window.add(newgamegui.newGame);
+          window.add(savegamegui.savedGames);
+          window.add(gamearea.gamePlay);
+          window.setLayout(new FlowLayout());
 	     window.setSize(800, 600);
 		window.getContentPane().setBackground(Color.BLACK);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -457,4 +490,4 @@ public class ASCENSION implements ActionListener{
                newgamegui.lifetap.setVisible(true);
           }
      }
-}
+}//493

@@ -89,6 +89,7 @@ public class CreateNewGameGUI {
     JLabel spr = new JLabel(spirit);
     JLabel hp = new JLabel(life);
     JLabel pow = new JLabel(power);
+    JLabel extraPts = new JLabel("Extra Pts : 12");
     JLabel styleRaceClass = new JLabel("Character");
 
     CreateNewGameGUI(){
@@ -174,6 +175,7 @@ public class CreateNewGameGUI {
         bonusSection.add(hp);
         pow.setPreferredSize(new Dimension(175,20));
         bonusSection.add(pow);
+        bonusSection.add(extraPts);
         skillsSection.setPreferredSize(new Dimension(350,350));
         skillsSection.setLayout(new FlowLayout());
         melee.setVisible(false);
@@ -197,4 +199,4 @@ public class CreateNewGameGUI {
         newGame.add(start);
         newGame.setVisible(false);
     }
-}//128
+}
