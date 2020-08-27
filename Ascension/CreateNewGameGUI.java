@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class CreateNewGameGUI {
-    String strength = "Strength      : ";
+    String strength = "Strength";
     String stamina = "Stamina        : ";
     String dexterity = "Dexterity     : ";
     String quickness = "Quickmess      : ";
@@ -10,6 +10,20 @@ public class CreateNewGameGUI {
     String spirit = "Spirit         : ";
     String life = "Life       :";
     String power = "Power    : ";
+
+    String strVal = ": 0";
+    String staVal = ": 0";
+    String dexVal = ": 0";
+    String quiVal = ": 0";
+    String iqVal = ": 0";
+    String sprVal = ": 0";
+
+    String strBon = "+ 0";
+    String staBon = "+ 0";
+    String dexBon = "+ 0";
+    String quiBon = "+ 0";
+    String iqBon = "+ 0";
+    String sprBon = "+ 0";
 
     JPanel newGame = new JPanel();
     JButton backToMain = new JButton("Back to Main");
@@ -43,15 +57,39 @@ public class CreateNewGameGUI {
     JButton smite = new JButton("smite");
     JButton sweep = new JButton("sweep");
     JButton lifetap = new JButton("lifetap");
+    JButton strP = new JButton("    +    ");
+    JButton strN = new JButton("    -    ");
+    JButton staP = new JButton("    +    ");
+    JButton staN = new JButton("    -    ");
+    JButton dexP = new JButton("    +    ");
+    JButton dexN = new JButton("    -    ");
+    JButton quiP = new JButton("    +    ");
+    JButton quiN = new JButton("    -    ");
+    JButton iqP = new JButton("    +    ");
+    JButton iqN = new JButton("    -    ");
+    JButton sprP = new JButton("    +    ");
+    JButton sprN = new JButton("    -    ");
     JLabel str = new JLabel(strength);
+    JLabel strV = new JLabel( strVal);
+    JLabel strB = new JLabel( strBon);
+    JLabel staV = new JLabel( staVal);
+    JLabel staB = new JLabel( staBon);
+    JLabel dexV = new JLabel( dexVal);
+    JLabel dexB = new JLabel( dexBon);
+    JLabel quiV = new JLabel( quiVal);
+    JLabel quiB = new JLabel( quiBon);
+    JLabel iqV = new JLabel( iqVal);
+    JLabel iqB = new JLabel( iqBon);
+    JLabel sprV = new JLabel( sprVal);
+    JLabel sprB = new JLabel( sprBon);
+    JLabel sta = new JLabel(stamina);
     JLabel dex = new JLabel(dexterity);
     JLabel qui = new JLabel(quickness);
     JLabel iq = new JLabel(intelligence);
-    JLabel sta = new JLabel(stamina);
     JLabel spr = new JLabel(spirit);
     JLabel hp = new JLabel(life);
     JLabel pow = new JLabel(power);
-    JLabel styleRaceClass = new JLabel(" ");
+    JLabel styleRaceClass = new JLabel("Character");
 
     CreateNewGameGUI(){
         newGame.setLayout(new FlowLayout());
@@ -80,18 +118,63 @@ public class CreateNewGameGUI {
         selectClass.add(rogue);
         selectClass.add(necro);
         selectClass.add(mage);
-        bonusSection.setPreferredSize(new Dimension(250,350));
+        bonusSection.setPreferredSize(new Dimension(400,350));
         bonusSection.setLayout(new FlowLayout());
+        styleRaceClass.setPreferredSize(new Dimension(400, 20));
         bonusSection.add(styleRaceClass);
+        str.setPreferredSize(new Dimension(100, 20));
+        strV.setPreferredSize(new Dimension(50,20));
+        strB.setPreferredSize(new Dimension(50,20));
         bonusSection.add(str);
+        bonusSection.add(strV);
+        bonusSection.add(strB);
+        bonusSection.add(strN);
+        bonusSection.add(strP);
+        sta.setPreferredSize(new Dimension(100, 20));
+        staV.setPreferredSize(new Dimension(50,20));
+        staB.setPreferredSize(new Dimension(50,20));
         bonusSection.add(sta);
+        bonusSection.add(staV);
+        bonusSection.add(staB);
+        bonusSection.add(staN);
+        bonusSection.add(staP);
+        dex.setPreferredSize(new Dimension(100, 20));
+        dexV.setPreferredSize(new Dimension(50,20));
+        dexB.setPreferredSize(new Dimension(50,20));
         bonusSection.add(dex);
+        bonusSection.add(dexV);
+        bonusSection.add(dexB);
+        bonusSection.add(dexN);
+        bonusSection.add(dexP);
+        qui.setPreferredSize(new Dimension(100, 20));
+        quiV.setPreferredSize(new Dimension(50,20));
+        quiB.setPreferredSize(new Dimension(50,20));
         bonusSection.add(qui);
+        bonusSection.add(quiV);
+        bonusSection.add(quiB);
+        bonusSection.add(quiN);
+        bonusSection.add(quiP);
+        iq.setPreferredSize(new Dimension(100, 20));
+        iqV.setPreferredSize(new Dimension(50,20));
+        iqB.setPreferredSize(new Dimension(50,20));
         bonusSection.add(iq);
+        bonusSection.add(iqV);
+        bonusSection.add(iqB);
+        bonusSection.add(iqN);
+        bonusSection.add(iqP);
+        spr.setPreferredSize(new Dimension(100, 20));
+        sprV.setPreferredSize(new Dimension(50,20));
+        sprB.setPreferredSize(new Dimension(50,20));
         bonusSection.add(spr);
+        bonusSection.add(sprV);
+        bonusSection.add(sprB);
+        bonusSection.add(sprN);
+        bonusSection.add(sprP);
+        hp.setPreferredSize(new Dimension(175,20));
         bonusSection.add(hp);
+        pow.setPreferredSize(new Dimension(175,20));
         bonusSection.add(pow);
-        skillsSection.setPreferredSize(new Dimension(500,350));
+        skillsSection.setPreferredSize(new Dimension(350,350));
         skillsSection.setLayout(new FlowLayout());
         melee.setVisible(false);
         magic.setVisible(false);
@@ -114,4 +197,4 @@ public class CreateNewGameGUI {
         newGame.add(start);
         newGame.setVisible(false);
     }
-}
+}//128
