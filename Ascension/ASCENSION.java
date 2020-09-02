@@ -194,11 +194,12 @@ public class ASCENSION implements ActionListener{
           newgamegui.strN.addActionListener(
                new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         if(builder.statsAddition[0]>0){
+                         if(builder.statsAddition[0] != 0){
                               builder.statsAddition[0] -= 1;
                               builder.stats[0] -= 1;
                               builder.bonusPoints += 1;
-                              newgamegui.extraPts.setText("Something");
+                              newgamegui.extraPts.setText("Extra Points ; "+builder.bonusPoints);
+                              updateNewGameGUI();
                          }
 				}
 			}
@@ -210,16 +211,86 @@ public class ASCENSION implements ActionListener{
                               builder.statsAddition[0] += 1;
                               builder.stats[0] += 1;
                               builder.bonusPoints -= 1;
-                              newgamegui.extraPts.setText("Extra Pts : 0");
+                              newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
+                              updateNewGameGUI();
                          }
 				}
 			}
           );
-          newgamegui.strN.addActionListener(
+          newgamegui.staN.addActionListener(
                new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         if(builder.statsAddition[0]>0){
-                              builder.statsAddition[0] -= 1;
+                         if(builder.statsAddition[1] != 0){
+                              builder.statsAddition[1] -= 1;
+                              builder.stats[1] -= 1;
+                              builder.bonusPoints += 1;
+                              newgamegui.extraPts.setText("Extra Points ; "+builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.staP.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.bonusPoints>0){
+                              builder.statsAddition[1] += 1;
+                              builder.stats[1] += 1;
+                              builder.bonusPoints -= 1;
+                              newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.dexN.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.statsAddition[2] != 0){
+                              builder.statsAddition[2] -= 1;
+                              builder.stats[2] -= 1;
+                              builder.bonusPoints += 1;
+                              newgamegui.extraPts.setText("Extra Points ; "+builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.dexP.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.bonusPoints>0){
+                              builder.statsAddition[2] += 1;
+                              builder.stats[2] += 1;
+                              builder.bonusPoints -= 1;
+                              newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.quiN.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.statsAddition[3] != 0){
+                              builder.statsAddition[3] -= 1;
+                              builder.stats[3] -= 1;
+                              builder.bonusPoints += 1;
+                              newgamegui.extraPts.setText("Extra Points ; "+builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.quiP.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.bonusPoints>0){
+                              builder.statsAddition[3] += 1;
+                              builder.stats[3] += 1;
+                              builder.bonusPoints -= 1;
+                              newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
+                              updateNewGameGUI();
                          }
 				}
 			}
@@ -456,12 +527,18 @@ public class ASCENSION implements ActionListener{
 
      public void updateNewGameGUI(){
           newgamegui.styleRaceClass.setText(builder.style+"     "+builder.race+"      "+builder.profession);
-          newgamegui.str.setText(newgamegui.strength+ builder.stats[0]+"     +"+builder.statsBonus[0] +"   ");
-          newgamegui.sta.setText(newgamegui.stamina+ builder.stats[1]+"     +"+builder.statsBonus[1] +"   ");
-          newgamegui.dex.setText(newgamegui.dexterity+ builder.stats[2]+"     +"+builder.statsBonus[2] +"   ");
-          newgamegui.qui.setText(newgamegui.quickness+ builder.stats[3]+"     +"+builder.statsBonus[3] +"   ");
-          newgamegui.iq.setText(newgamegui.intelligence+ builder.stats[4]+"     +"+builder.statsBonus[4] +"   ");
-          newgamegui.spr.setText(newgamegui.spirit+ builder.stats[5]+"     +"+builder.statsBonus[5] +"              ");
+          newgamegui.strV.setText(": "+builder.stats[0]);
+          newgamegui.strB.setText("+ "+builder.statsBonus[0]);
+          newgamegui.staV.setText(": "+builder.stats[1]);
+          newgamegui.staB.setText("+ "+builder.statsBonus[1]);
+          newgamegui.dexV.setText(": "+builder.stats[2]);
+          newgamegui.dexB.setText("+ "+builder.statsBonus[2]);
+          newgamegui.quiV.setText(": "+builder.stats[3]);
+          newgamegui.quiB.setText("+ "+builder.statsBonus[3]);
+          newgamegui.iqV.setText(": "+builder.stats[4]);
+          newgamegui.iqB.setText("+ "+builder.statsBonus[4]);
+          newgamegui.sprV.setText(": "+builder.stats[5]);
+          newgamegui.sprB.setText("+ "+builder.statsBonus[5]);
           newgamegui.hp.setText(newgamegui.life+builder.hp+"                       ");
           newgamegui.pow.setText(newgamegui.power+builder.power+"                      ");
 
@@ -490,4 +567,4 @@ public class ASCENSION implements ActionListener{
                newgamegui.lifetap.setVisible(true);
           }
      }
-}//493
+}//496
