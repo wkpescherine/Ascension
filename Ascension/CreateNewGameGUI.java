@@ -3,11 +3,11 @@ import javax.swing.*;
 
 public class CreateNewGameGUI {
     String strength = "Strength";
-    String stamina = "Stamina        : ";
-    String dexterity = "Dexterity     : ";
-    String quickness = "Quickmess      : ";
-    String intelligence = "Intelligence   : ";
-    String spirit = "Spirit         : ";
+    String stamina = "Stamina";
+    String dexterity = "Dexterity";
+    String quickness = "Quickmess";
+    String intelligence = "Intelligence";
+    String spirit = "Spirit";
     String life = "Life       :";
     String power = "Power    : ";
 
@@ -46,11 +46,19 @@ public class CreateNewGameGUI {
     JButton elusive = new JButton("Elusive");
     JButton diabolic = new JButton("Diabolical");
     JButton wise = new JButton("Wise");
+    JButton stout = new JButton("Stout");
+    JButton pure = new JButton("Pure");
+    JButton psionic = new JButton("Psionic");
     JButton warrior = new JButton("Warrior");
     JButton rogue = new JButton("Rogue");
     JButton mage = new JButton("Mage");
     JButton priest = new JButton("Priest");
     JButton necro = new JButton("Necro");
+    JButton ravager = new JButton("Ravager");
+    JButton jugger = new JButton("Juggernaut");
+    JButton pyro = new JButton("Pyro");
+    JButton paladin = new JButton("Paladin");
+    JButton dervish = new JButton("Dervish");
     JButton melee = new JButton("melee");
     JButton magic = new JButton("magic");
     JButton spark = new JButton("spark");
@@ -99,12 +107,31 @@ public class CreateNewGameGUI {
         backToMain.setBounds(200,100,100,20);
         start.setBounds(200,300,100,20);
         selectStyle.setPreferredSize(new Dimension(250,170));
+        divine.setPreferredSize(new Dimension(110,20));
+        insane.setPreferredSize(new Dimension(110,20));
+        diabolic.setPreferredSize(new Dimension(110,20));
+        elusive.setPreferredSize(new Dimension(110,20));
+        wise.setPreferredSize(new Dimension(110,20));
+        stout.setPreferredSize(new Dimension(110,20));
+        pure.setPreferredSize(new Dimension(110,20));
+        psionic.setPreferredSize(new Dimension(110,20));
         selectStyle.add(divine);
         selectStyle.add(insane);
         selectStyle.add(diabolic);
         selectStyle.add(elusive);
         selectStyle.add(wise);
+        selectStyle.add(stout);
+        selectStyle.add(pure);
+        selectStyle.add(psionic);
         selectRace.setPreferredSize(new Dimension(250,170));
+        human.setPreferredSize(new Dimension(110,30));
+        kobold.setPreferredSize(new Dimension(110,30));
+        dwarf.setPreferredSize(new Dimension(110,30));
+        undead.setPreferredSize(new Dimension(110,30));
+        elven.setPreferredSize(new Dimension(110,30));
+        troll.setPreferredSize(new Dimension(110,30));
+        ogre.setPreferredSize(new Dimension(110,30));
+        draconic.setPreferredSize(new Dimension(110,30));
         selectRace.add(human);
         selectRace.add(kobold);
         selectRace.add(dwarf);
@@ -114,11 +141,26 @@ public class CreateNewGameGUI {
         selectRace.add(ogre);
         selectRace.add(draconic);
         selectClass.setPreferredSize(new Dimension(250,170));
+        warrior.setPreferredSize(new Dimension(110,30));
+        priest.setPreferredSize(new Dimension(110,30));
+        rogue.setPreferredSize(new Dimension(110,30));
+        necro.setPreferredSize(new Dimension(110,30));
+        mage.setPreferredSize(new Dimension(110,30));
+        ravager.setPreferredSize(new Dimension(110,30));
+        paladin.setPreferredSize(new Dimension(110,30));
+        pyro.setPreferredSize(new Dimension(110,30));
+        jugger.setPreferredSize(new Dimension(110,30));
+        dervish.setPreferredSize(new Dimension(110,30));
         selectClass.add(warrior);
         selectClass.add(priest);
         selectClass.add(rogue);
         selectClass.add(necro);
         selectClass.add(mage);
+        selectClass.add(jugger);
+        selectClass.add(paladin);
+        selectClass.add(pyro);
+        selectClass.add(ravager);
+        selectClass.add(dervish);
         bonusSection.setPreferredSize(new Dimension(400,350));
         bonusSection.setLayout(new FlowLayout());
         styleRaceClass.setPreferredSize(new Dimension(400, 20));
@@ -199,4 +241,4 @@ public class CreateNewGameGUI {
         newGame.add(start);
         newGame.setVisible(false);
     }
-}
+}//202
