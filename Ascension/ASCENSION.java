@@ -18,6 +18,7 @@ public class ASCENSION implements ActionListener{
      CreateSavedGameGUI savegamegui = new CreateSavedGameGUI();
      CreateGameArea gamearea = new CreateGameArea();
      StatBuilder builder = new StatBuilder();
+     StatBuilder enemy = new StatBuilder();
 
      JFrame window = new JFrame("Ascension v4");
 
@@ -50,7 +51,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.divine.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Divine",0,1,1,1,2,3,4);
+                         builder.selectStyle(1);
                          updateNewGameGUI();
 				}
 			}
@@ -58,7 +59,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.insane.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Insane",0,2,1,2,4,3,0);
+                         builder.selectStyle(2);
                          updateNewGameGUI();
 				}
 			}
@@ -66,7 +67,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.diabolic.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Diabolic",0,5,3,1,2,1,0);
+                         builder.selectStyle(3);
                          updateNewGameGUI();
 				}
 			}
@@ -74,7 +75,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.elusive.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Elusive",0,1,2,5,4,0,0);
+                         builder.selectStyle(4);
                          updateNewGameGUI();
 				}
 			}
@@ -82,7 +83,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.wise.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Wise",0,1,1,3,2,5,1);
+                         builder.selectStyle(5);
                          updateNewGameGUI();
 				}
 			}
@@ -90,7 +91,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.human.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Human",1,2,2,2,2,2,2);
+                         builder.selectRace(1);
                          updateNewGameGUI();
                     }
 			}
@@ -98,7 +99,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.kobold.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Kobold",1,1,1,4,4,1,1);
+                         builder.selectRace(2);
                          updateNewGameGUI();
 				}
 			}
@@ -106,7 +107,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.dwarf.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Dwarven",1,2,4,1,1,1,1);
+                         builder.selectRace(3);
                          updateNewGameGUI();
 				}
 			}
@@ -114,7 +115,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.undead.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Undead",1,2,5,1,1,0,3);
+                         builder.selectRace(4);
                          updateNewGameGUI();
 				}
 			}
@@ -288,6 +289,58 @@ public class ASCENSION implements ActionListener{
                          if(builder.bonusPoints>0){
                               builder.statsAddition[3] += 1;
                               builder.stats[3] += 1;
+                              builder.bonusPoints -= 1;
+                              newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.iqN.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.statsAddition[4] != 0){
+                              builder.statsAddition[4] -= 1;
+                              builder.stats[4] -= 1;
+                              builder.bonusPoints += 1;
+                              newgamegui.extraPts.setText("Extra Points ; "+builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.iqP.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.bonusPoints>0){
+                              builder.statsAddition[4] += 1;
+                              builder.stats[4] += 1;
+                              builder.bonusPoints -= 1;
+                              newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.sprN.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.statsAddition[5] != 0){
+                              builder.statsAddition[5] -= 1;
+                              builder.stats[5] -= 1;
+                              builder.bonusPoints += 1;
+                              newgamegui.extraPts.setText("Extra Points ; "+builder.bonusPoints);
+                              updateNewGameGUI();
+                         }
+				}
+			}
+          );
+          newgamegui.sprP.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(builder.bonusPoints>0){
+                              builder.statsAddition[5] += 1;
+                              builder.stats[5] += 1;
                               builder.bonusPoints -= 1;
                               newgamegui.extraPts.setText("Extra Points : " + builder.bonusPoints);
                               updateNewGameGUI();
@@ -567,4 +620,14 @@ public class ASCENSION implements ActionListener{
                newgamegui.lifetap.setVisible(true);
           }
      }
-}//496
+
+     public void createEnemy(){
+
+          int randomStyle = 1;
+
+          enemy.selectStyle(randomStyle);
+          System.out.println("Enemy style is " + enemy.style);
+          //enemy.selectionRace();
+          //enemy.selectionPreofession();
+     }
+}//622

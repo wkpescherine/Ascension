@@ -4,6 +4,8 @@ public class StatBuilder{
     int [][] statsTemp = new int[3][6];
     int [] stats = {0,0,0,0,0,0};
     int [] statsBonus = {0,0,0,0,0,0};
+    int [] statsAddition = {0,0,0,0,0,0};
+    int bonusPoints = 12;
     String style = "none";
     String race = "none";
     String profession = "none";
@@ -14,7 +16,44 @@ public class StatBuilder{
     int currentXP = 0;
     int nextXP = 1000;
     int xpWorth = 0;
-   
+
+    public void selectStyle(int choiceS){
+        switch(choiceS){
+            case 1:
+                setStats("Divine",0,1,1,1,2,3,4);
+                break;
+            case 2:
+                setStats("Insane",0,2,1,2,4,3,0);
+                break;
+            case 3:
+                setStats("Diabolic",0,5,3,1,2,1,0);
+                break; 
+            case 4:
+                setStats("Elusive",0,1,2,5,4,0,0);
+                break;
+            case 5:
+                setStats("Wise",0,1,1,3,2,5,1);
+                break;   
+        }
+    }
+
+    public void selectRace(int choiceR){
+        switch(choiceR){
+            case 1:
+                setStats("Human",1,2,2,2,2,2,2);
+                break;
+            case 2:
+                setStats("Kobold",1,1,1,4,4,1,1);
+                break;
+            case 3:
+                setStats("Dwarven",1,2,4,1,1,1,1);
+                break;
+            case 4:
+                setStats("Undead",1,2,5,1,1,0,3);
+                break;
+        }
+    }
+
     //The following is a reference to how the information is being passed and what each index maps to
     public void setStats(String choice, int SRP, int STR, int CON, int DEX, int QUI, int INT , int SPR){
         if(SRP == 0){style = choice;}
@@ -63,4 +102,4 @@ public class StatBuilder{
             power = 10+statsBonus[5]; 
         }
     }
-}
+}//68
