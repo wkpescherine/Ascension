@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.String;
 import java.util.Scanner;
+import java.util.Random;
 //import javafx.application.Application;
 
 public class ASCENSION implements ActionListener{
@@ -123,7 +124,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.elven.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Elven",1,1,1,2,2,4,2);
+                         builder.selectRace(5);
                          updateNewGameGUI();
 				}
 			}
@@ -131,7 +132,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.troll.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Troll",1,2,6,2,2,0,0);
+                         builder.selectRace(6);
                          updateNewGameGUI();
 				}
 			}
@@ -139,7 +140,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.ogre.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Ogre",1,6,2,2,2,0,0);
+                         builder.selectRace(7);
                          updateNewGameGUI();
 				}
 			}
@@ -147,7 +148,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.draconic.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Draconic",1,3,3,2,2,2,0);
+                         builder.selectRace(8);
                          updateNewGameGUI();
 				}
 			}
@@ -155,7 +156,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.warrior.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Warrior",2,4,4,3,1,0,0);
+                         builder.selectProfession(1);
                          updateNewGameGUI();
 				}
 			}
@@ -163,7 +164,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.priest.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Priest",2,1,2,1,3,1,4);
+                         builder.selectProfession(2);
                          updateNewGameGUI();
 				}
 			}
@@ -171,7 +172,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.rogue.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Rogue",2,2,1,4,5,0,0);
+                         builder.selectProfession(3);
                          updateNewGameGUI();
 				}
 			}
@@ -502,6 +503,7 @@ public class ASCENSION implements ActionListener{
                     System.out.print("East");
                     gamearea.coordx -= 100;
                     gamearea.coordy += 100;
+                    createEnemy();
 				movement();
 			}
 		});
@@ -510,6 +512,7 @@ public class ASCENSION implements ActionListener{
                     System.out.print("West");
                     gamearea.coordx += 100;
                     gamearea.coordy -= 100;
+                    createEnemy();
 				movement();
 			}
 		});	
@@ -518,6 +521,7 @@ public class ASCENSION implements ActionListener{
                     System.out.print("North");
                     gamearea.coordx += 100;
                     gamearea.coordy += 100;
+                    createEnemy();
 				movement();
 			}
 		});	
@@ -526,6 +530,7 @@ public class ASCENSION implements ActionListener{
                     System.out.print("South");
                     gamearea.coordx -= 100;
                     gamearea.coordy -= 100;
+                    createEnemy();
 				movement();
 			}
         });	
@@ -622,12 +627,15 @@ public class ASCENSION implements ActionListener{
      }
 
      public void createEnemy(){
+          Random rand = new Random();
 
-          int randomStyle = 1;
+          int randomStyle = rand.nextInt(6);
+          int randomRace = rand.nextInt(9);
+          int randomProfession = rand.nextInt(3);
 
           enemy.selectStyle(randomStyle);
-          System.out.println("Enemy style is " + enemy.style);
-          //enemy.selectionRace();
-          //enemy.selectionPreofession();
+          enemy.selectRace(randomRace);
+          enemy.selectProfession(randomProfession);
+          System.out.println(enemy.style+" "+enemy.race+" "+enemy.profession);
      }
-}//622
+}//637

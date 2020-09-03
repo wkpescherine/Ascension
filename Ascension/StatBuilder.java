@@ -51,6 +51,32 @@ public class StatBuilder{
             case 4:
                 setStats("Undead",1,2,5,1,1,0,3);
                 break;
+            case 5:
+                setStats("Elven",1,1,1,2,2,4,2);
+                break;
+            case 6:
+                setStats("Troll",1,2,6,2,2,0,0);
+                break;
+            case 7:
+                setStats("Ogre",1,6,2,2,2,0,0);
+                break;
+            case 8:
+                setStats("Draconic",1,3,3,2,2,2,0);
+                break;
+        }
+    }
+
+    public void selectProfession(int choiceP){
+        switch(choiceP){
+            case 1:
+                setStats("Warrior",2,4,4,3,1,0,0);
+                break;
+            case 2:
+                setStats("Priest",2,1,2,1,3,1,4);
+                break;
+            case 3:
+                setStats("Rogue",2,2,1,4,5,0,0);
+                break;
         }
     }
 
@@ -102,4 +128,4 @@ public class StatBuilder{
             power = 10+statsBonus[5]; 
         }
     }
-}//68
+}//125
