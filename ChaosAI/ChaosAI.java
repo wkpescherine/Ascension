@@ -13,6 +13,7 @@ import java.util.*;
 public class ChaosAI implements ActionListener{
     CreateDisplay cdisplay = new CreateDisplay();
     LineDisplay ldisplay = new LineDisplay();
+    BuilderAI builder = new BuilderAI();
 
     String [] data = new String[10];
     String fileName = "None";
@@ -21,6 +22,7 @@ public class ChaosAI implements ActionListener{
     JFrame window = new JFrame("ChaosAI v1");
 
     ChaosAI(){
+        System.out.print(builder.data("test", valuesSet));
         reBuildAI();
         cdisplay.createFile.addActionListener(this);
         cdisplay.writeFile.addActionListener(
@@ -73,7 +75,8 @@ public class ChaosAI implements ActionListener{
     }
     
     public void reBuildAI(){
-        File f = new File("tstd.html");
+        
+        File f = new File(fileName + ".html");
         f.delete();
         try{
             FileWriter myWriter = new FileWriter("builderAI.java", true);
