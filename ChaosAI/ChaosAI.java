@@ -4,25 +4,27 @@ import javax.swing.*;
 import java.lang.String;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+//import java.util.*;
 
 public class ChaosAI implements ActionListener{
     CreateDisplay cdisplay = new CreateDisplay();
     LineDisplay ldisplay = new LineDisplay();
     BuilderAI builder = new BuilderAI();
 
-    String [] data = new String[10];
-    String fileName = "None";
+    //String [] data = new String[10];
+    String fileName = "tested";
     int value = 0;
 
     JFrame window = new JFrame("ChaosAI v1");
 
     ChaosAI(){
-        System.out.print(builder.data("test", valuesSet));
+        System.out.println(builder.words);
+        System.out.println(builder.data);
+        System.out.println(builder.data3);
         reBuildAI();
         cdisplay.createFile.addActionListener(this);
         cdisplay.writeFile.addActionListener(
@@ -74,8 +76,7 @@ public class ChaosAI implements ActionListener{
         value +=1;
     }
     
-    public void reBuildAI(){
-        
+    public void reBuildAI(){      
         File f = new File(fileName + ".html");
         f.delete();
         try{
