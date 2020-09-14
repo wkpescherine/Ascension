@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class CreateGameArea{
+    CreateDungeonMap drawDungeon = new CreateDungeonMap();
+
     JPanel gamePlay = new JPanel();
     JPanel dungeonMap = new JPanel();
     JPanel lifeArea = new JPanel();
@@ -117,5 +119,10 @@ public class CreateGameArea{
         gamePlay.add(skillsMenu);
         gamePlay.add(powerArea);
         gamePlay.setVisible(false);
-    }  
-}
+    }
+    
+    public void reDrawMap(int xVal, int yVal){
+        coordx += xVal;
+        coordy += yVal;
+    }
+}//121

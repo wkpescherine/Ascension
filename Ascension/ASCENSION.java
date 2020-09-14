@@ -180,7 +180,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.necro.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Necro",2,3,3,1,1,0,4);
+                         builder.selectProfession(4);
                          updateNewGameGUI();
 				}
 			}
@@ -188,7 +188,7 @@ public class ASCENSION implements ActionListener{
           newgamegui.mage.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         builder.setStats("Mage",2,0,0,1,3,5,3);
+                         builder.selectProfession(5);
                          updateNewGameGUI();
 				}
 			}
@@ -501,8 +501,9 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move East", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("East");
-                    gamearea.coordx -= 100;
-                    gamearea.coordy += 100;
+                    //gamearea.coordx -= 100;
+                    //gamearea.coordy += 100;
+                    gamearea.reDrawMap(-100, 100);
                     createEnemy();
 				movement();
 			}
@@ -510,8 +511,9 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move West", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("West");
-                    gamearea.coordx += 100;
-                    gamearea.coordy -= 100;
+                    //gamearea.coordx += 100;
+                    //gamearea.coordy -= 100;
+                    gamearea.reDrawMap(100, -100);
                     createEnemy();
 				movement();
 			}
@@ -519,8 +521,9 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move North", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("North");
-                    gamearea.coordx += 100;
-                    gamearea.coordy += 100;
+                    //gamearea.coordx += 100;
+                    //gamearea.coordy += 100;
+                    gamearea.reDrawMap(100, 100);
                     createEnemy();
 				movement();
 			}
@@ -528,8 +531,9 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move South", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("South");
-                    gamearea.coordx -= 100;
-                    gamearea.coordy -= 100;
+                    //gamearea.coordx -= 100;
+                    //gamearea.coordy -= 100;
+                    gamearea.reDrawMap(-100, -100);
                     createEnemy();
 				movement();
 			}
@@ -629,13 +633,24 @@ public class ASCENSION implements ActionListener{
      public void createEnemy(){
           Random rand = new Random();
 
+          int eliteChance = rand.nextInt(100);
           int randomStyle = rand.nextInt(6);
           int randomRace = rand.nextInt(9);
-          int randomProfession = rand.nextInt(3);
+          int randomProfession = rand.nextInt(6);
 
           enemy.selectStyle(randomStyle);
           enemy.selectRace(randomRace);
           enemy.selectProfession(randomProfession);
-          System.out.println(enemy.style+" "+enemy.race+" "+enemy.profession);
+          
+          if(eliteChance<= 75){
+               enemy.elite = "";
+          }else if(eliteChance>= 76 && eliteChance <= 91){
+               enemy.elite = "Elite";
+          }else if(eliteChance>= 92 && eliteChance <= 99){
+               enemy.elite = "Champion";
+          }else{
+               enemy.elite = "Boss";
+          }
+          System.out.println(enemy.elite+" "+enemy.style+" "+enemy.race+" "+enemy.profession);
      }
-}//637
+}//652
