@@ -40,8 +40,27 @@ public class CreateGameArea{
     JLabel mapSection7 = new JLabel(mapTile);
     JLabel mapSection8 = new JLabel(mapTile);
     JLabel mapSection9 = new JLabel(mapTile);
-    int coordx = 200;
-    int coordy = 200;
+    JLabel mapSection10 = new JLabel(mapTile);
+    JLabel mapSection11 = new JLabel(mapTile);
+    JLabel mapSection12 = new JLabel(mapTile);
+    JLabel mapSection13 = new JLabel(mapTile);
+    JLabel mapSection14 = new JLabel(mapTile);
+    JLabel mapSection15 = new JLabel(mapTile);
+    JLabel mapSection16 = new JLabel(mapTile);
+    JLabel mapSection17 = new JLabel(mapTile);
+    JLabel mapSection18 = new JLabel(mapTile);
+    JLabel mapSection19 = new JLabel(mapTile);
+    JLabel mapSection20 = new JLabel(mapTile);
+    JLabel mapSection21 = new JLabel(mapTile);
+    JLabel mapSection22 = new JLabel(mapTile);
+    JLabel mapSection23 = new JLabel(mapTile);
+    JLabel mapSection24 = new JLabel(mapTile);
+    JLabel mapSection25 = new JLabel(mapTile);
+    JLabel testTile = new JLabel(mapTile);
+    int coordx = 0;//this is the vertical
+    int coordy = 0;//this is horizontal
+    int mapLoc = 0;
+    String dungeonMap1 = "1110111001001010111100101010000111111111010001000101000100110111110001010001111101000100010111111111";
 
     CreateGameArea(){
         gamePlay.setLayout(new FlowLayout());
@@ -49,24 +68,58 @@ public class CreateGameArea{
         gamePlay.setBackground(Color.BLACK);
         dungeonMap.setLayout(null);
         dungeonMap.setPreferredSize(new Dimension(770,460));
-        mapSection1.setBounds(coordx,coordy,100,100);
-        mapSection2.setBounds(coordx-50,coordy+50,100,100);
-        mapSection3.setBounds(coordx-50,coordy-50,100,100);
-        mapSection4.setBounds(coordx+50,coordy+50,100,100);
-        mapSection5.setBounds(coordx+50,coordy-50,100,100);
-        mapSection6.setBounds(coordx+100,coordy,100,100);
-        mapSection7.setBounds(coordx-100,coordy,100,100);
-        mapSection8.setBounds(coordx,coordy-100,100,100);
-        mapSection9.setBounds(coordx,coordy+100,100,100);
+        mapSection1.setBounds(400,200,100,100);
+        mapSection2.setBounds(0,300,100,100);
+        //mapSection3.setBounds(100,200,100,100);
+        //mapSection4.setBounds(coordy+50,coordx+150,100,100);
+        //mapSection5.setBounds(coordx,coordy+200,100,100);
+        //mapSection6.setBounds(coordx+50,coordy+250,100,100);
+        //mapSection7.setBounds(coordx-100,coordy,100,100);
+        //mapSection8.setBounds(coordx,coordy-100,100,100);
+        //mapSection9.setBounds(coordx,coordy+100,100,100);
+        //These are hidden at the moemnt
+        //mapSection10.setBounds(coordx,coordy,100,100);
+        //mapSection11.setBounds(coordx,coordy,100,100);
+        //mapSection12.setBounds(coordx,coordy,100,100);
+        //mapSection13.setBounds(coordx,coordy,100,100);
+        //mapSection14.setBounds(coordx,coordy,100,100);
+        //mapSection15.setBounds(coordx,coordy,100,100);
+        //mapSection16.setBounds(coordx,coordy,100,100);
+        //mapSection17.setBounds(coordx,coordy,100,100);
+        //mapSection18.setBounds(coordx,coordy,100,100);
+        //mapSection19.setBounds(coordx,coordy,100,100);
+        //mapSection20.setBounds(coordx,coordy,100,100);
+        //mapSection21.setBounds(coordx,coordy,100,100);
+        //mapSection22.setBounds(coordx,coordy,100,100);
+        //mapSection23.setBounds(coordx,coordy,100,100);
+        //mapSection24.setBounds(coordx,coordy,100,100);
+        //mapSection25.setBounds(coordx,coordy,100,100);
+        //dungeonMap.add(testTile);
         dungeonMap.add(mapSection1);
         dungeonMap.add(mapSection2);
-        dungeonMap.add(mapSection3);
-        dungeonMap.add(mapSection4);
-        dungeonMap.add(mapSection5);
-        dungeonMap.add(mapSection6);
-        dungeonMap.add(mapSection7);
-        dungeonMap.add(mapSection8);
-        dungeonMap.add(mapSection9);
+        //dungeonMap.add(mapSection3);
+        //dungeonMap.add(mapSection4);
+        //dungeonMap.add(mapSection5);
+        //dungeonMap.add(mapSection6);
+        //dungeonMap.add(mapSection7);
+        //dungeonMap.add(mapSection8);
+        //dungeonMap.add(mapSection9);
+        //dungeonMap.add(mapSection10);
+        //dungeonMap.add(mapSection11);
+        //dungeonMap.add(mapSection12);
+        //dungeonMap.add(mapSection13);
+        //dungeonMap.add(mapSection14);
+        //dungeonMap.add(mapSection15);
+        //dungeonMap.add(mapSection16);
+        //dungeonMap.add(mapSection17);
+        //dungeonMap.add(mapSection18);
+        //dungeonMap.add(mapSection19);
+        //dungeonMap.add(mapSection20);
+        //dungeonMap.add(mapSection21);
+        //dungeonMap.add(mapSection22);
+        //dungeonMap.add(mapSection23);
+        //dungeonMap.add(mapSection24);
+        //dungeonMap.add(mapSection25);
         dungeonMap.add(gameMenuOptions);
         dungeonMap.add(charView);
         dungeonMap.add(inventoryView);
@@ -125,4 +178,4 @@ public class CreateGameArea{
         coordx += xVal;
         coordy += yVal;
     }
-}//121
+}//128
