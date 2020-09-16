@@ -501,8 +501,6 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move East", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("East");
-                    //gamearea.coordx -= 100;
-                    //gamearea.coordy += 100;
                     gamearea.reDrawMap(-100, 100);
                     createEnemy();
 				movement();
@@ -511,8 +509,6 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move West", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("West");
-                    //gamearea.coordx += 100;
-                    //gamearea.coordy -= 100;
                     gamearea.reDrawMap(100, -100);
                     createEnemy();
 				movement();
@@ -521,8 +517,6 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move North", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("North");
-                    //gamearea.coordx += 100;
-                    //gamearea.coordy += 100;
                     gamearea.reDrawMap(100, 100);
                     createEnemy();
 				movement();
@@ -531,8 +525,6 @@ public class ASCENSION implements ActionListener{
 		ap.put("Move South", new AbstractAction(){
 			public void actionPerformed(ActionEvent e){
                     System.out.print("South");
-                    //gamearea.coordx -= 100;
-                    //gamearea.coordy -= 100;
                     gamearea.reDrawMap(-100, -100);
                     createEnemy();
 				movement();
@@ -562,16 +554,6 @@ public class ASCENSION implements ActionListener{
 				movement();
 			}
           });
-          
-          gamearea.mapSection1.setBounds(gamearea.coordx,gamearea.coordy,100,100);
-          gamearea.mapSection2.setBounds(gamearea.coordx-50,gamearea.coordy+50,100,100);
-          gamearea.mapSection3.setBounds(gamearea.coordx-50,gamearea.coordy-50,100,100);
-          gamearea.mapSection4.setBounds(gamearea.coordx+50,gamearea.coordy+50,100,100);
-          gamearea.mapSection5.setBounds(gamearea.coordx+50,gamearea.coordy-50,100,100);
-          gamearea.mapSection6.setBounds(gamearea.coordx+100,gamearea.coordy,100,100);
-          gamearea.mapSection7.setBounds(gamearea.coordx-100,gamearea.coordy,100,100);
-          gamearea.mapSection8.setBounds(gamearea.coordx,gamearea.coordy-100,100,100);
-          gamearea.mapSection9.setBounds(gamearea.coordx,gamearea.coordy+100,100,100);
     }
 
     public void saveCurrentGame(){
@@ -653,4 +635,4 @@ public class ASCENSION implements ActionListener{
           }
           System.out.println(enemy.elite+" "+enemy.style+" "+enemy.race+" "+enemy.profession);
      }
-}//652
+}//638
