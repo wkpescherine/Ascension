@@ -49,6 +49,8 @@ public class CreateNewGameGUI {
     JButton stout = new JButton("Stout");
     JButton pure = new JButton("Pure");
     JButton psionic = new JButton("Psionic");
+    JButton mystical = new JButton("Mystical");
+    JButton deadly = new JButton("Deadly");
     JButton warrior = new JButton("Warrior");
     JButton rogue = new JButton("Rogue");
     JButton mage = new JButton("Mage");
@@ -115,6 +117,8 @@ public class CreateNewGameGUI {
         stout.setPreferredSize(new Dimension(110,20));
         pure.setPreferredSize(new Dimension(110,20));
         psionic.setPreferredSize(new Dimension(110,20));
+        mystical.setPreferredSize(new Dimension(110,20));
+        deadly.setPreferredSize(new Dimension(110,20));
         selectStyle.add(divine);
         selectStyle.add(insane);
         selectStyle.add(diabolic);
@@ -123,6 +127,8 @@ public class CreateNewGameGUI {
         selectStyle.add(stout);
         selectStyle.add(pure);
         selectStyle.add(psionic);
+        selectStyle.add(mystical);
+        selectStyle.add(deadly);
         selectRace.setPreferredSize(new Dimension(250,170));
         human.setPreferredSize(new Dimension(110,30));
         kobold.setPreferredSize(new Dimension(110,30));
@@ -241,4 +247,4 @@ public class CreateNewGameGUI {
         newGame.add(start);
         newGame.setVisible(false);
     }
-}//202
+}//244

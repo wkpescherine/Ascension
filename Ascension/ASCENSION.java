@@ -89,6 +89,46 @@ public class ASCENSION implements ActionListener{
 				}
 			}
           );
+          newgamegui.stout.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectStyle(6);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.pure.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectStyle(7);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.psionic.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectStyle(8);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.mystical.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectStyle(9);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.deadly.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectStyle(10);
+                         updateNewGameGUI();
+				}
+			}
+          );
           newgamegui.human.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){

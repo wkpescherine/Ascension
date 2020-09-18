@@ -6,6 +6,7 @@ public class StatBuilder{
     int [] statsBonus = {0,0,0,0,0,0};
     int [] statsAddition = {0,0,0,0,0,0};
     int bonusPoints = 12;
+    String elite = "";
     String style = "none";
     String race = "none";
     String profession = "none";
@@ -33,7 +34,22 @@ public class StatBuilder{
                 break;
             case 5:
                 setStats("Wise",0,1,1,3,2,5,1);
-                break;   
+                break; 
+            case 6:
+                setStats("Stout",0,2,6,2,2,0,0);
+                break; 
+            case 7:
+                setStats("Pure",0,3,3,2,2,0,2);
+                break;
+            case 8:
+                setStats("Psionic",0,1,1,1,1,8,0);
+                break;
+            case 9:
+                setStats("Mystical",0,0,0,2,4,6,0);
+                break;
+            case 10:
+                setStats("Deadly",0,4,0,8,0,0,0);
+                break; 
         }
     }
 
@@ -76,6 +92,12 @@ public class StatBuilder{
                 break;
             case 3:
                 setStats("Rogue",2,2,1,4,5,0,0);
+                break;
+            case 4:
+                setStats("Necro",2,3,3,1,1,0,4);
+                break;
+            case 5:
+                setStats("Mage",2,0,0,1,3,5,3);
                 break;
         }
     }
@@ -128,4 +150,4 @@ public class StatBuilder{
             power = 10+statsBonus[5]; 
         }
     }
-}//125
+}//138
