@@ -105,6 +105,21 @@ public class StatBuilder{
             case 5:
                 setStats("Mage",2,0,0,1,3,5,3);
                 break;
+            case 6:
+                setStats("Ravager",2,3,3,3,3,0,0);
+                break;
+            case 7:
+                setStats("Paladin",2,2,4,2,1,0,3);
+                break;
+            case 8:
+                setStats("Pyro",2,0,1,1,4,6,0);
+                break;
+            case 9:
+                setStats("Juggernaut",2,6,2,4,0,0,0);
+                break;
+            case 10:
+                setStats("Dervish",2,3,3,6,0,0,0);
+                break;
         }
     }
 

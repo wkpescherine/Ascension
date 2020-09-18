@@ -249,6 +249,46 @@ public class ASCENSION implements ActionListener{
 				}
 			}
           );
+          newgamegui.ravager.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectProfession(6);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.paladin.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectProfession(7);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.pyro.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectProfession(8);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.jugger.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectProfession(9);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.dervish.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectProfession(10);
+                         updateNewGameGUI();
+				}
+			}
+          );
           newgamegui.strN.addActionListener(
                new ActionListener(){
 				public void actionPerformed(ActionEvent e){
