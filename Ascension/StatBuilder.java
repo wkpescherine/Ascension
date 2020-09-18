@@ -79,6 +79,12 @@ public class StatBuilder{
             case 8:
                 setStats("Draconic",1,3,3,2,2,2,0);
                 break;
+            case 9:
+                setStats("Atlantean",1,1,1,2,3,5,0);
+                break;
+            case 10:
+                setStats("Giant",1,8,3,1,0,0,0);
+                break;
         }
     }
 

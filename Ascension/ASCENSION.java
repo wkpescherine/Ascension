@@ -193,6 +193,22 @@ public class ASCENSION implements ActionListener{
 				}
 			}
           );
+          newgamegui.atlantean.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectRace(9);
+                         updateNewGameGUI();
+				}
+			}
+          );
+          newgamegui.giant.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         builder.selectRace(10);
+                         updateNewGameGUI();
+				}
+			}
+          );
           newgamegui.warrior.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){

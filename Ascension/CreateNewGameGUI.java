@@ -41,6 +41,8 @@ public class CreateNewGameGUI {
     JButton troll = new JButton("Troll");
     JButton ogre = new JButton("Ogre");
     JButton draconic = new JButton("Draconis");
+    JButton atlantean = new JButton("Atlantean");
+    JButton giant = new JButton("Giant");
     JButton insane = new JButton("Insane");
     JButton divine = new JButton("Divine");
     JButton elusive = new JButton("Elusive");
@@ -138,6 +140,8 @@ public class CreateNewGameGUI {
         troll.setPreferredSize(new Dimension(110,30));
         ogre.setPreferredSize(new Dimension(110,30));
         draconic.setPreferredSize(new Dimension(110,30));
+        atlantean.setPreferredSize(new Dimension(110,30));
+        giant.setPreferredSize(new Dimension(110,30));
         selectRace.add(human);
         selectRace.add(kobold);
         selectRace.add(dwarf);
@@ -146,6 +150,8 @@ public class CreateNewGameGUI {
         selectRace.add(troll);
         selectRace.add(ogre);
         selectRace.add(draconic);
+        selectRace.add(atlantean);
+        selectRace.add(giant);
         selectClass.setPreferredSize(new Dimension(250,170));
         warrior.setPreferredSize(new Dimension(110,30));
         priest.setPreferredSize(new Dimension(110,30));
