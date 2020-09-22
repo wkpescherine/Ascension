@@ -1,17 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.BufferedWriter;
-//import java.io.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.String;
-import java.util.Scanner;
 import java.util.Random;
-//import javafx.application.Application;
 
 public class ASCENSION implements ActionListener{
      CreateMainGUI maingui = new CreateMainGUI();
@@ -20,6 +11,7 @@ public class ASCENSION implements ActionListener{
      CreateGameArea gamearea = new CreateGameArea();
      StatBuilder builder = new StatBuilder();
      StatBuilder enemy = new StatBuilder();
+     SaveGames savegame = new SaveGames();
 
      JFrame window = new JFrame("Ascension v4");
 
@@ -35,7 +27,7 @@ public class ASCENSION implements ActionListener{
 			     public void actionPerformed(ActionEvent e){
                          maingui.main.setVisible(false);
                          savegamegui.savedGames.setVisible(true);
-                         getSavedGames();
+                         savegamegui.getSavedGames();
 			     }
 		     }   
           );
@@ -511,7 +503,8 @@ public class ASCENSION implements ActionListener{
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
                     gamearea.gameMenuOptions.setVisible(false);
-                    saveCurrentGame();
+                    //builder.style+","+builder.race+","+builder.profession+","+builder.stats[0]+","+builder.stats[1]+","+builder.stats[2]+","+builder.stats[3]+","+builder.stats[4]+","+builder.stats[5]+","+builder.hp+","+builder.power+","+builder.currentXP+","+builder.lvl+","+builder.nextXP+"\r");
+                    savegame.saveCurrentGame(builder.style, builder.race, builder.profession, builder.stats[0], builder.stats[1], builder.stats[2], builder.stats[3],builder.stats[4], builder.stats[5], builder.hp, builder.power, builder.currentXP, builder.lvl, builder.nextXP);
 				}
 			}
         );
@@ -530,6 +523,52 @@ public class ASCENSION implements ActionListener{
 				}
 			}
         );
+
+          //Loading and deleting saved Games here
+          savegamegui.loadGame1.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(savegamegui.toons.size() == 1){
+                              savegamegui.toons.get(0);
+                              savegamegui.savedGames.setVisible(false);
+                              gamearea.gamePlay.setVisible(true);
+                         }
+				}
+			}
+          ); 
+          savegamegui.loadGame2.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(savegamegui.toons.size() == 2){
+                              savegamegui.toons.get(1);
+                              savegamegui.savedGames.setVisible(false);
+                              gamearea.gamePlay.setVisible(true);
+                         }
+				}
+			}
+          );
+          savegamegui.loadGame3.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(savegamegui.toons.size() == 3){
+                              savegamegui.toons.get(2);
+                              savegamegui.savedGames.setVisible(false);
+                              gamearea.gamePlay.setVisible(true);
+                         }
+				}
+			}
+          );  
+          savegamegui.loadGame4.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         if(savegamegui.toons.size() == 4){
+                              savegamegui.toons.get(3);
+                              savegamegui.savedGames.setVisible(false);
+                              gamearea.gamePlay.setVisible(true);
+                         }
+				}
+			}
+          );      
 
           //This is the complete game window section
           window.add(maingui.main);
@@ -551,36 +590,6 @@ public class ASCENSION implements ActionListener{
     public void actionPerformed(ActionEvent e){
         maingui.main.setVisible(false);
         newgamegui.newGame.setVisible(true);
-    }
-
-    public void getSavedGames(){
-        try{
-            File myFile = new File("/Users/wkpescherine/Desktop/Ascension/Version3/SavedGames.txt");
-            Scanner myReader = new Scanner(myFile);
-            int slotNumber = 1;
-            while(myReader.hasNextLine()){
-                String data = myReader.nextLine();
-                String [] dataArray = data.split(",",8);
-                String savedGame1 = dataArray[0]+" "+dataArray[1]+" "+dataArray[2];
-                System.out.print(slotNumber + savedGame1);
-                if(slotNumber == 1 ){
-                    savegamegui.savedGameLabel1.setText(savedGame1);
-                }
-                if(slotNumber == 2 ){
-                    savegamegui.savedGameLabel2.setText(savedGame1);
-                }
-                if(slotNumber == 3 ){
-                    savegamegui.savedGameLabel3.setText(savedGame1);
-                }
-                if(slotNumber == 4 ){
-                    savegamegui.savedGameLabel4.setText(savedGame1);
-                }
-                slotNumber+=1;
-            }
-            myReader.close();
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
     }
 
    public void movement(){
@@ -652,19 +661,6 @@ public class ASCENSION implements ActionListener{
           });
     }
 
-    public void saveCurrentGame(){
-        try{
-            FileWriter myWriter = new FileWriter("SavedGames.txt", true);
-            BufferedWriter bWriter = new BufferedWriter(myWriter);
-            PrintWriter pWriter = new PrintWriter(bWriter);
-            pWriter.write(builder.style+","+builder.race+","+builder.profession+","+builder.stats[0]+","+builder.stats[1]+","+builder.stats[2]+","+builder.stats[3]+","+builder.stats[4]+","+builder.stats[5]+","+builder.hp+","+builder.power+","+builder.currentXP+","+builder.lvl+","+builder.nextXP+"\r");
-            pWriter.close();
-            System.out.print("Current Game Saved");
-        }catch(IOException e){
-            e.printStackTrace();
-        }   
-    }
-
      public void updateNewGameGUI(){
           newgamegui.styleRaceClass.setText(builder.style+"     "+builder.race+"      "+builder.profession);
           newgamegui.strV.setText(": "+builder.stats[0]);
@@ -731,4 +727,4 @@ public class ASCENSION implements ActionListener{
           }
           System.out.println(enemy.elite+" "+enemy.style+" "+enemy.race+" "+enemy.profession);
      }
-}//638
+}//723
