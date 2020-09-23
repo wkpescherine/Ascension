@@ -3,6 +3,7 @@ import javax.swing.*;
 
 public class CreateGameArea{
     CreateDungeonMap drawDungeon = new CreateDungeonMap();
+    CharViewPanel charpanel = new CharViewPanel();
 
     JPanel gamePlay = new JPanel();
     JPanel dungeonMap = new JPanel();
@@ -91,6 +92,13 @@ public class CreateGameArea{
         gamePlay.setLayout(new FlowLayout());
         gamePlay.setPreferredSize(new Dimension(780,580));
         gamePlay.setBackground(Color.BLACK);
+        gameMenuOptions.setPreferredSize(new Dimension(120,200));
+        gameMenuOptions.setBounds(200,50,100,500);
+        gameMenuOptions.setPreferredSize(new Dimension(200,400));
+        gameMenuOptions.add(gameMenuOptionSave);
+        gameMenuOptions.add(gameMenuOptionReturn);
+        gameMenuOptions.add(gameMenuOptionQuit);
+        gameMenu.setPreferredSize(new Dimension(50,50));
         dungeonMap.setLayout(null);
         dungeonMap.setPreferredSize(new Dimension(770,450));
         mapSection0.setBounds(coordx,coordy,100,100);
@@ -143,6 +151,9 @@ public class CreateGameArea{
         mapSection47.setBounds(coordx+350,coordy+450,100,100);
         mapSection48.setBounds(coordx+400,coordy+400,100,100);
         mapSection49.setBounds(coordx+450,coordy+450,100,100);
+        dungeonMap.add(gameMenuOptions);
+        dungeonMap.add(charView);
+        dungeonMap.add(inventoryView);
         dungeonMap.add(mapSection0);
         dungeonMap.add(mapSection1);
         dungeonMap.add(mapSection2);
@@ -193,17 +204,15 @@ public class CreateGameArea{
         dungeonMap.add(mapSection47);
         dungeonMap.add(mapSection48);
         dungeonMap.add(mapSection49);
-        dungeonMap.add(gameMenuOptions);
-        dungeonMap.add(charView);
-        dungeonMap.add(inventoryView);
         inventoryView.setBounds(200,50,100,500);
         inventoryView.setPreferredSize(new Dimension(500,400));
         inventoryView.add(closeInventoryView);
         inventoryView.setVisible(false);
         inventory.setPreferredSize(new Dimension(50,50));
         charView.setVisible(false);
-        charView.setBounds(200,50,100,500);
+        charView.setBounds(200,50,220,500);
         charView.setPreferredSize(new Dimension(200,400));
+        charView.add(charpanel.charMain);
         charView.add(closeCharView);
         charSheet.setPreferredSize(new Dimension(50,50));
         lifeArea.setPreferredSize(new Dimension(100,100));
@@ -233,13 +242,6 @@ public class CreateGameArea{
         skillsMenu.add(inventory);
         gameMenuOptions.setVisible(false);
         powerArea.setPreferredSize(new Dimension(100,100));
-        gameMenuOptions.setPreferredSize(new Dimension(120,200));
-        gameMenuOptions.setBounds(200,50,100,500);
-        gameMenuOptions.setPreferredSize(new Dimension(200,400));
-        gameMenuOptions.add(gameMenuOptionSave);
-        gameMenuOptions.add(gameMenuOptionReturn);
-        gameMenuOptions.add(gameMenuOptionQuit);
-        gameMenu.setPreferredSize(new Dimension(50,50));
         gamePlay.add(dungeonMap);
         gamePlay.add(lifeArea);
         gamePlay.add(skillsMenu);
@@ -305,4 +307,4 @@ public class CreateGameArea{
         mapSection48.setBounds(coordx+400,coordy+400,100,100);
         mapSection49.setBounds(coordx+450,coordy+450,100,100);
     }
-}//308
+}//310

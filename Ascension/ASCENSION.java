@@ -9,6 +9,7 @@ public class ASCENSION implements ActionListener{
      CreateNewGameGUI newgamegui = new CreateNewGameGUI();
      CreateSavedGameGUI savegamegui = new CreateSavedGameGUI();
      CreateGameArea gamearea = new CreateGameArea();
+     CharViewPanel charview = new CharViewPanel();
      StatBuilder builder = new StatBuilder();
      StatBuilder enemy = new StatBuilder();
      SaveGames savegame = new SaveGames();
@@ -486,8 +487,9 @@ public class ASCENSION implements ActionListener{
         gamearea.charSheet.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                    gamearea.charView.setVisible(true);
-                    gamearea.gameMenuOptions.setVisible(false);
+                         charview.setCharStats(builder.style, builder.race, builder.profession, builder.stats[0], builder.stats[1], builder.stats[2], builder.stats[3],builder.stats[4], builder.stats[5], builder.hp, builder.power, builder.currentXP, builder.lvl, builder.nextXP); 
+                         gamearea.charView.setVisible(true);
+                         gamearea.gameMenuOptions.setVisible(false);
 				}
 			}
 		);
@@ -568,7 +570,35 @@ public class ASCENSION implements ActionListener{
                          }
 				}
 			}
-          );      
+          ); 
+          savegamegui.deleteGame1.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         savegamegui.toons.remove(0);
+				}
+			}
+          ); 
+          savegamegui.deleteGame2.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         savegamegui.toons.remove(1);
+				}
+			}
+          ); 
+          savegamegui.deleteGame3.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         savegamegui.toons.remove(2);
+				}
+			}
+          );
+          savegamegui.deleteGame4.addActionListener(
+               new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+                         savegamegui.toons.remove(3);
+				}
+			}
+          );       
 
           //This is the complete game window section
           window.add(maingui.main);
@@ -727,4 +757,4 @@ public class ASCENSION implements ActionListener{
           }
           System.out.println(enemy.elite+" "+enemy.style+" "+enemy.race+" "+enemy.profession);
      }
-}//723
+}//760
