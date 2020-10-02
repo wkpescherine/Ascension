@@ -56,6 +56,15 @@ public class Zero implements ActionListener{
 				}
 			}
 		);
+		
+		viewMain.home.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					System.out.println("Go home");
+					viewMain.Home();
+				}
+			}
+		);
 
 		viewMain.close.addActionListener(
 			new ActionListener(){
@@ -91,4 +100,5 @@ public class Zero implements ActionListener{
 		viewMain.main.setVisible(false);
 		viewStart.start.setVisible(true);
 	}
-}
+
+}//94
