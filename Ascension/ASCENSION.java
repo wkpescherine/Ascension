@@ -487,10 +487,12 @@ public class ASCENSION implements ActionListener{
         gamearea.charSheet.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-                         charview.setCharStats(builder.style, builder.race, builder.profession, builder.stats[0], builder.stats[1], builder.stats[2], builder.stats[3],builder.stats[4], builder.stats[5], builder.hp, builder.power, builder.currentXP, builder.lvl, builder.nextXP); 
                          gamearea.charView.setVisible(true);
                          gamearea.gameMenuOptions.setVisible(false);
-				}
+                         gamearea.charpanel.charRace.setText(builder.race);
+                         gamearea.setCharPanel(builder);
+                         setCharStats();
+                    }
 			}
 		);
         gamearea.inventory.addActionListener(
@@ -757,4 +759,10 @@ public class ASCENSION implements ActionListener{
           }
           System.out.println(enemy.elite+" "+enemy.style+" "+enemy.race+" "+enemy.profession);
      }
-}//760
+
+     //public void setCharStats(String s, String r, String p, int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k){
+     public void setCharStats(){ 
+          //System.out.println(s);
+          charview.charStyle.setText(builder.style);
+      }
+}//768

@@ -307,4 +307,10 @@ public class CreateGameArea{
         mapSection48.setBounds(coordx+400,coordy+400,100,100);
         mapSection49.setBounds(coordx+450,coordy+450,100,100);
     }
-}//310
+
+    public void setCharPanel(StatBuilder builder){
+        charpanel.charStyle.setText(builder.style);
+        charpanel.charRace.setText(builder.race);
+        charpanel.charProf.setText(builder.profession);
+    }
+}//316

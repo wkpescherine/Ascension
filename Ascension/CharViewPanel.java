@@ -2,8 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 
 public class CharViewPanel{
-    StatBuilder charbuilder = new StatBuilder();
-
     JPanel charMain = new JPanel();
     JLabel charStyle = new JLabel("NONE");
     JLabel charRace = new JLabel("NONE");
@@ -52,9 +50,4 @@ public class CharViewPanel{
         charMain.add(intBonus);
         charMain.add(sprBonus);
     }
-    
-    public void setCharStats(String s, String r, String p, int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k){
-        System.out.println(s);
-        charStyle.setText("Something");
-    }
-}//60
+}//53
