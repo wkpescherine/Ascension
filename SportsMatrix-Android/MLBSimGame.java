@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 public class MLBSimGame extends AppCompatActivity {
+    MLBPlayerStats mlbplayer = new MLBPlayerStats();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +22,4 @@ public class MLBSimGame extends AppCompatActivity {
         Intent intent = new Intent(this, SportChoice.class);
         startActivity(intent);
     }
-}//0
+}//24

@@ -16,7 +16,11 @@ public class NBASimGame extends AppCompatActivity {
     String forward2 = "None";
     String center = "None";
     String position = "none";
-    PlayerStats player = new PlayerStats();
+
+    Double [] playerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
+    Double [] playerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
+
+    NBAPlayerStats player = new NBAPlayerStats();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,19 +69,39 @@ public class NBASimGame extends AppCompatActivity {
             switch(playerValue){
                 case 0:
                     TextView p1 = findViewById(R.id.player1Name);
-                    p1.setText(player.PlayerName[a]);
+                    if(position.equals("guard1") || position.equals("guard2"))
+                        p1.setText(player.PlayerNameGuard[a]);
+                    if(position.equals("forward1") || position.equals("forward2"))
+                        p1.setText(player.PlayerNameForward[a]);
+                    if(position.equals("center"))
+                        p1.setText(player.PlayerNameCenter[a]);
                     break;
                 case 1:
                     TextView p2 = findViewById(R.id.player2Name);
-                    p2.setText(player.PlayerName[a]);
+                    if(position.equals("guard1") || position.equals("guard2"))
+                        p2.setText(player.PlayerNameGuard[a]);
+                    if(position.equals("forward1") || position.equals("forward2"))
+                        p2.setText(player.PlayerNameForward[a]);
+                    if(position.equals("center"))
+                        p2.setText(player.PlayerNameCenter[a]);
                     break;
                 case 2:
                     TextView p3 = findViewById(R.id.player3Name);
-                    p3.setText(player.PlayerName[a]);
+                    if(position.equals("guard1") || position.equals("guard2"))
+                        p3.setText(player.PlayerNameGuard[a]);
+                    if(position.equals("forward1") || position.equals("forward2"))
+                        p3.setText(player.PlayerNameForward[a]);
+                    if(position.equals("center"))
+                        p3.setText(player.PlayerNameCenter[a]);
                     break;
                 case 3:
                     TextView p4 = findViewById(R.id.player4Name);
-                    p4.setText(player.PlayerName[a]);
+                    if(position.equals("guard1") || position.equals("guard2"))
+                        p4.setText(player.PlayerNameGuard[a]);
+                    if(position.equals("forward1") || position.equals("forward2"))
+                        p4.setText(player.PlayerNameForward[a]);
+                    if(position.equals("center"))
+                        p4.setText(player.PlayerNameCenter[a]);
                     break;
             }
         }
