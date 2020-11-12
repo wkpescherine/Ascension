@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
+import android.view.WindowManager;
 import android.os.Bundle;
 
 public class SportChoice extends AppCompatActivity {
@@ -12,10 +13,22 @@ public class SportChoice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_choice);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
     }
 
-    public void StartNBAGame(View v){
-        Intent intent3 = new Intent(this, NBASimGame.class);
-        startActivity(intent3);
+    public void NBASimGame(View v){
+        Intent intent = new Intent(this, NBASimGame.class);
+        startActivity(intent);
     }
-}
+
+    public void NBASimSeason(View v){
+        //Intent intent = new Intent(this, NBASimGame.class);
+        //startActivity(intent);
+    }
+    public void MLBSimGame(View v){
+        Intent intent = new Intent(this,MLBSimGame.class);
+        startActivity(intent);
+    }
+}//25
