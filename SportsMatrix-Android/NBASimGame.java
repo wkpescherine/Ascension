@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.WindowManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 
 public class NBASimGame extends AppCompatActivity {
     String guard1 = "None";
@@ -115,15 +117,19 @@ public class NBASimGame extends AppCompatActivity {
         }
         if(position == "guard2"){
             guard2 = text1.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward1"){
             forward1 = text1.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward2"){
             forward2 = text1.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "center"){
             center = text1.getText().toString();
+            PlayerPickedNameChange();
         }
     }
     public void PickPlayer2(View v){
@@ -134,15 +140,19 @@ public class NBASimGame extends AppCompatActivity {
         }
         if(position == "guard2"){
             guard2 = text2.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward1"){
             forward1 = text2.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward2"){
             forward2 = text2.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "center"){
             center = text2.getText().toString();
+            PlayerPickedNameChange();
         }
     }
     public void PickPlayer3(View v){
@@ -153,15 +163,19 @@ public class NBASimGame extends AppCompatActivity {
         }
         if(position == "guard2"){
             guard2 = text3.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward1"){
             forward1 = text3.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward2"){
             forward2 = text3.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "center"){
             center = text3.getText().toString();
+            PlayerPickedNameChange();
         }
     }
     public void PickPlayer4(View v){
@@ -172,15 +186,19 @@ public class NBASimGame extends AppCompatActivity {
         }
         if(position == "guard2"){
             guard2 = text4.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward1"){
             forward1 = text4.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "forward2"){
             forward2 = text4.getText().toString();
+            PlayerPickedNameChange();
         }
         if(position == "center"){
             center = text4.getText().toString();
+            PlayerPickedNameChange();
         }
     }
 
@@ -225,6 +243,26 @@ public class NBASimGame extends AppCompatActivity {
 
     public void StartGame(View v){
         Button returnBtn = findViewById(R.id.returnChoice);
-        returnBtn.setVisibility(View.INVISIBLE);
+        Button startBtn = findViewById(R.id.StartGameBtn);
+        LinearLayout layout1 = findViewById(R.id.playerSelection);
+        LinearLayout layout2 = findViewById(R.id.scoreboard);
+        layout1.setVisibility(View.GONE);
+        returnBtn.setVisibility(View.GONE);
+        startBtn.setVisibility(View.GONE);
+        layout2.setVisibility(View.VISIBLE);
+        RunGame();
     }
-}//206
+
+    public void RunGame(){
+        new CountDownTimer(10000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                TextView gameClock = findViewById(R.id.clock);
+                gameClock.setText("0:"+ millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                TextView gameClock = findViewById(R.id.clock);
+                gameClock.setText("0:00");
+            }
+        }.start();
+    }
+}//230
