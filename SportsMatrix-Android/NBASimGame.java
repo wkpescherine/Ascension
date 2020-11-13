@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
+import java.util.Random;
+
 public class NBASimGame extends AppCompatActivity {
     String guard1 = "None";
     String guard2 = "None";
@@ -18,9 +20,14 @@ public class NBASimGame extends AppCompatActivity {
     String forward2 = "None";
     String center = "None";
     String position = "none";
+    String possesion = "none";
 
     Double [] playerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
     Double [] playerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
+
+    String [] computerPlayerNames = {"none","none","none","none","none",};
+    Double [] computerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
+    Double [] computerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
 
     NBAPlayerStats player = new NBAPlayerStats();
 
@@ -256,13 +263,35 @@ public class NBASimGame extends AppCompatActivity {
     public void RunGame(){
         new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
+                setScoreBoard();
                 TextView gameClock = findViewById(R.id.clock);
-                gameClock.setText("0:"+ millisUntilFinished / 1000);
+                Random num = new Random();
+                int randNum = num.nextInt(2);
+
+                if(possesion == "none"){
+                    if(randNum == 0)
+                        possesion = "Player";
+                    else
+                        possesion = "computer";
+                }
+
+                if(millisUntilFinished/1000 <10)
+                    gameClock.setText("0:0"+ millisUntilFinished / 1000);
+                else
+                    gameClock.setText("0:"+ millisUntilFinished / 1000);
             }
             public void onFinish() {
                 TextView gameClock = findViewById(R.id.clock);
                 gameClock.setText("0:00");
             }
         }.start();
+    }
+
+    public void setScoreBoard(){
+        TextView p1p1 = findViewById(R.id.player1pos1);
+        TextView c1p1 = findViewById(R.id.cpu1pos1);
+
+        p1p1.setText(guard1);
+        c1p1.setText(computerPlayerNames[0]);
     }
 }//230
