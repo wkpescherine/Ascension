@@ -290,8 +290,12 @@ public class NBASimGame extends AppCompatActivity {
     public void setScoreBoard(){
         TextView p1p1 = findViewById(R.id.player1pos1);
         TextView c1p1 = findViewById(R.id.cpu1pos1);
+        TextView p1p2 = findViewById(R.id.player1pos2);
+        TextView c1p2 = findViewById(R.id.cpu1pos2);
 
         p1p1.setText(guard1);
         c1p1.setText(computerPlayerNames[0]);
+        p1p2.setText(guard2);
+        c1p2.setText(computerPlayerNames[1]);
     }
-}//230
+}//301
