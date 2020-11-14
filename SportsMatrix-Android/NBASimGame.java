@@ -25,7 +25,7 @@ public class NBASimGame extends AppCompatActivity {
     Double [] playerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
     Double [] playerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
 
-    String [] computerPlayerNames = {"none","none","none","none","none",};
+    String [] computerPlayerNames = {"none","none","none","none","none"};
     Double [] computerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
     Double [] computerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
 
@@ -119,22 +119,27 @@ public class NBASimGame extends AppCompatActivity {
     public void PickPlayer1(View v){
         TextView text1 = findViewById(R.id.player1Name);
         if(position == "guard1"){
+            playerPointsValue[0] = player.PlayerPointsGuard[0];
             guard1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
+            playerPointsValue[1] = player.PlayerPointsGuard[0];
             guard2 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
+            playerPointsValue[2] = player.PlayerPointsForward[0];
             forward1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
+            playerPointsValue[3] = player.PlayerPointsForward[0];
             forward2 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
+            playerPointsValue[4] = player.PlayerPointsCenter[0];
             center = text1.getText().toString();
             PlayerPickedNameChange();
         }
@@ -261,9 +266,10 @@ public class NBASimGame extends AppCompatActivity {
     }
 
     public void RunGame(){
+        pickCPUTeam();
+        setScoreBoard();
         new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
-                setScoreBoard();
                 TextView gameClock = findViewById(R.id.clock);
                 Random num = new Random();
                 int randNum = num.nextInt(2);
@@ -292,10 +298,37 @@ public class NBASimGame extends AppCompatActivity {
         TextView c1p1 = findViewById(R.id.cpu1pos1);
         TextView p1p2 = findViewById(R.id.player1pos2);
         TextView c1p2 = findViewById(R.id.cpu1pos2);
+        TextView p1p3 = findViewById(R.id.player1pos3);
+        TextView c1p3 = findViewById(R.id.cpu1pos3);
+        TextView p1p4 = findViewById(R.id.player1pos4);
+        TextView c1p4 = findViewById(R.id.cpu1pos4);
+        TextView p1p5 = findViewById(R.id.player1pos5);
+        TextView c1p5 = findViewById(R.id.cpu1pos5);
 
         p1p1.setText(guard1);
         c1p1.setText(computerPlayerNames[0]);
         p1p2.setText(guard2);
         c1p2.setText(computerPlayerNames[1]);
+        p1p3.setText(forward1);
+        c1p3.setText(computerPlayerNames[2]);
+        p1p4.setText(forward2);
+        c1p4.setText(computerPlayerNames[3]);
+        p1p5.setText(center);
+        c1p5.setText(computerPlayerNames[4]);
     }
-}//301
+
+    public void pickCPUTeam(){
+        Random num = new Random();
+        int randNum1 = num.nextInt(5);
+        int randNum2 = num.nextInt(5);
+        int randNum3 = num.nextInt(5);
+        int randNum4 = num.nextInt(5);
+        int randNum5 = num.nextInt(5);
+
+        computerPlayerNames[0]= player.PlayerNameGuard[randNum1];
+        computerPlayerNames[1]= player.PlayerNameGuard[randNum2];
+        computerPlayerNames[2]= player.PlayerNameForward[randNum3];
+        computerPlayerNames[3]= player.PlayerNameForward[randNum4];
+        computerPlayerNames[4]= player.PlayerNameCenter[randNum5];
+    }
+}//334
