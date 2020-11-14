@@ -120,26 +120,31 @@ public class NBASimGame extends AppCompatActivity {
         TextView text1 = findViewById(R.id.player1Name);
         if(position == "guard1"){
             playerPointsValue[0] = player.PlayerPointsGuard[0];
+            playerShotPerc[0] = player.PlayerShotPercGuard[0];
             guard1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
             playerPointsValue[1] = player.PlayerPointsGuard[0];
+            playerShotPerc[1] = player.PlayerShotPercGuard[0];
             guard2 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
             playerPointsValue[2] = player.PlayerPointsForward[0];
+            playerShotPerc[2] = player.PlayerShotPercForward[0];
             forward1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
             playerPointsValue[3] = player.PlayerPointsForward[0];
+            playerShotPerc[3] = player.PlayerShotPercForward[0];
             forward2 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[0];
+            playerShotPerc[4] = player.PlayerShotPercCenter[0];
             center = text1.getText().toString();
             PlayerPickedNameChange();
         }
@@ -147,22 +152,32 @@ public class NBASimGame extends AppCompatActivity {
     public void PickPlayer2(View v){
         TextView text2 = findViewById(R.id.player2Name);
         if(position == "guard1"){
+            playerPointsValue[0] = player.PlayerPointsGuard[1];
+            playerShotPerc[0] = player.PlayerShotPercGuard[1];
             guard1 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
+            playerPointsValue[1] = player.PlayerPointsGuard[1];
+            playerShotPerc[1] = player.PlayerShotPercGuard[1];
             guard2 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
+            playerPointsValue[2] = player.PlayerPointsForward[1];
+            playerShotPerc[2] = player.PlayerShotPercForward[1];
             forward1 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
+            playerPointsValue[3] = player.PlayerPointsForward[1];
+            playerShotPerc[3] = player.PlayerShotPercForward[1];
             forward2 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
+            playerPointsValue[4] = player.PlayerPointsCenter[1];
+            playerShotPerc[4] = player.PlayerShotPercCenter[1];
             center = text2.getText().toString();
             PlayerPickedNameChange();
         }
@@ -170,22 +185,32 @@ public class NBASimGame extends AppCompatActivity {
     public void PickPlayer3(View v){
         TextView text3 = findViewById(R.id.player3Name);
         if(position == "guard1"){
+            playerPointsValue[0] = player.PlayerPointsGuard[2];
+            playerShotPerc[0] = player.PlayerShotPercGuard[2];
             guard1 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
+            playerPointsValue[1] = player.PlayerPointsGuard[2];
+            playerShotPerc[1] = player.PlayerShotPercGuard[2];
             guard2 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
+            playerPointsValue[2] = player.PlayerPointsForward[2];
+            playerShotPerc[2] = player.PlayerShotPercForward[2];
             forward1 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
+            playerPointsValue[3] = player.PlayerPointsForward[2];
+            playerShotPerc[3] = player.PlayerShotPercForward[2];
             forward2 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
+            playerPointsValue[4] = player.PlayerPointsCenter[2];
+            playerShotPerc[4] = player.PlayerShotPercCenter[2];
             center = text3.getText().toString();
             PlayerPickedNameChange();
         }
@@ -193,22 +218,32 @@ public class NBASimGame extends AppCompatActivity {
     public void PickPlayer4(View v){
         TextView text4 = findViewById(R.id.player4Name);
         if(position == "guard1"){
+            playerPointsValue[0] = player.PlayerPointsGuard[3];
+            playerShotPerc[0] = player.PlayerShotPercGuard[3];
             guard1 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
+            playerPointsValue[1] = player.PlayerPointsGuard[3];
+            playerShotPerc[1] = player.PlayerShotPercGuard[3];
             guard2 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
+            playerPointsValue[2] = player.PlayerPointsForward[3];
+            playerShotPerc[2] = player.PlayerShotPercForward[3];
             forward1 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
+            playerPointsValue[3] = player.PlayerPointsForward[3];
+            playerShotPerc[3] = player.PlayerShotPercForward[3];
             forward2 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
+            playerPointsValue[4] = player.PlayerPointsCenter[3];
+            playerShotPerc[4] = player.PlayerShotPercCenter[3];
             center = text4.getText().toString();
             PlayerPickedNameChange();
         }
@@ -268,23 +303,35 @@ public class NBASimGame extends AppCompatActivity {
     public void RunGame(){
         pickCPUTeam();
         setScoreBoard();
-        new CountDownTimer(10000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                TextView gameClock = findViewById(R.id.clock);
-                Random num = new Random();
-                int randNum = num.nextInt(2);
+        int time = 120000;
+        int interval = 1000;
+        String overtime = "overtime";
+        Random num = new Random();
+        int randNum = num.nextInt(2);
+        if(possesion == "none"){
+            if(randNum == 0)
+                possesion = "Player";
+            else
+                possesion = "computer";
+        }
+        new CountDownTimer(time, interval) {
+            TextView gameClock = findViewById(R.id.clock);
+            TextView qtr = findViewById(R.id.quarter);
+            int quarter = 0;
 
-                if(possesion == "none"){
-                    if(randNum == 0)
-                        possesion = "Player";
-                    else
-                        possesion = "computer";
-                }
+            public void onTick(long time) {
+                int min = (Long.valueOf(time).intValue())/60000;
+                int sec = ((Long.valueOf(time).intValue())%60000)/1000;
 
-                if(millisUntilFinished/1000 <10)
-                    gameClock.setText("0:0"+ millisUntilFinished / 1000);
+                if(sec <10)
+                    gameClock.setText(min+":0"+ sec);
                 else
-                    gameClock.setText("0:"+ millisUntilFinished / 1000);
+                    gameClock.setText(min+":"+ sec);
+
+                if(quarter == 0 || time == 0) {
+                    quarter += 1;
+                    qtr.setText(quarter + " qtr");
+                }
             }
             public void onFinish() {
                 TextView gameClock = findViewById(R.id.clock);
