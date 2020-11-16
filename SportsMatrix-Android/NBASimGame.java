@@ -23,12 +23,12 @@ public class NBASimGame extends AppCompatActivity {
     String position = "none";
     String possesion = "none";
 
-    Double [] playerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
-    Double [] playerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
+    int [] playerPointsValue = { 0, 0, 0, 0, 0};
+    int [] playerShotPerc = { 0, 0, 0, 0, 0};
 
     String [] computerPlayerNames = {"none","none","none","none","none"};
-    Double [] computerPointsValue = {0.0,0.0,0.0,0.0, 0.0};
-    Double [] computerShotPerc = {0.0,0.0,0.0,0.0, 0.0};
+    int [] computerPointsValue = { 0, 0, 0, 0, 0};
+    int [] computerShotPerc = { 0, 0, 0, 0, 0};
 
     NBAPlayerStats player = new NBAPlayerStats();
 
@@ -306,50 +306,69 @@ public class NBASimGame extends AppCompatActivity {
     public void RunGame(){
         pickCPUTeam();
         setScoreBoard();
-        int time = 10000;
+        int time = 3000000;
         int interval = 1000;
         //String overtime = "overtime";
-        //Random num = new Random();
-        //int randNum = num.nextInt(1);
-        //if(possesion == "none"){
-        //    if(randNum == 0)
-        //        possesion = "Player";
-        //    else
-        //        possesion = "computer";
-        //}
+        Random num = new Random();
+        int randNum = num.nextInt(1);
+        TextView pPoss = findViewById(R.id.playerPoss);
+        TextView cPoss = findViewById(R.id.cpuPoss);
+        if(possesion == "none"){
+            if(randNum == 0){
+                possesion = "Player";
+                cPoss.setText("");
+                pPoss.setText("Poss");
+            }else {
+                possesion = "computer";
+                cPoss.setText("Poss");
+                pPoss.setText("");
+            }
+        }
         new CountDownTimer(time, interval) {
             TextView gameClock = findViewById(R.id.clock);
             TextView qtr = findViewById(R.id.quarter);
+            Button homeBtn = findViewById(R.id.home);
+
             int quarter = 0;
-            //Double [] ShotChance = {0.0,0.0,0.0,0.0,0.0};
+            int gameTime = 10;
+            int [] ShotChance = { 0, 0, 0, 0, 0};
 
             public void onTick(long time) {
-                int min = (Long.valueOf(time).intValue())/10000;
-                int sec = ((Long.valueOf(time).intValue())%10000)/1000;
+                int min = gameTime / 60;
+                int sec = gameTime % 60;
 
-                if(sec <10)
-                    gameClock.setText(min+":0"+ sec);
+                if (sec < 10)
+                    gameClock.setText(min + ":0" + sec);
                 else
-                    gameClock.setText(min+":"+ sec);
+                    gameClock.setText(min + ":" + sec);
 
-                if(quarter == 0 || time == 0) {
+                if (quarter == 0) {
                     quarter += 1;
                     qtr.setText(quarter + " qtr");
-                }//else if(quarter > 0 && time == 0 ){
-                //    quarter +=1;
-                //    qtr.setText(quarter + " qtr");
-                //} else if(quarter == 4 && time == 0){
-                //    qtr.setText("Game over");
-                //}
+                } else if ((quarter > 0 && quarter < 4) && gameTime == 0) {
+                    quarter += 1;
+                    qtr.setText(quarter + " qtr");
+                    gameTime = 11;
+                } else if (quarter == 4 && gameTime == 0) {
+                    onFinish();
+                }
 
-                //for(int x = 0; x<5; x++){
-                    //ShotChance[x] = playerPointsValue;
-                //}
+                if (possesion == "Player") {
+                    for (int x = 0; x < 5; x++) {
+                        ShotChance[x] = playerPointsValue[x];
+                    }
+                } else {
+                    for (int x = 0; x < 5; x++) {
+                        ShotChance[x] = computerPointsValue[x];
+                    }
+                }
 
-            }
+                    gameTime -= 1;
+                }
             public void onFinish() {
-                TextView gameClock = findViewById(R.id.clock);
-                gameClock.setText("Game Over");
+                gameClock.setVisibility(View.INVISIBLE);
+                homeBtn.setVisibility(View.VISIBLE);
+                qtr.setText("Game Over");
             }
         }.start();
     }
@@ -387,10 +406,20 @@ public class NBASimGame extends AppCompatActivity {
         int randNum5 = num.nextInt(4);
 
         computerPlayerNames[0]= player.PlayerNameGuard[randNum1];
+        computerPointsValue[0]= player.PlayerPointsGuard[randNum1];
+        computerPointsValue[0]= player.PlayerShotPercGuard[randNum1];
         computerPlayerNames[1]= player.PlayerNameGuard[randNum2];
+        computerPointsValue[1]= player.PlayerPointsGuard[randNum1];
+        computerPointsValue[1]= player.PlayerShotPercGuard[randNum1];
         computerPlayerNames[2]= player.PlayerNameForward[randNum3];
+        computerPointsValue[2]= player.PlayerPointsForward[randNum3];
+        computerPointsValue[2]= player.PlayerShotPercForward[randNum3];
         computerPlayerNames[3]= player.PlayerNameForward[randNum4];
+        computerPointsValue[3]= player.PlayerPointsForward[randNum4];
+        computerPointsValue[3]= player.PlayerShotPercForward[randNum4];
         computerPlayerNames[4]= player.PlayerNameCenter[randNum5];
+        computerPointsValue[4]= player.PlayerPointsCenter[randNum5];
+        computerPointsValue[4]= player.PlayerShotPercCenter[randNum5];
     }
 
     public void Home(View v){
