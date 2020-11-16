@@ -30,6 +30,7 @@ public class NBASimGame extends AppCompatActivity {
     String [] computerPlayerNames = {"none","none","none","none","none"};
     int [] computerPointsValue = { 0, 0, 0, 0, 0};
     int [] computerShotPerc = { 0, 0, 0, 0, 0};
+    int [] computerPoints = { 0, 0, 0, 0, 0};
 
     NBAPlayerStats player = new NBAPlayerStats();
 
@@ -305,26 +306,12 @@ public class NBASimGame extends AppCompatActivity {
     }
 
     public void RunGame(){
+        tipOff();
         pickCPUTeam();
         setScoreBoard();
         int time = 3000000;
         int interval = 1000;
-        //String overtime = "overtime";
-        Random num = new Random();
-        int randNum = num.nextInt(2);
-        TextView pPoss = findViewById(R.id.playerPoss);
-        TextView cPoss = findViewById(R.id.cpuPoss);
-        if(possesion == "none"){
-            if(randNum == 0){
-                possesion = "Player";
-                cPoss.setText("");
-                pPoss.setText("Poss");
-            }else {
-                possesion = "Computer";
-                cPoss.setText("Poss");
-                pPoss.setText("");
-            }
-        }
+
         new CountDownTimer(time, interval) {
             TextView gameClock = findViewById(R.id.clock);
             TextView qtr = findViewById(R.id.quarter);
@@ -333,6 +320,7 @@ public class NBASimGame extends AppCompatActivity {
             int quarter = 0;
             int gameTime = 10;
             int [] ShotChance = { 0, 0, 0, 0, 0};
+
 
             public void onTick(long time) {
                 int min = gameTime / 60;
@@ -365,10 +353,16 @@ public class NBASimGame extends AppCompatActivity {
                         for (int a = 0; a < 5; a++) {
                             if(ShotChance[a] <= chanceNum ){
                                 Random shotMade = new Random();
-                                int madeShot = shotMade.nextInt();
+                                int madeShot = shotMade.nextInt(100);
                                 if(playerShotPerc[a]> madeShot){
                                     playerPoints[a] += 2;
                                     setScoreBoard();
+                                    possesion = "Computer";
+                                    ShotChance[0] = 0;
+                                    TextView pPoss = findViewById(R.id.playerPoss);
+                                    TextView cPoss = findViewById(R.id.cpuPoss);
+                                    cPoss.setText("Poss");
+                                    pPoss.setText("");
                                 }
                             }else{
                                 ShotChance[a] += playerPointsValue[a];
@@ -382,8 +376,21 @@ public class NBASimGame extends AppCompatActivity {
                             ShotChance[x] = computerPointsValue[x];
                         }
                     } else {
-                        for (int x = 0; x < 5; x++) {
-                            ShotChance[x] += computerPointsValue[x];
+                        Random chanceToShot = new Random();
+                        int chanceNum = chanceToShot.nextInt(10000);
+                        for (int a = 0; a < 5; a++) {
+                            if(ShotChance[a] <= chanceNum ){
+                                Random shotMade = new Random();
+                                int madeShot = shotMade.nextInt();
+                                if(computerShotPerc[a]> madeShot){
+                                    computerPoints[a] += 2;
+                                    setScoreBoard();
+                                }
+                                possesion = "Player";
+                                ShotChance[0] = 0;
+                            }else{
+                                ShotChance[a] += playerPointsValue[a];
+                            }
                         }
                     }
                 }
@@ -391,12 +398,16 @@ public class NBASimGame extends AppCompatActivity {
                 gameTime -= 1;
             }
 
+
+
             public void onFinish() {
                 gameClock.setVisibility(View.INVISIBLE);
                 homeBtn.setVisibility(View.VISIBLE);
                 qtr.setText("Game Over");
             }
         }.start();
+
+
     }
 
     public void setScoreBoard(){
@@ -458,6 +469,26 @@ public class NBASimGame extends AppCompatActivity {
         computerPlayerNames[4]= player.PlayerNameCenter[randNum5];
         computerPointsValue[4]= player.PlayerPointsCenter[randNum5];
         computerPointsValue[4]= player.PlayerShotPercCenter[randNum5];
+    }
+
+    public void tipOff(){
+        Random num = new Random();
+        int randNum = num.nextInt(2);
+
+        TextView pPoss = findViewById(R.id.playerPoss);
+        TextView cPoss = findViewById(R.id.cpuPoss);
+
+        if(possesion == "none"){
+            if(randNum == 0){
+                possesion = "Player";
+                cPoss.setText("");
+                pPoss.setText("Poss");
+            }else {
+                possesion = "Computer";
+                cPoss.setText("Poss");
+                pPoss.setText("");
+            }
+        }
     }
 
     public void Home(View v){
