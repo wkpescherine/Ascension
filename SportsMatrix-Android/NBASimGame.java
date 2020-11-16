@@ -3,6 +3,7 @@ package com.example.sportsmatrix;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,7 +19,7 @@ public class NBASimGame extends AppCompatActivity {
     String guard2 = "None";
     String forward1 = "None";
     String forward2 = "None";
-    String center = "None";
+    String center1 = "None";
     String position = "none";
     String possesion = "none";
 
@@ -145,7 +146,7 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[0];
             playerShotPerc[4] = player.PlayerShotPercCenter[0];
-            center = text1.getText().toString();
+            center1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
     }
@@ -178,7 +179,7 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[1];
             playerShotPerc[4] = player.PlayerShotPercCenter[1];
-            center = text2.getText().toString();
+            center1 = text2.getText().toString();
             PlayerPickedNameChange();
         }
     }
@@ -211,7 +212,7 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[2];
             playerShotPerc[4] = player.PlayerShotPercCenter[2];
-            center = text3.getText().toString();
+            center1 = text3.getText().toString();
             PlayerPickedNameChange();
         }
     }
@@ -244,7 +245,7 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[3];
             playerShotPerc[4] = player.PlayerShotPercCenter[3];
-            center = text4.getText().toString();
+            center1 = text4.getText().toString();
             PlayerPickedNameChange();
         }
     }
@@ -270,8 +271,8 @@ public class NBASimGame extends AppCompatActivity {
         if(forward2 !="None"){
             pp4.setText(forward2);
         }
-        if(center !="None"){
-            pp5.setText(center);
+        if(center1 !="None"){
+            pp5.setText(center1);
         }
         CheckGameReady();
     }
@@ -282,9 +283,11 @@ public class NBASimGame extends AppCompatActivity {
     }
 
     public void CheckGameReady(){
-        if(guard1 != "None" && guard2 != "None" && forward1 != "None" && forward2 != "None" && center != "None"){
+        if((guard1 != "None") && (guard2 != "None") && (forward1 != "None") && (forward2 != "None") && (center1 != "None")){
             Button startBtn = findViewById(R.id.StartGameBtn);
+            Button rtnBtn = findViewById(R.id.returnChoice);
             startBtn.setVisibility(View.VISIBLE);
+            rtnBtn.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -303,25 +306,26 @@ public class NBASimGame extends AppCompatActivity {
     public void RunGame(){
         pickCPUTeam();
         setScoreBoard();
-        int time = 120000;
+        int time = 10000;
         int interval = 1000;
-        String overtime = "overtime";
-        Random num = new Random();
-        int randNum = num.nextInt(2);
-        if(possesion == "none"){
-            if(randNum == 0)
-                possesion = "Player";
-            else
-                possesion = "computer";
-        }
+        //String overtime = "overtime";
+        //Random num = new Random();
+        //int randNum = num.nextInt(1);
+        //if(possesion == "none"){
+        //    if(randNum == 0)
+        //        possesion = "Player";
+        //    else
+        //        possesion = "computer";
+        //}
         new CountDownTimer(time, interval) {
             TextView gameClock = findViewById(R.id.clock);
             TextView qtr = findViewById(R.id.quarter);
             int quarter = 0;
+            //Double [] ShotChance = {0.0,0.0,0.0,0.0,0.0};
 
             public void onTick(long time) {
-                int min = (Long.valueOf(time).intValue())/60000;
-                int sec = ((Long.valueOf(time).intValue())%60000)/1000;
+                int min = (Long.valueOf(time).intValue())/10000;
+                int sec = ((Long.valueOf(time).intValue())%10000)/1000;
 
                 if(sec <10)
                     gameClock.setText(min+":0"+ sec);
@@ -331,11 +335,21 @@ public class NBASimGame extends AppCompatActivity {
                 if(quarter == 0 || time == 0) {
                     quarter += 1;
                     qtr.setText(quarter + " qtr");
-                }
+                }//else if(quarter > 0 && time == 0 ){
+                //    quarter +=1;
+                //    qtr.setText(quarter + " qtr");
+                //} else if(quarter == 4 && time == 0){
+                //    qtr.setText("Game over");
+                //}
+
+                //for(int x = 0; x<5; x++){
+                    //ShotChance[x] = playerPointsValue;
+                //}
+
             }
             public void onFinish() {
                 TextView gameClock = findViewById(R.id.clock);
-                gameClock.setText("0:00");
+                gameClock.setText("Game Over");
             }
         }.start();
     }
@@ -360,17 +374,17 @@ public class NBASimGame extends AppCompatActivity {
         c1p3.setText(computerPlayerNames[2]);
         p1p4.setText(forward2);
         c1p4.setText(computerPlayerNames[3]);
-        p1p5.setText(center);
+        p1p5.setText(center1);
         c1p5.setText(computerPlayerNames[4]);
     }
 
     public void pickCPUTeam(){
         Random num = new Random();
-        int randNum1 = num.nextInt(5);
-        int randNum2 = num.nextInt(5);
-        int randNum3 = num.nextInt(5);
-        int randNum4 = num.nextInt(5);
-        int randNum5 = num.nextInt(5);
+        int randNum1 = num.nextInt(4);
+        int randNum2 = num.nextInt(4);
+        int randNum3 = num.nextInt(4);
+        int randNum4 = num.nextInt(4);
+        int randNum5 = num.nextInt(4);
 
         computerPlayerNames[0]= player.PlayerNameGuard[randNum1];
         computerPlayerNames[1]= player.PlayerNameGuard[randNum2];
@@ -378,4 +392,9 @@ public class NBASimGame extends AppCompatActivity {
         computerPlayerNames[3]= player.PlayerNameForward[randNum4];
         computerPlayerNames[4]= player.PlayerNameCenter[randNum5];
     }
-}//334
+
+    public void Home(View v){
+        Intent intent = new Intent(this, SportChoice.class);
+        startActivity(intent);
+    }
+}//381
