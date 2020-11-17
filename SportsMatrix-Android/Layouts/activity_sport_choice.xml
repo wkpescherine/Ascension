@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SportChoice"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nbalogo"
+            android:onClick="NBASimGame"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nbalogo"
+            android:onClick="NBASimSeason"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nbalogo"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nbalogo"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Sim Game" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Sim Season" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Live Tourn" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Live Game" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/mlblogo"
+            android:onClick="MLBSimGame"
+            />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/mlblogo"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Sim Game" />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Live Tourn" />
+    </LinearLayout>
+</LinearLayout>
