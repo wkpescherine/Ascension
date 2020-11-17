@@ -12,12 +12,22 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:orientation="vertical">
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/player1Name"
-            android:text="player1"
-            android:onClick="PickPlayer1"/>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="150dp"
+                android:id="@+id/player1image"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/player1image"
+                android:id="@+id/player1Name"
+                android:textSize="32dp"
+                android:text="player1"
+                android:onClick="PickPlayer1"/>
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
