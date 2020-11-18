@@ -12,40 +12,75 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="PickPlayer1">
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="150dp"
-                android:id="@+id/player1image"/>
+                android:id="@+id/player1image"
+                android:src="@drawable/nbalogo"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/player1image"
                 android:id="@+id/player1Name"
-                android:textSize="32dp"
-                android:text="player1"
-                android:onClick="PickPlayer1"/>
+                android:textSize="24dp"
+                android:text="player1"/>
         </RelativeLayout>
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/player2Name"
-            android:text="player2"
-            android:onClick="PickPlayer2"/>
-        <TextView
+            android:onClick="PickPlayer2">
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="150dp"
+                android:id="@+id/player2image"
+                android:src="@drawable/nbalogo"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player2Name"
+                android:text="player2"
+                android:textSize="24dp"
+                android:layout_toRightOf="@id/player2image"/>
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/player3Name"
-            android:text="player3"
-            android:onClick="PickPlayer3"/>
-        <TextView
+            android:onClick="PickPlayer3">
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="150dp"
+                android:id="@+id/player3image"
+                android:src="@drawable/nbalogo"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player3Name"
+                android:text="player3"
+                android:textSize="24dp"
+                android:layout_toRightOf="@id/player3image"/>
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/player4Name"
-            android:text="player4"
-            android:onClick="PickPlayer4"/>
+            android:onClick="PickPlayer4">
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="150dp"
+                android:id="@+id/player4image"
+                android:src="@drawable/nbalogo"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player4Name"
+                android:text="player4"
+                android:textSize="24dp"
+                android:layout_toRightOf="@id/player4image"/>
+        </RelativeLayout>
     </LinearLayout>
 
     <Button
@@ -55,4 +90,4 @@
         android:id="@+id/returnTo"
         android:onClick="Return"/>
 
-</LinearLayout>
+</LinearLayout><!--  93   -->
