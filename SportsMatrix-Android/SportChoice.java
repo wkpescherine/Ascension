@@ -31,4 +31,9 @@ public class SportChoice extends AppCompatActivity {
         Intent intent = new Intent(this,MLBSimGame.class);
         startActivity(intent);
     }
-}//34
+
+    public void NFLSimGame(View v){
+        Intent intent = new Intent(this, NFLSimGame.class);
+        startActivity(intent);
+    }
+}//39
