@@ -32,6 +32,10 @@ public class NFLSimGame extends AppCompatActivity {
         homeBTN.setVisibility(View.INVISIBLE);
     }
 
+    public void Return(View v){
+        setContentView(R.layout.activity_nflsim_game);
+    }
+
     public void Home(View v){
         Intent intent = new Intent(this, SportChoice.class);
         startActivity(intent);
