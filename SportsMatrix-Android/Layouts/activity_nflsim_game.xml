@@ -18,24 +18,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:id="@+id/playerChoices"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Quarterback"/>
+            android:text="Quarterback"
+            android:onClick="pickQB"
+            android:textAlignment="center"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Running Back"/>
+            android:text="Running Back"
+            android:textAlignment="center"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Wide Reciever"/>
+            android:text="Wide Reciever"
+            android:textAlignment="center"/>
 
     </LinearLayout>
 
-</LinearLayout><!--   11 -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:onClick="startGame"
+        android:visibility="gone"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOME"
+        android:id="@+id/homeBTN"
+        android:onClick="Home"
+        android:textAlignment="center"/>
+
+</LinearLayout><!--   61 -->
