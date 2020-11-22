@@ -31,12 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Log In"
+        android:textAlignment="center"
         android:onClick="logIn"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Account"
+        android:textAlignment="center"
         android:onClick="createAcct"/>
 
-</LinearLayout><!--  42  -->
+</LinearLayout><!--  44  -->
