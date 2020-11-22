@@ -23,7 +23,19 @@ public class NBA_Sim_Seaon extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toRoster(View v){
+        setContentView(R.layout.nba_sim_season_roster);
+    }
+
+    public void toStandings(View v){
+        setContentView(R.layout.nba_sim_season_standing);
+    }
+
+    public void toSchedule(View v){
+        setContentView(R.layout.nba_sim_season_schedule);
+    }
+
     public void pick_Knicks(View v){
         setContentView(R.layout.nba_sim_season_roster);
     }
-}
+}//29
