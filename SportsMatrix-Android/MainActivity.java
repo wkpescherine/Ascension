@@ -22,4 +22,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SportChoice.class);
         startActivity(intent);
     }
-}//25
+
+    public void logIn(View v){
+
+    }
+
+    public void createAcct(View v){
+
+    }
+}//33
