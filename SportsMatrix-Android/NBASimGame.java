@@ -7,12 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.view.WindowManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-
-import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -83,6 +82,10 @@ public class NBASimGame extends AppCompatActivity {
             switch(playerValue){
                 case 0:
                     TextView p1 = findViewById(R.id.player1Name);
+                    //if(guard1 == player.PlayerNameGuard[a] || guard2 == player.PlayerNameGuard[a]){
+                    //    RelativeLayout playerSpot = findViewById(R.id.PlayerGuard1);
+                    //    playerSpot.setVisibility(View.GONE);
+                    //}else
                     if(position.equals("guard1") || position.equals("guard2"))
                         p1.setText(player.PlayerNameGuard[a]);
                     if(position.equals("forward1") || position.equals("forward2"))
@@ -320,7 +323,8 @@ public class NBASimGame extends AppCompatActivity {
             Button homeBtn = findViewById(R.id.home);
 
             int quarter = 0;
-            int gameTime = 10;
+            int gameTime = 30;
+            int shotClock = 24;
             int [] ShotChance = { 0, 0, 0, 0, 0};
             String gameOver = "Over";
 
@@ -338,6 +342,7 @@ public class NBASimGame extends AppCompatActivity {
                     cancel();
                 }
 
+                shotClock -= 1;
                 gameTime -= 1;
             }
 
@@ -355,7 +360,7 @@ public class NBASimGame extends AppCompatActivity {
                 } else if ((quarter > 0 && quarter < 4) && gameTime == 0) {
                     quarter += 1;
                     qtr.setText(quarter + " qtr");
-                    gameTime = 11;
+                    gameTime = 31;
                 } else if (quarter == 4 && gameTime == 0) {
                     onFinish();
                 }
@@ -371,7 +376,7 @@ public class NBASimGame extends AppCompatActivity {
                         Random chanceToShot = new Random();
                         int chanceNum = chanceToShot.nextInt(10000);
                         for (int a = 0; a < 5; a++) {
-                            if(ShotChance[a] <= chanceNum ){
+                            if(ShotChance[a] >= chanceNum ){
                                 Random shotMade = new Random();
                                 int madeShot = shotMade.nextInt(100);
                                 if(playerShotPerc[a]> madeShot){
@@ -385,6 +390,14 @@ public class NBASimGame extends AppCompatActivity {
                                     cPoss.setText("Poss");
                                     pPoss.setText("");
                                 }
+                            }else if(shotClock == 0 || gameTime == 0){
+                                possesion = "Computer";
+                                ShotChance[0] = 0;
+                                shotClock = 24;
+                                TextView pPoss = findViewById(R.id.playerPoss);
+                                TextView cPoss = findViewById(R.id.cpuPoss);
+                                cPoss.setText("Poss");
+                                pPoss.setText("");
                             }else{
                                 ShotChance[a] += playerPointsValue[a];
                             }
@@ -399,7 +412,7 @@ public class NBASimGame extends AppCompatActivity {
                         Random chanceToShot = new Random();
                         int chanceNum = chanceToShot.nextInt(10000);
                         for (int a = 0; a < 5; a++) {
-                            if(ShotChance[a] <= chanceNum ){
+                            if(ShotChance[a] >= chanceNum ){
                                 Random shotMade = new Random();
                                 int madeShot = shotMade.nextInt();
                                 if(computerShotPerc[a]> madeShot){
@@ -415,6 +428,14 @@ public class NBASimGame extends AppCompatActivity {
                                 }
                                 possesion = "Player";
                                 ShotChance[0] = 0;
+                            }else if(shotClock == 0 || gameTime == 0){
+                                possesion = "Player";
+                                ShotChance[0] = 0;
+                                shotClock = 24;
+                                TextView pPoss = findViewById(R.id.playerPoss);
+                                TextView cPoss = findViewById(R.id.cpuPoss);
+                                cPoss.setText("");
+                                pPoss.setText("Poss");
                             }else{
                                 ShotChance[a] += playerPointsValue[a];
                             }
@@ -522,4 +543,4 @@ public class NBASimGame extends AppCompatActivity {
         Intent intent = new Intent(this, SportChoice.class);
         startActivity(intent);
     }
-}//525
+}//546
