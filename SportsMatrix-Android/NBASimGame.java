@@ -347,10 +347,11 @@ public class NBASimGame extends AppCompatActivity {
             }
 
             public void clockManager(int minGT, int secGT){
-                if (secGT < 10)
+                if (secGT < 10) {
                     gameClock.setText(minGT + ":0" + secGT);
-                else
+                }else {
                     gameClock.setText(minGT + ":" + secGT);
+                }
             }
 
             public void quarterManager(){
@@ -361,6 +362,23 @@ public class NBASimGame extends AppCompatActivity {
                     quarter += 1;
                     qtr.setText(quarter + " qtr");
                     gameTime = 31;
+                    if(possesion == "Player"){
+                        possesion = "Computer";
+                        ShotChance[0] = 0;
+                        shotClock = 24;
+                        TextView pPoss = findViewById(R.id.playerPoss);
+                        TextView cPoss = findViewById(R.id.cpuPoss);
+                        cPoss.setText("Poss");
+                        pPoss.setText("");
+                    }else {
+                        possesion = "Player";
+                        ShotChance[0] = 0;
+                        shotClock = 24;
+                        TextView pPoss = findViewById(R.id.playerPoss);
+                        TextView cPoss = findViewById(R.id.cpuPoss);
+                        cPoss.setText("");
+                        pPoss.setText("Poss");
+                    }
                 } else if (quarter == 4 && gameTime == 0) {
                     onFinish();
                 }
@@ -390,7 +408,7 @@ public class NBASimGame extends AppCompatActivity {
                                     cPoss.setText("Poss");
                                     pPoss.setText("");
                                 }
-                            }else if(shotClock == 0 || gameTime == 0){
+                            }else if(shotClock == 0){
                                 possesion = "Computer";
                                 ShotChance[0] = 0;
                                 shotClock = 24;
@@ -398,7 +416,7 @@ public class NBASimGame extends AppCompatActivity {
                                 TextView cPoss = findViewById(R.id.cpuPoss);
                                 cPoss.setText("Poss");
                                 pPoss.setText("");
-                            }else{
+                            } else{
                                 ShotChance[a] += playerPointsValue[a];
                             }
                         }
@@ -428,7 +446,7 @@ public class NBASimGame extends AppCompatActivity {
                                 }
                                 possesion = "Player";
                                 ShotChance[0] = 0;
-                            }else if(shotClock == 0 || gameTime == 0){
+                            }else if(shotClock == 0){
                                 possesion = "Player";
                                 ShotChance[0] = 0;
                                 shotClock = 24;
@@ -436,7 +454,7 @@ public class NBASimGame extends AppCompatActivity {
                                 TextView cPoss = findViewById(R.id.cpuPoss);
                                 cPoss.setText("");
                                 pPoss.setText("Poss");
-                            }else{
+                            } else {
                                 ShotChance[a] += playerPointsValue[a];
                             }
                         }
@@ -462,15 +480,19 @@ public class NBASimGame extends AppCompatActivity {
         TextView p1p2 = findViewById(R.id.player1pos2);
         TextView p1p2p = findViewById(R.id.player1pos2pts1);
         TextView c1p2 = findViewById(R.id.cpu1pos2);
+        TextView c1p2p = findViewById(R.id.cpu1pos2pts1);
         TextView p1p3 = findViewById(R.id.player1pos3);
         TextView p1p3p = findViewById(R.id.player1pos3pts1);
         TextView c1p3 = findViewById(R.id.cpu1pos3);
+        TextView c1p3p = findViewById(R.id.cpu1pos3pts1);
         TextView p1p4 = findViewById(R.id.player1pos4);
         TextView p1p4p = findViewById(R.id.player1pos4pts1);
         TextView c1p4 = findViewById(R.id.cpu1pos4);
+        TextView c1p4p = findViewById(R.id.cpu1pos4pts1);
         TextView p1p5 = findViewById(R.id.player1pos5);
         TextView p1p5p = findViewById(R.id.player1pos5pts1);
         TextView c1p5 = findViewById(R.id.cpu1pos5);
+        TextView c1p5p = findViewById(R.id.cpu1pos5pts1);
         TextView pScore = findViewById(R.id.playerScore);
         TextView cScore = findViewById(R.id.cpuScore);
 
@@ -478,20 +500,24 @@ public class NBASimGame extends AppCompatActivity {
         cScore.setText(computerPoints[0]+computerPoints[1]+computerPoints[2]+computerPoints[3]+computerPoints[4]+"");
         p1p1.setText(guard1);
         p1p1p.setText(playerPoints[0]+" ");
-        c1p1.setText(computerPlayerNames[0]+"");
+        c1p1.setText(computerPlayerNames[0]+" ");
+        c1p1p.setText(computerPoints[0]+" ");
         p1p2.setText(guard2);
         p1p2p.setText(playerPoints[1]+" ");
-        c1p2.setText(computerPlayerNames[1]+"");
-        c1p1p.setText(computerPoints[0]+"");
+        c1p2.setText(computerPlayerNames[1]+" ");
+        c1p2p.setText(computerPoints[1]+" ");
         p1p3.setText(forward1);
         p1p3p.setText(playerPoints[2]+" ");
-        c1p3.setText(computerPlayerNames[2]+"");
+        c1p3.setText(computerPlayerNames[2]+" ");
+        c1p3p.setText(computerPoints[2]+" ");
         p1p4.setText(forward2);
         p1p4p.setText(playerPoints[3]+" ");
-        c1p4.setText(computerPlayerNames[3]+"");
+        c1p4.setText(computerPlayerNames[3]+" ");
+        c1p4p.setText(computerPoints[3]+" ");
         p1p5.setText(center1);
         p1p5p.setText(playerPoints[4]+" ");
-        c1p5.setText(computerPlayerNames[4]+"");
+        c1p5.setText(computerPlayerNames[4]+" ");
+        c1p5p.setText(computerPoints[4]+" ");
     }
 
     public void pickCPUTeam(){
