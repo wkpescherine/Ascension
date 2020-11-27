@@ -26,11 +26,13 @@ public class NBASimGame extends AppCompatActivity {
 
     int [] playerPointsValue = { 0, 0, 0, 0, 0};
     int [] playerShotPerc = { 0, 0, 0, 0, 0};
+    int [] playerRebounds = {0,0,0,0,0};
     int [] playerPoints = {0, 0, 0, 0, 0};
 
     String [] computerPlayerNames = {"none","none","none","none","none"};
     int [] computerPointsValue = { 0, 0, 0, 0, 0};
     int [] computerShotPerc = { 0, 0, 0, 0, 0};
+    int [] computerRebounds = { 0, 0, 0, 0, 0};
     int [] computerPoints = { 0, 0, 0, 0, 0};
 
     NBAPlayerStats player = new NBAPlayerStats();
@@ -129,30 +131,35 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "guard1"){
             playerPointsValue[0] = player.PlayerPointsGuard[0];
             playerShotPerc[0] = player.PlayerShotPercGuard[0];
+            playerRebounds[0] = player.PlayerRebGuard[0];
             guard1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
             playerPointsValue[1] = player.PlayerPointsGuard[0];
             playerShotPerc[1] = player.PlayerShotPercGuard[0];
+            playerRebounds[1] = player.PlayerRebGuard[0];
             guard2 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
             playerPointsValue[2] = player.PlayerPointsForward[0];
             playerShotPerc[2] = player.PlayerShotPercForward[0];
+            playerRebounds[2] = player.PlayerRebForward[0];
             forward1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
             playerPointsValue[3] = player.PlayerPointsForward[0];
             playerShotPerc[3] = player.PlayerShotPercForward[0];
+            playerRebounds[3] = player.PlayerRebForward[0];
             forward2 = text1.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[0];
             playerShotPerc[4] = player.PlayerShotPercCenter[0];
+            playerRebounds[4] = player.PlayerRebCenter[0];
             center1 = text1.getText().toString();
             PlayerPickedNameChange();
         }
@@ -162,30 +169,35 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "guard1"){
             playerPointsValue[0] = player.PlayerPointsGuard[1];
             playerShotPerc[0] = player.PlayerShotPercGuard[1];
+            playerRebounds[0] = player.PlayerRebGuard[1];
             guard1 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
             playerPointsValue[1] = player.PlayerPointsGuard[1];
             playerShotPerc[1] = player.PlayerShotPercGuard[1];
+            playerRebounds[1] = player.PlayerRebGuard[1];
             guard2 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
             playerPointsValue[2] = player.PlayerPointsForward[1];
             playerShotPerc[2] = player.PlayerShotPercForward[1];
+            playerRebounds[2] = player.PlayerRebForward[1];
             forward1 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
             playerPointsValue[3] = player.PlayerPointsForward[1];
             playerShotPerc[3] = player.PlayerShotPercForward[1];
+            playerRebounds[3] = player.PlayerRebForward[1];
             forward2 = text2.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[1];
             playerShotPerc[4] = player.PlayerShotPercCenter[1];
+            playerRebounds[4] = player.PlayerRebCenter[1];
             center1 = text2.getText().toString();
             PlayerPickedNameChange();
         }
@@ -195,30 +207,35 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "guard1"){
             playerPointsValue[0] = player.PlayerPointsGuard[2];
             playerShotPerc[0] = player.PlayerShotPercGuard[2];
+            playerRebounds[0] = player.PlayerRebGuard[2];
             guard1 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
             playerPointsValue[1] = player.PlayerPointsGuard[2];
             playerShotPerc[1] = player.PlayerShotPercGuard[2];
+            playerRebounds[1] = player.PlayerRebGuard[2];
             guard2 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
             playerPointsValue[2] = player.PlayerPointsForward[2];
             playerShotPerc[2] = player.PlayerShotPercForward[2];
+            playerRebounds[2] = player.PlayerRebForward[2];
             forward1 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
             playerPointsValue[3] = player.PlayerPointsForward[2];
             playerShotPerc[3] = player.PlayerShotPercForward[2];
+            playerRebounds[3] = player.PlayerRebForward[2];
             forward2 = text3.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[2];
             playerShotPerc[4] = player.PlayerShotPercCenter[2];
+            playerRebounds[4] = player.PlayerRebCenter[2];
             center1 = text3.getText().toString();
             PlayerPickedNameChange();
         }
@@ -228,30 +245,35 @@ public class NBASimGame extends AppCompatActivity {
         if(position == "guard1"){
             playerPointsValue[0] = player.PlayerPointsGuard[3];
             playerShotPerc[0] = player.PlayerShotPercGuard[3];
+            playerRebounds[0] = player.PlayerRebGuard[3];
             guard1 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "guard2"){
             playerPointsValue[1] = player.PlayerPointsGuard[3];
             playerShotPerc[1] = player.PlayerShotPercGuard[3];
+            playerRebounds[1] = player.PlayerRebGuard[3];
             guard2 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward1"){
             playerPointsValue[2] = player.PlayerPointsForward[3];
             playerShotPerc[2] = player.PlayerShotPercForward[3];
+            playerRebounds[2] = player.PlayerRebForward[3];
             forward1 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "forward2"){
             playerPointsValue[3] = player.PlayerPointsForward[3];
             playerShotPerc[3] = player.PlayerShotPercForward[3];
+            playerRebounds[3] = player.PlayerRebForward[3];
             forward2 = text4.getText().toString();
             PlayerPickedNameChange();
         }
         if(position == "center"){
             playerPointsValue[4] = player.PlayerPointsCenter[3];
             playerShotPerc[4] = player.PlayerShotPercCenter[3];
+            playerRebounds[4] = player.PlayerRebCenter[3];
             center1 = text4.getText().toString();
             PlayerPickedNameChange();
         }
@@ -471,7 +493,6 @@ public class NBASimGame extends AppCompatActivity {
 
     }
 
-
     public void setScoreBoard(){
         TextView p1p1 = findViewById(R.id.player1pos1);
         TextView p1p1p = findViewById(R.id.player1pos1pts1);
@@ -569,4 +590,4 @@ public class NBASimGame extends AppCompatActivity {
         Intent intent = new Intent(this, SportChoice.class);
         startActivity(intent);
     }
-}//546
+}//593
