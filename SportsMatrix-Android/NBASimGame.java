@@ -478,20 +478,20 @@ public class NBASimGame extends AppCompatActivity {
         cScore.setText(computerPoints[0]+computerPoints[1]+computerPoints[2]+computerPoints[3]+computerPoints[4]+"");
         p1p1.setText(guard1);
         p1p1p.setText(playerPoints[0]+" ");
-        c1p1.setText(computerPlayerNames[0]);
+        c1p1.setText(computerPlayerNames[0]+"");
         p1p2.setText(guard2);
         p1p2p.setText(playerPoints[1]+" ");
-        c1p2.setText(computerPlayerNames[1]);
+        c1p2.setText(computerPlayerNames[1]+"");
         c1p1p.setText(computerPoints[0]+"");
         p1p3.setText(forward1);
         p1p3p.setText(playerPoints[2]+" ");
-        c1p3.setText(computerPlayerNames[2]);
+        c1p3.setText(computerPlayerNames[2]+"");
         p1p4.setText(forward2);
         p1p4p.setText(playerPoints[3]+" ");
-        c1p4.setText(computerPlayerNames[3]);
+        c1p4.setText(computerPlayerNames[3]+"");
         p1p5.setText(center1);
         p1p5p.setText(playerPoints[4]+" ");
-        c1p5.setText(computerPlayerNames[4]);
+        c1p5.setText(computerPlayerNames[4]+"");
     }
 
     public void pickCPUTeam(){
