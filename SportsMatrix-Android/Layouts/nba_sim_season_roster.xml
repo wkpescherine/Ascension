@@ -114,24 +114,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Roster"
             android:onClick="toRoster"/>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Schedule"
             android:onClick="toSchedule"/>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Standings"
             android:onClick="toStandings"/>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Exit"
             android:onClick="Back"/>
     </LinearLayout>
-</LinearLayout><!--  36  -->
+</LinearLayout><!--  137  -->
