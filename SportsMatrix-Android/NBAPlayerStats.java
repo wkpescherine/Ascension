@@ -13,11 +13,15 @@ public class NBAPlayerStats {
     int [] PlayerShotPercForward = { 53 , 37, 40, 31};
     int [] PlayerShotPercCenter = { 41, 29 , 31 , 67};
 
+    int [] PlayerGuard3PtChance = {0, 0, 0, 0, 0};
+    int [] PlayerFoward3PtChance = {0, 0, 0, 0, 0};
+    int [] PlayerCenter3PtChance = {0, 0, 0, 0, 0};
+
     int [] PlayerRebGuard = {0,0,0,0,0};
     int [] PlayerRebForward = {0,0,0,0,0};
     int [] PlayerRebCenter = {0,0,0,0,0};
 
-    String [] PlayerImageGuard = {"None"};
-    String [] PlayerImageForward = {"None"};
-    String [] PlayerImageCenter = {"None"};
-}//23
+    String [] PlayerImageGuard = {"None", "None", "None", "None", "None"};
+    String [] PlayerImageForward = {"None", "None", "None", "None", "None"};
+    String [] PlayerImageCenter = {"None", "None", "None", "None", "None"};
+}//27
