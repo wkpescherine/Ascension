@@ -1,17 +1,17 @@
 package com.example.sportsmatrix;
 
 public class NBAPlayerStats {
-    String [] PlayerNameGuard = {"James Harden", "Stephan Curry", "Klay Thompson", "Russell Westbrook"};
-    String [] PlayerNameForward = {"Kevin Durant", "LeBron James", "Kawahi Leonard", "Russell Westbrook"};
-    String [] PlayerNameCenter = {"Karl Anthony Towns", "Anthony Davis", "Marc Gasol", "Mitchel Robinson"};
+    String [] PlayerNameGuard = {"James Harden", "Russel Westbrook", "Steph Curry" ,"Klay Thompson"};
+    String [] PlayerNameForward = { "LeBron James", "Kevin Durant", "Kawahi Leonard", "Kristap Porzingis"};
+    String [] PlayerNameCenter = { "Anthony Davis", "Karl Anthony Towns", "Marc Gasol", "Mitchel Robinson"};
 
-    int [] PlayerPointsGuard = { 29, 10 , 18, 13};
-    int [] PlayerPointsForward = { 34, 12, 22, 16};
-    int [] PlayerPointsCenter = { 31, 23, 12, 8};
+    int [] PlayerPointsGuard = { 87, 66 , 87, 56};
+    int [] PlayerPointsForward = { 66, 66, 49, 52};
+    int [] PlayerPointsCenter = { 66, 59, 36, 17};
 
-    int [] PlayerShotPercGuard = { 47, 34, 41, 33};
-    int [] PlayerShotPercForward = { 53 , 37, 40, 31};
-    int [] PlayerShotPercCenter = { 41, 29 , 31 , 67};
+    int [] PlayerShotPercGuard = { 44, 43, 48, 49 };
+    int [] PlayerShotPercForward = { 50 , 53, 53, 47};
+    int [] PlayerShotPercCenter = { 53, 57 , 50 , 72};
 
     int [] PlayerGuard3PtChance = {0, 0, 0, 0, 0};
     int [] PlayerFoward3PtChance = {0, 0, 0, 0, 0};
