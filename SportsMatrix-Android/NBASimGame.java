@@ -23,6 +23,7 @@ public class NBASimGame extends AppCompatActivity {
     String center1 = "None";
     String position = "none";
     String possesion = "none";
+    String message = "Welcome to a new game";
 
     int [] playerPointsValue = { 0, 0, 0, 0, 0};
     int [] playerShotPerc = { 0, 0, 0, 0, 0};
@@ -345,7 +346,7 @@ public class NBASimGame extends AppCompatActivity {
             Button homeBtn = findViewById(R.id.home);
 
             int quarter = 0;
-            int gameTime = 30;
+            int gameTime = 120;
             int shotClock = 24;
             int [] ShotChance = { 0, 0, 0, 0, 0};
             String gameOver = "Over";
@@ -355,6 +356,8 @@ public class NBASimGame extends AppCompatActivity {
                 int sec = gameTime % 60;
 
                 clockManager(min, sec);
+
+                setActionMessageSection();
 
                 quarterManager();
 
@@ -383,7 +386,7 @@ public class NBASimGame extends AppCompatActivity {
                 } else if ((quarter > 0 && quarter < 4) && gameTime == 0) {
                     quarter += 1;
                     qtr.setText(quarter + " qtr");
-                    gameTime = 31;
+                    gameTime = 121;
                     if(possesion == "Player"){
                         possesion = "Computer";
                         ShotChance[0] = 0;
@@ -413,15 +416,16 @@ public class NBASimGame extends AppCompatActivity {
                             ShotChance[x] = playerPointsValue[x];
                         }
                     } else {
-                        Random chanceToShot = new Random();
-                        int chanceNum = chanceToShot.nextInt(10000);
                         for (int a = 0; a < 5; a++) {
+                            Random chanceToShot = new Random();
+                            int chanceNum = chanceToShot.nextInt(10000);
                             if(ShotChance[a] >= chanceNum ){
                                 Random shotMade = new Random();
                                 int madeShot = shotMade.nextInt(100);
                                 if(playerShotPerc[a]> madeShot){
                                     playerPoints[a] += 2;
                                     setScoreBoard();
+                                    setActionMessageSection();
                                     possesion = "Computer";
                                     ShotChance[0] = 0;
                                     a = 6;
@@ -449,15 +453,16 @@ public class NBASimGame extends AppCompatActivity {
                             ShotChance[x] = computerPointsValue[x];
                         }
                     } else {
-                        Random chanceToShot = new Random();
-                        int chanceNum = chanceToShot.nextInt(10000);
                         for (int a = 0; a < 5; a++) {
+                            Random chanceToShot = new Random();
+                            int chanceNum = chanceToShot.nextInt(10000);
                             if(ShotChance[a] >= chanceNum ){
                                 Random shotMade = new Random();
                                 int madeShot = shotMade.nextInt();
                                 if(computerShotPerc[a]> madeShot){
                                     computerPoints[a] += 2;
                                     setScoreBoard();
+                                    setActionMessageSection(computerPlayerNames[a]);
                                     possesion = "Player";
                                     ShotChance[0] = 0;
                                     a = 6;
@@ -491,6 +496,12 @@ public class NBASimGame extends AppCompatActivity {
             }
         }.start();
 
+    }
+
+    public void setActionMessageSection( String name){
+        TextView msgSect = findViewById(R.id.actionMsgSection);
+        message = name +" just made a field goal \r" + message;
+        msgSect.setText(message);
     }
 
     public void setScoreBoard(){
