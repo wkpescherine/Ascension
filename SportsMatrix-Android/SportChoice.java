@@ -1,4 +1,4 @@
-package com.example.sportsmatrix;
+package com.example.sportsmatrix_v2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,21 +19,27 @@ public class SportChoice extends AppCompatActivity {
     }
 
     public void NBASimGame(View v){
-        Intent intent = new Intent(this, NBASimGame.class);
+        Intent intent = new Intent(this, NBA_Sim_Game.class);
         startActivity(intent);
     }
 
     public void NBASimSeason(View v){
-        //Intent intent = new Intent(this, NBASimGame.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, NBA_Sim_Season.class);
+        startActivity(intent);
     }
+
+    public void NBALiveTourn(View v){
+        Intent intent = new Intent(this, NBA_Live_Tourn.class);
+        startActivity(intent);
+    }
+
     public void MLBSimGame(View v){
-        Intent intent = new Intent(this,MLBSimGame.class);
+        Intent intent = new Intent(this,MLB_Sim_Game.class);
         startActivity(intent);
     }
 
     public void NFLSimGame(View v){
-        Intent intent = new Intent(this, NFLSimGame.class);
+        Intent intent = new Intent(this, NFL_Sim_Game.class);
         startActivity(intent);
     }
-}//39
+}//45
