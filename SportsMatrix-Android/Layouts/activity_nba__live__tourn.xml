@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NBA_Live_Tourn"
+    android:orientation="vertical"
+    android:background="#000">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NBA Live Tournamnets"
+        android:textColor="#fff"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current open tournaments"
+        android:background="#fff"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TableRow
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:text="Tourn id #"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Current player #"
+                    android:background="#fff"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Current Player Queue"
+                    android:textAlignment="center"
+                    android:background="#fff"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Action"
+                    android:textAlignment="center"
+                    android:background="#fff"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No current tournamnets availble"
+        android:textColor="#fff"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current Tournaments Joined"
+        android:textAlignment="center"
+        android:background="#fff"/>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TableRow
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:text="Tourn id #"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:text="Current player #"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:text="Current Player Queue"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:text="Current Player Queue"
+                    android:textAlignment="center"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No current tournamnets joined"
+        android:textColor="#fff"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Sport Choices"
+        android:onClick="Back"/>
+
+</LinearLayout><!--  144 -->
