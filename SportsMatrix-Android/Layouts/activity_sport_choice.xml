@@ -29,6 +29,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/nbalogo"
+            android:onClick="NBALiveTourn"
             />
         <ImageView
             android:layout_width="100dp"
@@ -112,4 +113,4 @@
             android:textAlignment="center"
             android:text="Sim Game"/>
     </LinearLayout>
-</LinearLayout>
+</LinearLayout><!--   116 -->
