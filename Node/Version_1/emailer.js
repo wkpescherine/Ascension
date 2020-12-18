@@ -11,8 +11,12 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
     from:'wkpescherine3@gmail.com',
     to:'wpescherine@gmail.com',
+    //to multiple people
+    //to: 'wkpescherine@gmail.com', 'wpescherine@gmail.com'
     subject:'Test Email',
-    text: 'This is a test email'
+    text: 'This is a test email',
+    //If sending HTML in the body of the email
+    //html:'<h1>Welcome</h1><p>That as easy!!</p>'
 };
 
 transporter.sendMail( mailOptions, function(error , info){
