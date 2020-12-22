@@ -44,6 +44,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/nbalogo"
+            android:onClick="NBASimTourn"
             />
     </LinearLayout>
 
@@ -68,7 +69,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Live Game"
+            android:text="Sim Tourn"
             android:textColor="#fff"/>
     </LinearLayout>
 
@@ -138,22 +139,26 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Leagues"/>
+            android:text="Leagues"
+            android:onClick="selectLeague"/>
 
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Account"/>
+            android:text="Account"
+            android:onClick="selectAccount"/>
 
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Store"/>
+            android:text="Store"
+            android:onClick="selectStore"/>
 
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="About"/>
+            android:text="About"
+            android:onClick="selectAbout"/>
 
     </LinearLayout>
 </LinearLayout><!--   159 -->
