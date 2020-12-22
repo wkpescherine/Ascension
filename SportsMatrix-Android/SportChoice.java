@@ -33,6 +33,11 @@ public class SportChoice extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void NBASimTourn(View v){
+        Intent intent = new Intent(this, NBA_Sim_Tourn.class);
+        startActivity(intent);
+    }
+
     public void MLBSimGame(View v){
         Intent intent = new Intent(this,MLB_Sim_Game.class);
         startActivity(intent);
@@ -42,4 +47,24 @@ public class SportChoice extends AppCompatActivity {
         Intent intent = new Intent(this, NFL_Sim_Game.class);
         startActivity(intent);
     }
-}//45
+
+    public void selectLeague(View v){
+        setContentView(R.layout.activity_sport_choice);
+    }
+
+    public void selectAccount(View v){
+
+    }
+
+    public void selectStore(View v){
+
+    }
+
+    public void selectAbout(View v){
+
+    }
+
+    public void backToChoice(){
+        setContentView(R.layout.activity_sport_choice);
+    }
+}//70
