@@ -9,11 +9,19 @@
     android:background="#000"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPORTSMATRIX"
+        android:textColor="#fff"
+        android:textSize="24dp"
+        android:textAlignment="center"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="30dp">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -66,11 +74,12 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
         <ImageView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="4dp"
             android:src="@drawable/mlblogo"
             android:onClick="MLBSimGame"
@@ -78,7 +87,6 @@
         <ImageView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="4dp"
             android:src="@drawable/mlblogo"
             />
@@ -91,11 +99,13 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
+            android:textColor="#fff"
             android:text="Sim Game" />
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
+            android:textColor="#fff"
             android:text="Live Tourn" />
     </LinearLayout>
 
@@ -116,6 +126,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textColor="#fff"
             android:text="Sim Game"/>
     </LinearLayout>
 
@@ -125,19 +136,24 @@
         android:layout_marginTop="20dp">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android: android:text="Leagues"/>
+            android:text="Leagues"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android: android:text="Account"/>
+            android:text="Account"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android: android:text="Store"/>
+            android:text="Store"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="About"/>
 
     </LinearLayout>
-</LinearLayout><!--   116 -->
+</LinearLayout><!--   159 -->
