@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000">
 
 
     <LinearLayout
@@ -16,6 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/PlayerGuard1"
             android:onClick="PickPlayer1">
             <ImageView
                 android:layout_width="75dp"
@@ -27,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/player1image"
                 android:id="@+id/player1Name"
+                android:textColor="#fff"
                 android:textSize="24dp"
                 android:text="player1"/>
         </RelativeLayout>
@@ -44,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/player2Name"
                 android:text="player2"
+                android:textColor="#fff"
                 android:textSize="24dp"
                 android:layout_toRightOf="@id/player2image"/>
         </RelativeLayout>
@@ -61,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/player3Name"
                 android:text="player3"
+                android:textColor="#fff"
                 android:textSize="24dp"
                 android:layout_toRightOf="@id/player3image"/>
         </RelativeLayout>
@@ -78,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/player4Name"
                 android:text="player4"
+                android:textColor="#fff"
                 android:textSize="24dp"
                 android:layout_toRightOf="@id/player4image"/>
         </RelativeLayout>
@@ -90,4 +96,4 @@
         android:id="@+id/returnTo"
         android:onClick="Return"/>
 
-</LinearLayout><!--  93   -->
+</LinearLayout><!--  99   -->
