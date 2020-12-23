@@ -53,15 +53,15 @@ public class SportChoice extends AppCompatActivity {
     }
 
     public void selectAccount(View v){
-
+        setContentView(R.layout.account_section);
     }
 
     public void selectStore(View v){
-
+        setContentView(R.layout.store_section);
     }
 
     public void selectAbout(View v){
-
+        setContentView(R.layout.about_section);
     }
 
     public void backToChoice(){
